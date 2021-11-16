@@ -14,6 +14,7 @@ public class ChooseCharacter : MonoBehaviour
     public Canvas canvasChooseCharacter;
     public Canvas canvasGame;
 
+    public static bool gameIsStarted = false;
 
     public Text nameOfPlayer;
 
@@ -62,10 +63,12 @@ public class ChooseCharacter : MonoBehaviour
 
     public void StartGame()
     {
+        gameIsStarted = true;
         canvasChooseCharacter.gameObject.SetActive(false);
         canvasGame.gameObject.SetActive(true);
         nameOfPlayer.text = characterName;
         charactersGame[currentCharacter].SetActive(true);
+        gameIsStarted = true;
     }
 
     public void GetName()
