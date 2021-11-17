@@ -1,2 +1,2 @@
-# ArtistSimulator-Game
-Игра по проекту 
+# Artist Simulator
+Android игра в жанре Idle "Симулятор художника". 
