@@ -10,6 +10,11 @@ public class ChangeBars : MonoBehaviour
     public Image MoodBar;
     public Image PaintingBar;
 
+    public Text FoodText;
+    public Text HealthText;
+    public Text MoodText;
+    public Text PaintingText;
+
     public float fill;
 
     void Start()
@@ -22,11 +27,16 @@ public class ChangeBars : MonoBehaviour
     {
         if (ChooseCharacter.gameIsStarted == true && fill >= 0)
         {
-            fill -= Time.deltaTime * 0.1f;
+            fill -= Time.deltaTime * 0.01f;
             FoodBar.fillAmount = fill;
             HealthBar.fillAmount = fill;
             MoodBar.fillAmount = fill;
             PaintingBar.fillAmount = fill;
+
+            FoodText.text = Mathf.Round(FoodBar.fillAmount * 100f).ToString() + '%';
+            HealthText.text = Mathf.Round(HealthBar.fillAmount * 100f).ToString() + '%';
+            MoodText.text = Mathf.Round(MoodBar.fillAmount * 100f).ToString() + '%';
+            PaintingText.text = Mathf.Round(PaintingBar.fillAmount * 100f).ToString() + '%';
         }
     }
 }
