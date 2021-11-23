@@ -1,21 +1,22 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameControls : MonoBehaviour
+public static class GameControls
 {
-    // Start is called before the first frame update
+    public static void GameOver() { }
+
+    public static bool IsCorrect(int value)
+    {
+        if (value < 0)
+            throw new ArgumentException("can't be less than 0");
+        return true;
+    }
     
-    void Start()
+    public static bool IsCorrect(string value)
     {
-        PlayerStats.Initialize();
+        if (value == null || value == "")
+            throw new ArgumentException("can't be empty or null");
+        return true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void GameOver() { }
 }

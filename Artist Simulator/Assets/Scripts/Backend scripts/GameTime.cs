@@ -11,12 +11,15 @@ public static class GameTime
         get => _hours;
         set
         {
-            if (IsCorrect(value))
+            if (GameControls.IsCorrect(value))
             {
-                _hours = value;
+               _hours = value;
             }
         }
     }
+
+   
+  
 
     //public static GameTime GlobalTime 
     //{ 
@@ -96,10 +99,5 @@ public static class GameTime
 
     //private static GameTime _globalTime;
     //private int _hour = 0, _day = 0/*, _week = 0*/;
-    private static bool IsCorrect(int value)
-    {
-        if (value < 0)
-            throw new ArgumentException("");
-        return true;
-    }
+
 }
