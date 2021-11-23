@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChooseCharacter : MonoBehaviour
 {
-    private int current_char;
+    static public int current_char;
     static public string characterName;
     static public int currentCharacter;
     [SerializeField] GameObject[] characters;
@@ -14,10 +14,17 @@ public class ChooseCharacter : MonoBehaviour
     public Canvas canvasChooseCharacter;
     public Canvas canvasGame;
 
-    public static bool gameIsStarted = false;
+    public static bool gameIsStarted;
 
     public Text nameOfPlayer;
-
+    void Start()
+    {
+        if (gameIsStarted)
+        {
+            canvasGame.gameObject.SetActive(true);
+            canvasChooseCharacter.gameObject.SetActive(false);
+        }
+    }
 
     public void ClickOnLeftButton()
     {
@@ -69,6 +76,8 @@ public class ChooseCharacter : MonoBehaviour
         nameOfPlayer.text = characterName;
         charactersGame[currentCharacter].SetActive(true);
         gameIsStarted = true;
+        Pause.GameIsStarted_IsStopped = false;
+        ChooseCharacter.gameIsStarted = true;
     }
 
     public void GetName()

@@ -53,11 +53,11 @@ public class FiveButtons : MonoBehaviour
     {
         if (buttonIsClicked == false)
         {
-            
+
             buttonIsClicked = true;
             current_char = 2;
             panels[current_char].SetActive(true);
-            buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y - 0.1f, buttons[current_char].transform.position.z);
+            buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y + 0.1f, buttons[current_char].transform.position.z);
         }
         else
         {

@@ -10,22 +10,50 @@ public class ChangeBars : MonoBehaviour
     public Image MoodBar;
     public Image PaintingBar;
 
+    [SerializeField] GameObject[] characters;
+
     public Text FoodText;
     public Text HealthText;
     public Text MoodText;
     public Text PaintingText;
 
-    public float fill;
+    public Text name;
 
+    float Food;
+    float Health;
+    float Mood;
+    float Painting;
+
+    public static int saving = 0;
+
+    static public float fill = 1f;
+    static float fill1;
+    
     void Start()
     {
-        fill = 1f;
+        if (ChooseCharacter.gameIsStarted == true)
+        {
+            characters[ChooseCharacter.current_char].SetActive(true);
+            name.text = ChooseCharacter.characterName;
+        }
+        
     }
-
+    
 
     void Update()
     {
-        if (ChooseCharacter.gameIsStarted == true && fill >= 0)
+        if (saving == 1)
+        {
+            fill = fill1;
+            ChooseCharacter.gameIsStarted = true;
+            Pause.GameIsStarted_IsStopped = false;
+            saving = 0;
+        }
+
+
+
+
+        if (ChooseCharacter.gameIsStarted == true && fill >= 0 && Pause.GameIsStarted_IsStopped == false && saving == 0)
         {
             fill -= Time.deltaTime * 0.01f;
             FoodBar.fillAmount = fill;
@@ -37,6 +65,8 @@ public class ChangeBars : MonoBehaviour
             HealthText.text = Mathf.Round(HealthBar.fillAmount * 100f).ToString() + '%';
             MoodText.text = Mathf.Round(MoodBar.fillAmount * 100f).ToString() + '%';
             PaintingText.text = Mathf.Round(PaintingBar.fillAmount * 100f).ToString() + '%';
+            fill1 = fill;
         }
+
     }
 }
