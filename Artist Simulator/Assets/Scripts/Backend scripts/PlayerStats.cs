@@ -23,7 +23,7 @@ public static class PlayerStats
             Portrait = 3,
             ModernArt = 4
         }
-        public class Skill<SkillType>
+        public class Skill <SkillType>
         {
             public Skill(int maxXp, int lvl, int xp, SkillType skillTeg)
             {
@@ -34,16 +34,16 @@ public static class PlayerStats
             }
 
             public int MaxXp { get => _maxXp; set => _maxXp = value; }
-            public int Lvl
-            {
+            public int Lvl 
+            { 
                 get => _lvl;
                 set => _lvl = value >= MaxLvlSkill ? MaxLvlSkill : value;
 
             }
-            public int Xp
-            {
+            public int Xp 
+            { 
                 get => _xp;
-                set
+                set 
                 {
                     if (value >= MaxXp)
                         LvlUp(value);
@@ -51,7 +51,7 @@ public static class PlayerStats
                         _xp = value;
                 }
             }
-
+           
             public SkillType SkillTeg { get => _skillTeg; set => _skillTeg = value; }
 
             private static readonly float UpMaxXpCoeff = 1.5f;
@@ -63,7 +63,7 @@ public static class PlayerStats
             //TODO: проверить рекурсию
             private void LvlUp(int newXp)
             {
-                if (Lvl <= MaxLvlSkill)
+                if(Lvl <= MaxLvlSkill)
                 {
                     int oldMaxXp = MaxXp;
                     MaxXp = (int)(MaxXp * UpMaxXpCoeff);
@@ -73,13 +73,11 @@ public static class PlayerStats
             }
         }
 
-        public static Skill<Techniques> GetTechnique(Techniques skillTeg) => techniquesDict[skillTeg];
-        public static Skill<Genres> GetGenre(Genres skillTeg) => genresDict[skillTeg];
 
         public static void Initialize(int startXp, int startMaxXp, int startLvl, int MaxLvlSkill)
         {
             ArtSkills.MaxLvlSkill = MaxLvlSkill;
-
+            
             int techLen = Enum.GetValues(typeof(Techniques)).Length;
             int genLen = Enum.GetValues(typeof(Genres)).Length;
 
@@ -89,7 +87,6 @@ public static class PlayerStats
             for (int i = 0; i < genLen; i++)
                 genresDict.Add((Genres)i, new Skill<Genres>(startMaxXp, startLvl, startXp, (Genres)i));
         }
-
 
         private static int MaxLvlSkill;
         private static Dictionary<Techniques, Skill<Techniques>> techniquesDict;
