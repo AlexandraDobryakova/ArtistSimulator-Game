@@ -46,7 +46,7 @@ public class TextControls : MonoBehaviour
         switch (showingValue)
         {
             case Values.MONEY:
-                textObject.text = $"{PlayerStats.Money.Value}{PlayerStats.Money.Dimension}";
+                textObject.text = $"{Player.Money.Value}{Player.Money.Dimension}";
                 break;
 
             default:

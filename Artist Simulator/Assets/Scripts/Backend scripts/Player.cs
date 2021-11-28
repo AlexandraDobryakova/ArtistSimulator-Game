@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PlayerStats
+public static class Player
 {
     public static class ArtSkills
     {
@@ -88,6 +88,12 @@ public static class PlayerStats
                 genresDict.Add((Genres)i, new Skill<Genres>(startMaxXp, startLvl, startXp, (Genres)i));
         }
 
+        public static Skill<Techniques> GetSkill(Techniques skillTeg) =>
+            techniquesDict[skillTeg];
+        public static Skill<Genres> GetSkill(Genres skillTeg) =>
+            genresDict[skillTeg];
+       
+
         private static int MaxLvlSkill;
         private static Dictionary<Techniques, Skill<Techniques>> techniquesDict;
         private static Dictionary<Genres, Skill<Genres>> genresDict;
@@ -98,14 +104,15 @@ public static class PlayerStats
     public static Indicator Energy;
     public static Indicator Satiety;
     public static Disease Disease;
+    public static Contract CurrentContract;
 
     public static void Initialize()
     {
         ArtSkills.Initialize(0, 100, 1, 30);
         Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
-        Money = new Indicator(5000, 999999, "ð");
-        Happiness = new Indicator(100, 100, "%");
-        Energy = new Indicator(100, 100, "%");
-        Satiety = new Indicator(100, 100, "%");
+        Money = new Indicator(5000, 999999, "ð", false);
+        Happiness = new Indicator(100, 100, "%", true);
+        Energy = new Indicator(100, 100, "%", true);
+        Satiety = new Indicator(100, 100, "%", true);
     }
 }

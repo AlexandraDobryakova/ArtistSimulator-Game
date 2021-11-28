@@ -18,6 +18,6 @@ public class Actions : MonoBehaviour
 
     public void Sleep()
     {
-        PlayerStats.Money.Value = 2000;
+        Player.Money.Value = 2000;
     }
 }
