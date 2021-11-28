@@ -43,7 +43,7 @@ public class Disease
         set 
         {
             DecreaseEnergyCoeff = value ? _decreaseEnergyCoeffWhenActive : 1f;
-            PlayerStats.Energy.ValueCoeff = DecreaseEnergyCoeff;
+            Player.Energy.ValueCoeff = DecreaseEnergyCoeff;
         }
         
     }

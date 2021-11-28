@@ -8,7 +8,7 @@ public class GameFlow : MonoBehaviour
     
     void Start()
     {
-        PlayerStats.Initialize();
+        Player.Initialize();
     }
 
     // Update is called once per frame
