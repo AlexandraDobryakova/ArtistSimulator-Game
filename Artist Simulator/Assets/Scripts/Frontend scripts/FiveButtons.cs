@@ -8,7 +8,6 @@ public class FiveButtons : MonoBehaviour
     public GameObject[] panels;
     public GameObject[] buttons;
     private int current_char = 0;
-    private float yKoord = -5;
     public void Click1Button()
     {
         if (buttonIsClicked == false)

@@ -13,6 +13,7 @@ public class ChooseCharacter : MonoBehaviour
     public InputField nameOf;
     public Canvas canvasChooseCharacter;
     public Canvas canvasGame;
+    public GameObject Button_StartGame;
 
     public static bool gameIsStarted;
 
@@ -23,6 +24,19 @@ public class ChooseCharacter : MonoBehaviour
         {
             canvasGame.gameObject.SetActive(true);
             canvasChooseCharacter.gameObject.SetActive(false);
+        }
+        nameOf.text = "";
+    }
+
+    private void Update()
+    {
+        if (nameOf.text.Length > 0)
+        {
+            Button_StartGame.SetActive(true);
+        }
+        else
+        {
+            Button_StartGame.SetActive(false);
         }
     }
 
@@ -82,6 +96,10 @@ public class ChooseCharacter : MonoBehaviour
 
     public void GetName()
     {
-        characterName = nameOf.text;
+        if (nameOf.text.Length > 0)
+        {
+            characterName = nameOf.text;
+            Button_StartGame.SetActive(true);
+        }
     }
 }
