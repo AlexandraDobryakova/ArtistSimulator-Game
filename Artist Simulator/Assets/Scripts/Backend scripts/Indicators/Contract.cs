@@ -12,7 +12,6 @@ public class Contract : Work
         Crazy
     }
 
-
     public Contract(string name, int hourWorkload, int contractPrice, Difficultys difficulty,
         Player.ArtSkills.Techniques requiredTechnique, Player.ArtSkills.Genres requiredGenre) :
         base(name, energyCostPerHour, satietyCostPerHour, happinessCoef)
@@ -23,35 +22,40 @@ public class Contract : Work
         this.requiredTechnique = requiredTechnique;
         this.requiredGenre = requiredGenre;
         hoursWorked = 0;
-        IsDone = false;
+        //IsDone = false;
     }
 
+    //TODO: Зависимость от Difficulty
     public int HourWorkload { get => hourWorkload; private set => hourWorkload = value; }
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
     public int ContractPrice { get => contractPrice; private set => contractPrice = value; }
-    public bool IsDone { get => isDone; private set => isDone = value; }
+    //public bool IsDone { get => isDone; private set => isDone = value; }
 
     public override void DoWork(int hoursOfWork)
     {
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
         Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
+        GameTime.Hours += hoursOfWork;
 
         hoursWorked += hoursOfWork;
         if (hoursWorked >= HourWorkload)
         {
-            IsDone = true;
-            Player.ArtSkills.GetSkill(requiredGenre).Xp += GetXPInc();
-            Player.ArtSkills.GetSkill(requiredTechnique).Xp += GetXPInc();
+            //IsDone = true;
+            Player.ArtSkills.GetSkill(requiredGenre).Xp += GetXPInc(hourWorkload);
+            Player.ArtSkills.GetSkill(requiredTechnique).Xp += GetXPInc(hourWorkload);
             Player.Money.Value += ContractPrice;
         }
     }
 
-    public override int GetXPInc()
+    //TODO
+    public override int GetXPInc(int hoursOfWork)
     {
-        throw new System.NotImplementedException();
+        return 2 * hoursOfWork;
     }
+
+    public int GetPercentExecution() => (hoursWorked / HourWorkload) * 100;
 
     private static readonly int energyCostPerHour, satietyCostPerHour, happinessCoef;
     private int hourWorkload, hoursWorked, contractPrice;

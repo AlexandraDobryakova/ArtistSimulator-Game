@@ -7,6 +7,7 @@ public static class Player
 {
     public static class ArtSkills
     {
+        public static int MinSkillsLvl;
         public enum Techniques
         {
             Brush = 0,
@@ -37,7 +38,10 @@ public static class Player
             public int Lvl 
             { 
                 get => _lvl;
-                set => _lvl = value >= MaxLvlSkill ? MaxLvlSkill : value;
+                set 
+                {
+                    _lvl = value >= MaxLvlSkill ? MaxLvlSkill : value;
+                } 
 
             }
             public int Xp 
@@ -61,14 +65,26 @@ public static class Player
             private SkillType _skillTeg;
 
             //TODO: проверить рекурсию
-            private void LvlUp(int newXp)
+            private void LvlUp(int gettingXp)
             {
                 if(Lvl <= MaxLvlSkill)
                 {
                     int oldMaxXp = MaxXp;
                     MaxXp = (int)(MaxXp * UpMaxXpCoeff);
-                    Xp = newXp - oldMaxXp;
+                    Xp = gettingXp - oldMaxXp;
                     Lvl++;
+
+                    foreach (var skill in techniquesDict)
+                    {
+                        if (skill.Value.Lvl < MinSkillsLvl)
+                            MinSkillsLvl = skill.Value.Lvl;
+                    }
+
+                    foreach (var skill in genresDict)
+                    {
+                        if (skill.Value.Lvl < MinSkillsLvl)
+                            MinSkillsLvl = skill.Value.Lvl;
+                    }
                 }
             }
         }
@@ -76,10 +92,14 @@ public static class Player
 
         public static void Initialize(int startXp, int startMaxXp, int startLvl, int MaxLvlSkill)
         {
+            MinSkillsLvl = 1;
             ArtSkills.MaxLvlSkill = MaxLvlSkill;
             
             int techLen = Enum.GetValues(typeof(Techniques)).Length;
             int genLen = Enum.GetValues(typeof(Genres)).Length;
+
+            techniquesDict = new Dictionary<Techniques, Skill<Techniques>>();
+            genresDict = new Dictionary<Genres, Skill<Genres>>();
 
             for (int i = 0; i < techLen; i++)
                 techniquesDict.Add((Techniques)i, new Skill<Techniques>(startMaxXp, startLvl, startXp, (Techniques)i));
@@ -103,8 +123,12 @@ public static class Player
     public static Indicator Happiness;
     public static Indicator Energy;
     public static Indicator Satiety;
+
     public static Disease Disease;
     public static Contract CurrentContract;
+    public static Job Employment;
+
+    public static bool HasAnEmployment, IsIll, IsWorkingOnContracrt;
 
     public static void Initialize()
     {

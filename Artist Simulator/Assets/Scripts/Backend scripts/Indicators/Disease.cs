@@ -11,7 +11,7 @@ public class Disease
         TimeOfHealing = timeOfHealing;
         DecreaseEnergyCoeff = decreaseEnergyCoeff;
         _decreaseEnergyCoeffWhenActive = decreaseEnergyCoeff;
-        IsActive = false;
+        //IsActive = false;
     }
 
 
@@ -37,18 +37,18 @@ public class Disease
             _currentDecreaseEnergyCoeff = value;
         }  
     }
-    public bool IsActive 
-    { 
-        get => _isActive;
-        set 
-        {
-            DecreaseEnergyCoeff = value ? _decreaseEnergyCoeffWhenActive : 1f;
-            Player.Energy.ValueCoeff = DecreaseEnergyCoeff;
-        }
+    //public bool IsActive 
+    //{ 
+    //    get => _isActive;
+    //    set 
+    //    {
+    //        DecreaseEnergyCoeff = value ? _decreaseEnergyCoeffWhenActive : 1f;
+    //        Player.Energy.ValueCoeff = DecreaseEnergyCoeff;
+    //    }
         
-    }
+    //}
 
-    private bool _isActive;
+    //private bool _isActive;
     private string _name;
     private float _currentDecreaseEnergyCoeff;
     private readonly float  _decreaseEnergyCoeffWhenActive;
