@@ -37,7 +37,7 @@ public class Contract : Work
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
         Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
-        GameTime.Hours += hoursOfWork;
+        Game.Time.Hours += hoursOfWork;
 
         hoursWorked += hoursOfWork;
         if (hoursWorked >= HourWorkload)
@@ -46,6 +46,7 @@ public class Contract : Work
             Player.ArtSkills.GetSkill(requiredGenre).Xp += GetXPInc(hourWorkload);
             Player.ArtSkills.GetSkill(requiredTechnique).Xp += GetXPInc(hourWorkload);
             Player.Money.Value += ContractPrice;
+            Player.CurrentContract = null;
         }
     }
 
@@ -59,7 +60,7 @@ public class Contract : Work
 
     private static readonly int energyCostPerHour, satietyCostPerHour, happinessCoef;
     private int hourWorkload, hoursWorked, contractPrice;
-    private bool isDone;
+    //private bool isDone;
     private Difficultys difficulty;
     private Player.ArtSkills.Techniques requiredTechnique;
     

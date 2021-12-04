@@ -15,22 +15,7 @@ public class TextControls : MonoBehaviour
         ENERGY
     };
 
-    private static readonly string[] techniquesNames =
-    {
-        "Кисти и холст",
-        "Графический планшет",
-        "Баллончик с краской",
-        "Карандаш"
-    };
-
-    private static readonly string[] genresNames =
-    {
-        "Граффити",
-        "Натюрморт",
-        "Пейзаж",
-        "Портрет",
-        "Современное искусство"
-    };
+   
 
     public Text textObject;
     public Values showingValue;

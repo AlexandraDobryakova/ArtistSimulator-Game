@@ -2,9 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameControls
+public static class Game
 {
-    public static void GameOver() { }
+    public static class Time
+    {
+        private static int _hours;
+
+        public static int Hours
+        {
+            get => _hours;
+            set
+            {
+                if (IsCorrect(value))
+                {
+                    _hours = value;
+                }
+            }
+        }
+    }
+        public static void GameOver() { }
 
     public static bool IsCorrect(int value)
     {

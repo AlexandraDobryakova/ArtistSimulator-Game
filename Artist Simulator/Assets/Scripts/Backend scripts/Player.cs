@@ -42,7 +42,6 @@ public static class Player
                 {
                     _lvl = value >= MaxLvlSkill ? MaxLvlSkill : value;
                 } 
-
             }
             public int Xp 
             { 
@@ -132,11 +131,40 @@ public static class Player
 
     public static void Initialize()
     {
-        ArtSkills.Initialize(0, 100, 1, 30);
-        Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
-        Money = new Indicator(5000, 999999, "ð", false);
-        Happiness = new Indicator(100, 100, "%", true);
-        Energy = new Indicator(100, 100, "%", true);
-        Satiety = new Indicator(100, 100, "%", true);
+        ArtSkills.Initialize(
+            GameConstants.Skills_start_xp, 
+            GameConstants.Skills_start_max_xp,
+            GameConstants.Skills_start_lvl, 
+            GameConstants.Skills_max_lvl_skill);
+
+        Money = new Indicator(
+            GameConstants.Money_start_value,
+            GameConstants.Money_max_value,
+            GameConstants.Money_dimension,
+            GameConstants.Money_is_vital);
+
+        Happiness = new Indicator(
+            GameConstants.Happiness_start_value,
+            GameConstants.Happiness_max_value,
+            GameConstants.Happiness_dimension,
+            GameConstants.Happiness_is_vital);
+
+        Energy = new Indicator(
+            GameConstants.Energy_start_value,
+            GameConstants.Energy_max_value,
+            GameConstants.Energy_dimension,
+            GameConstants.Energy_is_vital);
+
+        Satiety = new Indicator(
+            GameConstants.Satiety_start_value,
+            GameConstants.Satiety_max_value,
+            GameConstants.Satiety_dimension,
+            GameConstants.Satiety_is_vital);
+
+        //Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
+
+        IsIll = false;
+        HasAnEmployment = false;
+        IsWorkingOnContracrt = false;
     }
 }

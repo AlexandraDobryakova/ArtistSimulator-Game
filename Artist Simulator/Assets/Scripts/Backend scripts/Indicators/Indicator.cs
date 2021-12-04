@@ -22,13 +22,21 @@ public class Indicator
         get => _value;
         set
         {
-            if (value <= 0 && isVital)
-            {
-                GameControls.GameOver();
-                return;
-            }
             int valueWithCoeff = (int)(value * ValueCoeff);
-            if (valueWithCoeff + _value <= _maxValue || valueWithCoeff + _value >= minValue)
+
+            if (valueWithCoeff >= MaxValue)
+                _value = MaxValue;
+            else if (valueWithCoeff <= minValue)
+            {
+                _value = minValue;
+
+                if (isVital)
+                {
+                    Game.GameOver();
+                    return;
+                }
+            }
+            else
                 _value = valueWithCoeff;
         }
     }

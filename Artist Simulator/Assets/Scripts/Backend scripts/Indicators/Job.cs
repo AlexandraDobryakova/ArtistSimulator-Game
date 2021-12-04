@@ -5,9 +5,6 @@ using System;
 
 public class Job : Work
 {
-    private readonly int salaryPerHour, minRequiredLvlSkills;
-    private readonly bool isByProfession;
-
     public Job(string name, bool isByProfession, int salaryPerHour, int minRequiredLvlSkills,
         int energyCostPerHour, int satietyCostPerHour, int happinessCoef) :
         base(name, energyCostPerHour, satietyCostPerHour, happinessCoef)
@@ -46,4 +43,7 @@ public class Job : Work
     {
         return (int)(hoursOfWork * 1.5);
     }
+
+    private readonly int salaryPerHour, minRequiredLvlSkills;
+    private readonly bool isByProfession;
 }
