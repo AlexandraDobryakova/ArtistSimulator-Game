@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-public static class GameConstants 
+public static class GameConstans 
 {
     public const int
         // Indicators:
@@ -26,8 +26,11 @@ public static class GameConstants
         Sleep_energy_restore_perHour = 40,
         Sleep_satiety_decreasement = 20,
         Healing_cost = 1000,
-        Eating_duration_inHours = 2
+        Eating_duration_inHours = 2,
         //Learn_xp_increasement_perHour = 
+
+        //Contracts
+        Contracts_count = 5
         ;
 
     public const string
@@ -44,7 +47,7 @@ public static class GameConstants
         Satiety_is_vital = true
         ;
 
-    public static Dictionary<string, (int satietyRestoration, int priceOfFood)> Food =
+    public static readonly Dictionary<string, (int satietyRestoration, int priceOfFood)> Food =
         new Dictionary<string, (int satietyRestoration, int priceOfFood)>
         {
             {"bread", (5, 25) },
@@ -53,13 +56,24 @@ public static class GameConstants
         };
 
 
-    public static Dictionary<string, LearningVariant> LearningVariants =
+    public static readonly Dictionary<string, LearningVariant> LearningVariants = 
         new Dictionary<string, LearningVariant>()
         {
             {"freeDrawing", new LearningVariant(1, 20, 0, 10, 10, 5) },
             {"watchingYoutube", new LearningVariant(2, 50, 0, 25, 25, 10) },
             {"expressCourse", new LearningVariant(5, 200, 1000, 30, 30, 40) },
         };
+
+
+    public static readonly Dictionary<string, Job> Jobs =
+        new Dictionary<string, Job>()
+        {
+            {"courier", new Job("courier", false, 400, 0, 20, 15, -20)},
+            {"macCashier", new Job("macCashier", false, 500, 0, 10, 5, -30)},
+            {"juniorArtist", new Job("macCashier", false, 800, 3, 15, 15, 5)}
+        };
+
+
 
 
     public static readonly string[] 
@@ -80,5 +94,5 @@ public static class GameConstants
         "Современное искусство"
     };
 
-    public static Disease DiseaseCold = new Disease("cold", 1000, 24 * 2, 0.5f);
+    public static readonly Disease DiseaseCold = new Disease("cold", 1000, 24 * 2, 0.5f);
 }

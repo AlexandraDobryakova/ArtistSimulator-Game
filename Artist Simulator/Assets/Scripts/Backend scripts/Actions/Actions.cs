@@ -8,30 +8,30 @@ public class Actions : MonoBehaviour
 {
     public void Sleep(int sleepTime)
     {
-        Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
-        Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement;
+        Player.Energy.Value += GameConstans.Sleep_energy_restore_perHour * sleepTime;
+        Player.Satiety.Value -= GameConstans.Sleep_satiety_decreasement;
         Game.Time.Hours += sleepTime;
     }
 
     public void Heal() 
     {
-        if(Player.Money.Value >= GameConstants.Healing_cost)
+        if(Player.Money.Value >= GameConstans.Healing_cost)
         {
             Player.Disease = null;
-            Player.Money.Value -= GameConstants.Healing_cost;
+            Player.Money.Value -= GameConstans.Healing_cost;
         }
     }
 
     public void Eat(string foodName) 
     {
-        if (!GameConstants.Food.ContainsKey(foodName))
+        if (!GameConstans.Food.ContainsKey(foodName))
             throw new ArgumentException($"Wrong name of food: \"{foodName}\".");
 
-        if (Player.Money.Value >= GameConstants.Food[foodName].priceOfFood)
+        if (Player.Money.Value >= GameConstans.Food[foodName].priceOfFood)
         {
-            Player.Satiety.Value += GameConstants.Food[foodName].satietyRestoration;
-            Player.Money.Value -= GameConstants.Food[foodName].priceOfFood;
-            Game.Time.Hours += GameConstants.Eating_duration_inHours;
+            Player.Satiety.Value += GameConstans.Food[foodName].satietyRestoration;
+            Player.Money.Value -= GameConstans.Food[foodName].priceOfFood;
+            Game.Time.Hours += GameConstans.Eating_duration_inHours;
         }
     }
 
@@ -47,7 +47,7 @@ public class Actions : MonoBehaviour
                 $"Wrong argument format: \"{skillName_learningVariant}\". There must be only 2 args.");
 
 
-        if (GameConstants.LearningVariants.TryGetValue(args[1], out var learningVariant))
+        if (GameConstans.LearningVariants.TryGetValue(args[1], out var learningVariant))
         {
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
@@ -70,5 +70,22 @@ public class Actions : MonoBehaviour
         else
             throw new ArgumentException(
                 $"Wrong argument: \"{skillName_learningVariant}\". Unknown LearningVariant: \"{args[1]}\"");
+    }
+
+    public void TakeContract(int contractNumber)
+    {
+        if(contractNumber > GameConstans.Contracts_count - 1)
+            throw new ArgumentException(
+                $"Wrong argument: \"{contractNumber}\"." +
+                $"ContractNumber can't be more than {GameConstans.Contracts_count - 1}");
+        if (Player.CurrentContract == null)
+            Player.CurrentContract = Game.ContractsPool[contractNumber];
+    }
+
+    public void TakeJob(string jobName)
+    {
+        if(!GameConstans.Jobs.ContainsKey(jobName))
+            throw new ArgumentException($"Wrong argument: \"{jobName}\". Unknown Job.");
+        Player.CurrentJob = GameConstans.Jobs[jobName];
     }
 }

@@ -23,7 +23,7 @@ public class Contract : Work
         this.requiredTechnique = requiredTechnique;
         this.requiredGenre = requiredGenre;
         hoursWorked = 0;
-        //IsDone = false;
+        IsDone = false;
     }
 
     //TODO: Зависимость от Difficulty
@@ -31,7 +31,7 @@ public class Contract : Work
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
     public int ContractPrice { get => contractPrice; private set => contractPrice = value; }
-    //public bool IsDone { get => isDone; private set => isDone = value; }
+    public bool IsDone { get => isDone; private set => isDone = value; }
 
     public override void DoWork(int hoursOfWork)
     {
@@ -43,7 +43,7 @@ public class Contract : Work
         hoursWorked += hoursOfWork;
         if (hoursWorked >= HourWorkload)
         {
-            //IsDone = true;
+            IsDone = true;
             Player.ArtSkills.GetSkill(requiredGenre).Xp += GetXPInc(hourWorkload);
             Player.ArtSkills.GetSkill(requiredTechnique).Xp += GetXPInc(hourWorkload);
             Player.Money.Value += ContractPrice;
@@ -59,7 +59,7 @@ public class Contract : Work
 
     public int GetPercentExecution() => (hoursWorked / HourWorkload) * 100;
 
-    public Contract GetRandomContract()
+    public static Contract GetRandomContract()
     {
         var random = new System.Random();
         var difficult = (Difficultys)random.Next(0, Enum.GetValues(typeof(Difficultys)).Length);
@@ -68,7 +68,6 @@ public class Contract : Work
         
         switch (difficult)
         {
-            //(int)Math.Round(a / 10.0) * 10)
             case Difficultys.Easy:
                 return new Contract("1", random.Next(1, 6),
                     (int)Math.Round(random.Next(100, 600) / 10.0) * 10, difficult, randTech, randGenre);
@@ -87,13 +86,20 @@ public class Contract : Work
 
            default:
                return new Contract("0", 0, 0, difficult, randTech, randGenre);
-
         }
+    }
+
+    public static Contract[] GetRandomContractsPool()
+    {
+        var res = new Contract[GameConstans.Contracts_count];
+        for (int i = 0; i < GameConstans.Contracts_count; i++)
+            res[i] = GetRandomContract();
+        return res;
     }
 
     private static readonly int energyCostPerHour, satietyCostPerHour, happinessCoef;
     private int hourWorkload, hoursWorked, contractPrice;
-    //private bool isDone;
+    private bool isDone;
     private Difficultys difficulty;
     private Player.ArtSkills.Techniques requiredTechnique;
     

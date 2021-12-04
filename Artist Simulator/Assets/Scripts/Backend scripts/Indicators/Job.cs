@@ -28,15 +28,18 @@ public class Job : Work
         Player.Money.Value += salaryPerHour * hoursOfWork;
         //GameTime.Hours += hoursOfWork;
 
-        int techLen = Enum.GetValues(typeof(Player.ArtSkills.Techniques)).Length;
-        int genreLen = Enum.GetValues(typeof(Player.ArtSkills.Genres)).Length;
+        if (isByProfession)
+        {
+            int techLen = Enum.GetValues(typeof(Player.ArtSkills.Techniques)).Length;
+            int genreLen = Enum.GetValues(typeof(Player.ArtSkills.Genres)).Length;
 
-        System.Random rd = new System.Random();
-        Player.ArtSkills.Techniques randTech = (Player.ArtSkills.Techniques)rd.Next(0, techLen);
-        Player.ArtSkills.Genres randGenre = (Player.ArtSkills.Genres)rd.Next(0, genreLen);
+            System.Random rd = new System.Random();
+            Player.ArtSkills.Techniques randTech = (Player.ArtSkills.Techniques)rd.Next(0, techLen);
+            Player.ArtSkills.Genres randGenre = (Player.ArtSkills.Genres)rd.Next(0, genreLen);
 
-        Player.ArtSkills.GetSkill(randTech).Xp += GetXPInc(hoursOfWork);
-        Player.ArtSkills.GetSkill(randGenre).Xp += GetXPInc(hoursOfWork);
+            Player.ArtSkills.GetSkill(randTech).Xp += GetXPInc(hoursOfWork);
+            Player.ArtSkills.GetSkill(randGenre).Xp += GetXPInc(hoursOfWork);
+        }
     }
 
     public override int GetXPInc(int hoursOfWork)
