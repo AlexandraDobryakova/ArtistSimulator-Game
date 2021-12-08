@@ -13,9 +13,14 @@ public class GameFlow : MonoBehaviour
 
     void Update()
     { 
-
-    }
-
-
-    
+        //if(Player.Disease != null)
+        //{
+        //    if (Game.Time.Days >= GameConstans.DaysUntillGettingIll)
+        //    {
+        //        Player.Disease = GameConstans.DiseaseCold;
+        //        Player.Energy.ValueCoeff = GameConstans.DiseaseCold.decreaseEnergyCoeff;
+        //    }
+            
+        //}
+    }  
 }

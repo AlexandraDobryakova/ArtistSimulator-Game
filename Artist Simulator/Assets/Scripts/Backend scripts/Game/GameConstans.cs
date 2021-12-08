@@ -29,8 +29,14 @@ public static class GameConstans
         Eating_duration_inHours = 2,
         //Learn_xp_increasement_perHour = 
 
-        //Contracts
-        Contracts_count = 5
+        // Contracts
+        Contracts_count = 5,
+        Contracts_energyCostPerHour = 10,
+        Contracts_satietyCostPerHour = 5,
+        Contracts_happinessCoef = 5,
+
+        // Disease
+        DaysUntillGettingIll = 5
         ;
 
     public const string
@@ -74,8 +80,6 @@ public static class GameConstans
         };
 
 
-
-
     public static readonly string[] 
         techniquesNames =
     {
@@ -94,5 +98,5 @@ public static class GameConstans
         "Современное искусство"
     };
 
-    public static readonly Disease DiseaseCold = new Disease("cold", 1000, 24 * 2, 0.5f);
+    public static readonly Disease DiseaseCold = new Disease("cold", 1000, new GameTime(0, 3), 0.5f);
 }

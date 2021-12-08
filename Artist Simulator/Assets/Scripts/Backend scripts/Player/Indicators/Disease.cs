@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Disease
 {
-    public Disease(string name, int costOfHealing, int timeOfHealing, float decreaseEnergyCoeff)
+    public Disease(string name, int costOfHealing, GameTime timeToHeal, float decreaseEnergyCoeff)
+    {
+        this.name = name;
+        this.costOfHealing = costOfHealing;
+        this.timeToHeal = timeToHeal;
+        this.decreaseEnergyCoeff = decreaseEnergyCoeff;
+        timeOfGettingIll = Game.Time;
+    }
+
+    public float decreaseEnergyCoeff;
+    public readonly GameTime timeOfGettingIll, timeToHeal;
+    public readonly string name;
+    public readonly int costOfHealing;
+
+
+    /*
+    public Disease(string name, int costOfHealing, int daysToHeal, float decreaseEnergyCoeff)
     {
         Name = name;
         CostOfHealing = costOfHealing;
-        TimeOfHealing = timeOfHealing;
+        DaysToHeal = daysToHeal;
         DecreaseEnergyCoeff = decreaseEnergyCoeff;
-        _decreaseEnergyCoeffWhenActive = decreaseEnergyCoeff;
-        //IsActive = false;
+        timeOfGettingIll = Game.Time;
     }
-
 
     //TODO Владиация
     public string Name 
@@ -27,7 +41,7 @@ public class Disease
         get => _costOfHealing; 
         private set => _costOfHealing = value;
     }
-    public int TimeOfHealing { get => _timeOfHealing; private set => _timeOfHealing = value; }
+    public int DaysToHeal { get => _daysToHeal; private set => _daysToHeal = value; }
     public float DecreaseEnergyCoeff 
     { 
         get => _currentDecreaseEnergyCoeff;
@@ -37,22 +51,11 @@ public class Disease
             _currentDecreaseEnergyCoeff = value;
         }  
     }
-    //public bool IsActive 
-    //{ 
-    //    get => _isActive;
-    //    set 
-    //    {
-    //        DecreaseEnergyCoeff = value ? _decreaseEnergyCoeffWhenActive : 1f;
-    //        Player.Energy.ValueCoeff = DecreaseEnergyCoeff;
-    //    }
-        
-    //}
-
-    //private bool _isActive;
+   
     private string _name;
     private float _currentDecreaseEnergyCoeff;
-    private readonly float  _decreaseEnergyCoeffWhenActive;
-        
-    private int _costOfHealing, _timeOfHealing; // time in hours
-
+    private int _costOfHealing, _daysToHeal;
+    private GameTime timeOfGettingIll;
+    */
 }
+

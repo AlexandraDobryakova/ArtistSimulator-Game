@@ -13,9 +13,18 @@ public class Contract : Work
         Crazy
     }
 
-    public Contract(string name, int hourWorkload, int contractPrice, Difficultys difficulty,
-        Player.ArtSkills.Techniques requiredTechnique, Player.ArtSkills.Genres requiredGenre) :
-        base(name, energyCostPerHour, satietyCostPerHour, happinessCoef)
+    public Contract(
+        string name, 
+        int hourWorkload, 
+        int contractPrice, 
+        Difficultys difficulty,
+        Player.ArtSkills.Techniques requiredTechnique, 
+        Player.ArtSkills.Genres requiredGenre) :
+        base(
+            name, 
+            GameConstans.Contracts_energyCostPerHour, 
+            GameConstans.Contracts_satietyCostPerHour, 
+            GameConstans.Contracts_happinessCoef)
     {
         HourWorkload = hourWorkload;
         Difficulty = difficulty;
@@ -38,7 +47,7 @@ public class Contract : Work
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
         Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
-        Game.Time.Hour += hoursOfWork;
+        Game.Time.Hours += hoursOfWork;
 
         hoursWorked += hoursOfWork;
         if (hoursWorked >= HourWorkload)
@@ -97,7 +106,6 @@ public class Contract : Work
         return res;
     }
 
-    private static readonly int energyCostPerHour, satietyCostPerHour, happinessCoef;
     private int hourWorkload, hoursWorked, contractPrice;
     private bool isDone;
     private Difficultys difficulty;
