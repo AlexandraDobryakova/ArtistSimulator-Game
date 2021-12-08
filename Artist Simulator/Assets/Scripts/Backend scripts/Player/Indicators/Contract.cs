@@ -38,7 +38,7 @@ public class Contract : Work
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
         Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
-        Game.Time.Hours += hoursOfWork;
+        Game.Time.Hour += hoursOfWork;
 
         hoursWorked += hoursOfWork;
         if (hoursWorked >= HourWorkload)

@@ -10,7 +10,7 @@ public class Actions : MonoBehaviour
     {
         Player.Energy.Value += GameConstans.Sleep_energy_restore_perHour * sleepTime;
         Player.Satiety.Value -= GameConstans.Sleep_satiety_decreasement;
-        Game.Time.Hours += sleepTime;
+        Game.Time.Hour += sleepTime;
     }
 
     public void Heal() 
@@ -31,7 +31,7 @@ public class Actions : MonoBehaviour
         {
             Player.Satiety.Value += GameConstans.Food[foodName].satietyRestoration;
             Player.Money.Value -= GameConstans.Food[foodName].priceOfFood;
-            Game.Time.Hours += GameConstans.Eating_duration_inHours;
+            Game.Time.Hour += GameConstans.Eating_duration_inHours;
         }
     }
 
@@ -55,7 +55,7 @@ public class Actions : MonoBehaviour
                 Player.Satiety.Value -= learningVariant.satietyDecreasment;
                 Player.Happiness.Value += learningVariant.happinessCoeff;
                 Player.Money.Value -= learningVariant.leraningPrice;
-                Game.Time.Hours += learningVariant.durationInHours;
+                Game.Time.Hour += learningVariant.durationInHours;
 
                 if (Enum.TryParse(args[0], out Player.ArtSkills.Techniques tech))
                     Player.ArtSkills.GetSkill(tech).Xp += learningVariant.xpInc;
