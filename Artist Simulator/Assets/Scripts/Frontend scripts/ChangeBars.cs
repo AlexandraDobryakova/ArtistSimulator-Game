@@ -9,6 +9,7 @@ public class ChangeBars : MonoBehaviour
     public Image HealthBar;
     public Image MoodBar;
     public Image PaintingBar;
+    public Image XpBar;
 
     [SerializeField] GameObject[] characters;
 
@@ -16,14 +17,15 @@ public class ChangeBars : MonoBehaviour
     public Text HealthText;
     public Text MoodText;
     public Text PaintingText;
+    public Text XpText;
 
     public Text name;
-
+    /*
     float Food;
     float Health;
     float Mood;
     float Painting;
-
+    */
     public static int saving = 0;
 
     static public float fill = 1f;
