@@ -76,7 +76,7 @@ public static class GameConstans
         {
             {"courier", new Job("courier", false, 400, 0, 20, 15, -20)},
             {"macCashier", new Job("macCashier", false, 500, 0, 10, 5, -30)},
-            {"juniorArtist", new Job("macCashier", false, 800, 3, 15, 15, 5)}
+            {"juniorArtist", new Job("macCashier", true, 800, 3, 15, 15, 5)}
         };
 
 

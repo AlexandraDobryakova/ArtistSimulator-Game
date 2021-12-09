@@ -7,8 +7,7 @@ public class GameFlow : MonoBehaviour
     
     void Start()
     {
-        Player.Initialize();
-        Game.Initialize();
+        Game.StartNewGame();
     }
 
     void Update()

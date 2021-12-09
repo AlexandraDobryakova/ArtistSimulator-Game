@@ -14,6 +14,12 @@ public static class Game
             throw new ArgumentException("can't be less than 0");
         return true;
     }
+
+    public static void StartNewGame()
+    {
+        Game.Initialize();
+        Player.Initialize();
+    }
     
     public static bool IsCorrect(string value)
     {
@@ -22,7 +28,7 @@ public static class Game
         return true;
     }
 
-    public static void Initialize()
+    private static void Initialize()
     {
         Time = new GameTime();
         ContractsPool = Contract.GetRandomContractsPool();

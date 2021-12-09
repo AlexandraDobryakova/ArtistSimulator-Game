@@ -86,6 +86,7 @@ public class Actions : MonoBehaviour
     {
         if(!GameConstans.Jobs.ContainsKey(jobName))
             throw new ArgumentException($"Wrong argument: \"{jobName}\". Unknown Job.");
-        Player.CurrentJob = GameConstans.Jobs[jobName];
+        if(Player.ArtSkills.GetMinSkillLvl() >= GameConstans.Jobs[jobName].MinRequiredLvlSkills)
+            Player.CurrentJob = GameConstans.Jobs[jobName];
     }
 }

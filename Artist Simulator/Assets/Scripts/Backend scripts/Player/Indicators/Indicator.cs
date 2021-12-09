@@ -15,6 +15,7 @@ public class Indicator
 
         ValueCoeff = 1f;
         IsVital = isVital;
+        
     }
 
     public int Value

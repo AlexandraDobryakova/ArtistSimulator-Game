@@ -7,7 +7,6 @@ public static class Player
 {
     public static class ArtSkills
     {
-        public static int MinSkillsLvl;
         public enum Techniques
         {
             Brush = 0,
@@ -24,6 +23,7 @@ public static class Player
             Portrait = 3,
             ModernArt = 4
         }
+
         public class Skill <SkillType>
         {
             public Skill(int maxXp, int lvl, int xp, SkillType skillTeg)
@@ -40,7 +40,7 @@ public static class Player
                 get => _lvl;
                 set 
                 {
-                    _lvl = value >= MaxLvlSkill ? MaxLvlSkill : value;
+                    _lvl = value >= _maxLvlSkill ? _maxLvlSkill : value;
                 } 
             }
             public int Xp 
@@ -66,56 +66,62 @@ public static class Player
             //TODO: проверить рекурсию
             private void LvlUp(int gettingXp)
             {
-                if(Lvl <= MaxLvlSkill)
+                if(Lvl <= _maxLvlSkill)
                 {
                     int oldMaxXp = MaxXp;
                     MaxXp = (int)(MaxXp * UpMaxXpCoeff);
                     Xp = gettingXp - oldMaxXp;
                     Lvl++;
-
-                    foreach (var skill in techniquesDict)
-                    {
-                        if (skill.Value.Lvl < MinSkillsLvl)
-                            MinSkillsLvl = skill.Value.Lvl;
-                    }
-
-                    foreach (var skill in genresDict)
-                    {
-                        if (skill.Value.Lvl < MinSkillsLvl)
-                            MinSkillsLvl = skill.Value.Lvl;
-                    }
+                    _generalLvl++;
                 }
             }
         }
 
+        public static int GetMinSkillLvl()
+        {
+            int res = GameConstans.Skills_start_lvl;
+
+            foreach (var skill in _techniquesDict)
+            {
+                if (skill.Value.Lvl <= res)
+                    res = skill.Value.Lvl;
+            }
+
+            foreach (var skill in _genresDict)
+            {
+                if (skill.Value.Lvl <= res)
+                    res = skill.Value.Lvl;
+            }
+
+            return res;
+        }
 
         public static void Initialize(int startXp, int startMaxXp, int startLvl, int MaxLvlSkill)
         {
-            MinSkillsLvl = 1;
-            ArtSkills.MaxLvlSkill = MaxLvlSkill;
+            _maxLvlSkill = MaxLvlSkill;
             
             int techLen = Enum.GetValues(typeof(Techniques)).Length;
             int genLen = Enum.GetValues(typeof(Genres)).Length;
 
-            techniquesDict = new Dictionary<Techniques, Skill<Techniques>>();
-            genresDict = new Dictionary<Genres, Skill<Genres>>();
+            _techniquesDict = new Dictionary<Techniques, Skill<Techniques>>();
+            _genresDict = new Dictionary<Genres, Skill<Genres>>();
 
             for (int i = 0; i < techLen; i++)
-                techniquesDict.Add((Techniques)i, new Skill<Techniques>(startMaxXp, startLvl, startXp, (Techniques)i));
+                _techniquesDict.Add((Techniques)i, new Skill<Techniques>(startMaxXp, startLvl, startXp, (Techniques)i));
 
             for (int i = 0; i < genLen; i++)
-                genresDict.Add((Genres)i, new Skill<Genres>(startMaxXp, startLvl, startXp, (Genres)i));
+                _genresDict.Add((Genres)i, new Skill<Genres>(startMaxXp, startLvl, startXp, (Genres)i));
         }
 
         public static Skill<Techniques> GetSkill(Techniques skillTeg) =>
-            techniquesDict[skillTeg];
+            _techniquesDict[skillTeg];
         public static Skill<Genres> GetSkill(Genres skillTeg) =>
-            genresDict[skillTeg];
+            _genresDict[skillTeg];
        
 
-        private static int MaxLvlSkill;
-        private static Dictionary<Techniques, Skill<Techniques>> techniquesDict;
-        private static Dictionary<Genres, Skill<Genres>> genresDict;
+        private static int _maxLvlSkill, _generalLvl;
+        private static Dictionary<Techniques, Skill<Techniques>> _techniquesDict;
+        private static Dictionary<Genres, Skill<Genres>> _genresDict;
     }
 
     public static Indicator Money;

@@ -11,8 +11,9 @@ public class TextControls : MonoBehaviour
     {
         MONEY,
         HAPPINESS,
-        TIME,
-        ENERGY
+        ENERGY,
+        SATIETY,
+        TIME
     };
 
    
@@ -34,8 +35,24 @@ public class TextControls : MonoBehaviour
                 textObject.text = $"{Player.Money.Value}{Player.Money.Dimension}";
                 break;
 
+            case Values.ENERGY:
+                textObject.text = $"{Player.Energy.Value}{Player.Energy.Dimension}";
+                break;
+
+            case Values.HAPPINESS:
+                textObject.text = $"{Player.Happiness.Value}{Player.Happiness.Dimension}";
+                break;
+
+            case Values.SATIETY:
+                textObject.text = $"{Player.Satiety.Value}{Player.Satiety.Dimension}";
+                break;
+
+            case Values.TIME:
+                textObject.text = $"days: {Game.Time.Days} time: {Game.Time.Hours}";
+                break;
+
             default:
-                textObject.text = "-";
+                textObject.text = "---";
                 break;
 
         }
