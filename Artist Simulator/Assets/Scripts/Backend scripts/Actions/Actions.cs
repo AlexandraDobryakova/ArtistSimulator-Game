@@ -35,16 +35,16 @@ public class Actions : MonoBehaviour
         }
     }
 
-    public void LearnTechnique(string skillName_learningVariant)
+    public void LearnTechnique(string skillName__learningVariant)
     {
-        if (!skillName_learningVariant.Contains(' '))
-            throw new ArgumentException($"Wrong argument format: \"{skillName_learningVariant}\". There must be a ' '.");
+        if (!skillName__learningVariant.Contains(' '))
+            throw new ArgumentException($"Wrong argument format: \"{skillName__learningVariant}\". Here must be a ' '.");
 
-        var args = skillName_learningVariant.Split(' ');
+        var args = skillName__learningVariant.Split(' ');
 
         if(args.Length != 2)
             throw new ArgumentException(
-                $"Wrong argument format: \"{skillName_learningVariant}\". There must be only 2 args.");
+                $"Wrong argument format: \"{skillName__learningVariant}\". Here can be only 2 args.");
 
 
         if (GameConstans.LearningVariants.TryGetValue(args[1], out var learningVariant))
@@ -64,12 +64,12 @@ public class Actions : MonoBehaviour
                     Player.ArtSkills.GetSkill(genre).Xp += learningVariant.xpInc;
                 else
                     throw new ArgumentException(
-                        $"Wrong argument: \"{skillName_learningVariant}\". Unknown SkillName: \"{args[0]}\"");
+                        $"Wrong argument: \"{skillName__learningVariant}\". Unknown SkillName: \"{args[0]}\"");
             }
         }
         else
             throw new ArgumentException(
-                $"Wrong argument: \"{skillName_learningVariant}\". Unknown LearningVariant: \"{args[1]}\"");
+                $"Wrong argument: \"{skillName__learningVariant}\". Unknown LearningVariant: \"{args[1]}\"");
     }
 
     public void TakeContract(int contractNumber)
