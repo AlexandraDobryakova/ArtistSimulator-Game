@@ -30,12 +30,12 @@ public class Job : Work
 
         if (isByProfession)
         {
-            int techLen = Enum.GetValues(typeof(Player.ArtSkills.Techniques)).Length;
-            int genreLen = Enum.GetValues(typeof(Player.ArtSkills.Genres)).Length;
+            int techLen = Enum.GetValues(typeof(GameConstants.Techniques)).Length;
+            int genreLen = Enum.GetValues(typeof(GameConstants.Genres)).Length;
 
             System.Random rd = new System.Random();
-            Player.ArtSkills.Techniques randTech = (Player.ArtSkills.Techniques)rd.Next(0, techLen);
-            Player.ArtSkills.Genres randGenre = (Player.ArtSkills.Genres)rd.Next(0, genreLen);
+            GameConstants.Techniques randTech = (GameConstants.Techniques)rd.Next(0, techLen);
+            GameConstants.Genres randGenre = (GameConstants.Genres)rd.Next(0, genreLen);
 
             Player.ArtSkills.GetSkill(randTech).Xp += GetXPInc(hoursOfWork);
             Player.ArtSkills.GetSkill(randGenre).Xp += GetXPInc(hoursOfWork);

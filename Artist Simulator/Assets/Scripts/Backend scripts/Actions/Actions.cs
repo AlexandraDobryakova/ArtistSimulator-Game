@@ -8,30 +8,30 @@ public class Actions : MonoBehaviour
 {
     public void Sleep(int sleepTime)
     {
-        Player.Energy.Value += GameConstans.Sleep_energy_restore_perHour * sleepTime;
-        Player.Satiety.Value -= GameConstans.Sleep_satiety_decreasement;
+        Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
+        Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement;
         Game.Time.Hours += sleepTime;
     }
 
     public void Heal() 
     {
-        if(Player.Money.Value >= GameConstans.Healing_cost)
+        if(Player.Money.Value >= GameConstants.Healing_cost)
         {
             Player.Disease = null;
-            Player.Money.Value -= GameConstans.Healing_cost;
+            Player.Money.Value -= GameConstants.Healing_cost;
         }
     }
 
     public void Eat(string foodName) 
     {
-        if (!GameConstans.Food.ContainsKey(foodName))
+        if (!GameConstants.Food.ContainsKey(foodName))
             throw new ArgumentException($"Wrong name of food: \"{foodName}\".");
 
-        if (Player.Money.Value >= GameConstans.Food[foodName].priceOfFood)
+        if (Player.Money.Value >= GameConstants.Food[foodName].priceOfFood)
         {
-            Player.Satiety.Value += GameConstans.Food[foodName].satietyRestoration;
-            Player.Money.Value -= GameConstans.Food[foodName].priceOfFood;
-            Game.Time.Hours += GameConstans.Eating_duration_inHours;
+            Player.Satiety.Value += GameConstants.Food[foodName].satietyRestoration;
+            Player.Money.Value -= GameConstants.Food[foodName].priceOfFood;
+            Game.Time.Hours += GameConstants.Eating_duration_inHours;
         }
     }
 
@@ -47,7 +47,7 @@ public class Actions : MonoBehaviour
                 $"Wrong argument format: \"{skillName__learningVariant}\". Here can be only 2 args.");
 
 
-        if (GameConstans.LearningVariants.TryGetValue(args[1], out var learningVariant))
+        if (GameConstants.LearningVariants.TryGetValue(args[1], out var learningVariant))
         {
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
@@ -57,10 +57,10 @@ public class Actions : MonoBehaviour
                 Player.Money.Value -= learningVariant.leraningPrice;
                 Game.Time.Hours += learningVariant.durationInHours;
 
-                if (Enum.TryParse(args[0], out Player.ArtSkills.Techniques tech))
+                if (Enum.TryParse(args[0], out GameConstants.Techniques tech))
                     Player.ArtSkills.GetSkill(tech).Xp += learningVariant.xpInc;
 
-                else if (Enum.TryParse(args[0], out Player.ArtSkills.Genres genre))
+                else if (Enum.TryParse(args[0], out GameConstants.Genres genre))
                     Player.ArtSkills.GetSkill(genre).Xp += learningVariant.xpInc;
                 else
                     throw new ArgumentException(
@@ -74,19 +74,19 @@ public class Actions : MonoBehaviour
 
     public void TakeContract(int contractNumber)
     {
-        if(contractNumber > GameConstans.Contracts_count - 1)
+        if(contractNumber > GameConstants.Contracts_count - 1)
             throw new ArgumentException(
                 $"Wrong argument: \"{contractNumber}\"." +
-                $"ContractNumber can't be more than {GameConstans.Contracts_count - 1}");
+                $"ContractNumber can't be more than {GameConstants.Contracts_count - 1}");
         if (Player.CurrentContract == null)
             Player.CurrentContract = Game.ContractsPool[contractNumber];
     }
 
     public void TakeJob(string jobName)
     {
-        if(!GameConstans.Jobs.ContainsKey(jobName))
+        if(!GameConstants.Jobs.ContainsKey(jobName))
             throw new ArgumentException($"Wrong argument: \"{jobName}\". Unknown Job.");
-        if(Player.ArtSkills.GetMinSkillLvl() >= GameConstans.Jobs[jobName].MinRequiredLvlSkills)
-            Player.CurrentJob = GameConstans.Jobs[jobName];
+        if(Player.ArtSkills.GetMinSkillLvl() >= GameConstants.Jobs[jobName].MinRequiredLvlSkills)
+            Player.CurrentJob = GameConstants.Jobs[jobName];
     }
 }

@@ -18,13 +18,13 @@ public class Contract : Work
         int hourWorkload, 
         int contractPrice, 
         Difficultys difficulty,
-        Player.ArtSkills.Techniques requiredTechnique, 
-        Player.ArtSkills.Genres requiredGenre) :
+        GameConstants.Techniques requiredTechnique,
+         GameConstants.Genres requiredGenre) :
         base(
             name, 
-            GameConstans.Contracts_energyCostPerHour, 
-            GameConstans.Contracts_satietyCostPerHour, 
-            GameConstans.Contracts_happinessCoef)
+            GameConstants.Contracts_energyCostPerHour, 
+            GameConstants.Contracts_satietyCostPerHour, 
+            GameConstants.Contracts_happinessCoef)
     {
         HourWorkload = hourWorkload;
         Difficulty = difficulty;
@@ -72,8 +72,8 @@ public class Contract : Work
     {
         var random = new System.Random();
         var difficult = (Difficultys)random.Next(0, Enum.GetValues(typeof(Difficultys)).Length);
-        var randTech = (Player.ArtSkills.Techniques)random.Next(0, Enum.GetValues(typeof(Player.ArtSkills.Techniques)).Length);
-        var randGenre = (Player.ArtSkills.Genres)random.Next(0, Enum.GetValues(typeof(Player.ArtSkills.Genres)).Length);
+        var randTech = (GameConstants.Techniques)random.Next(0, Enum.GetValues(typeof(GameConstants.Techniques)).Length);
+        var randGenre = (GameConstants.Genres)random.Next(0, Enum.GetValues(typeof(GameConstants.Genres)).Length);
         
         switch (difficult)
         {
@@ -100,8 +100,8 @@ public class Contract : Work
 
     public static Contract[] GetRandomContractsPool()
     {
-        var res = new Contract[GameConstans.Contracts_count];
-        for (int i = 0; i < GameConstans.Contracts_count; i++)
+        var res = new Contract[GameConstants.Contracts_count];
+        for (int i = 0; i < GameConstants.Contracts_count; i++)
             res[i] = GetRandomContract();
         return res;
     }
@@ -109,7 +109,7 @@ public class Contract : Work
     private int hourWorkload, hoursWorked, contractPrice;
     private bool isDone;
     private Difficultys difficulty;
-    private Player.ArtSkills.Techniques requiredTechnique;
-    
-    private Player.ArtSkills.Genres requiredGenre;
+    private GameConstants.Techniques requiredTechnique;
+
+    private GameConstants.Genres requiredGenre;
 }

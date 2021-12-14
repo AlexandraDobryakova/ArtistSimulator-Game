@@ -9,17 +9,29 @@ public class TextControls : MonoBehaviour
     //[HideInInspector]
     public enum Values
     {
-        MONEY,
-        HAPPINESS,
-        ENERGY,
-        SATIETY,
-        TIME
+        NONE,
+        Money,
+        Happiness,
+        Energy,
+        Satiety,
+        Time,
+        General_lvl,
+        Skill_Technique,
+        Skill_Genre,
     };
-
-   
+    
+    public enum XP_LVL_Selection
+    {
+        NONE,
+        Xp,
+        Lvl
+    }
 
     public Text textObject;
     public Values showingValue;
+    public GameConstants.Techniques SkillTechnique;
+    public GameConstants.Genres SkillGenre;
+    public XP_LVL_Selection SkillXpOrLvl;
 
     void Start()
     {
@@ -31,30 +43,51 @@ public class TextControls : MonoBehaviour
     {
         switch (showingValue)
         {
-            case Values.MONEY:
+            case Values.Money:
                 textObject.text = $"{Player.Money.Value}{Player.Money.Dimension}";
                 break;
 
-            case Values.ENERGY:
+            case Values.Energy:
                 textObject.text = $"{Player.Energy.Value}{Player.Energy.Dimension}";
                 break;
 
-            case Values.HAPPINESS:
+            case Values.Happiness:
                 textObject.text = $"{Player.Happiness.Value}{Player.Happiness.Dimension}";
                 break;
 
-            case Values.SATIETY:
+            case Values.Satiety:
                 textObject.text = $"{Player.Satiety.Value}{Player.Satiety.Dimension}";
                 break;
 
-            case Values.TIME:
+            case Values.Time:
                 textObject.text = $"days: {Game.Time.Days} time: {Game.Time.Hours}";
+                break;
+                
+            case Values.General_lvl:
+                textObject.text = $"{Player.ArtSkills.GeneralLvl}";
+                break;
+                     
+            case Values.Skill_Technique:
+                if (SkillXpOrLvl == XP_LVL_Selection.NONE)
+                    throw new ArgumentException("Select what to show: Xp or Lvl");
+                if(SkillXpOrLvl == XP_LVL_Selection.Lvl)
+                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillTechnique).Lvl}";
+                if (SkillXpOrLvl == XP_LVL_Selection.Xp)
+                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillTechnique).Xp}";
+                break;
+
+            case Values.Skill_Genre:
+                if (SkillXpOrLvl == XP_LVL_Selection.NONE)
+                    throw new ArgumentException("Select what to show: Xp or Lvl");
+                if (SkillXpOrLvl == XP_LVL_Selection.Lvl)
+                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillGenre).Lvl}";
+                if (SkillXpOrLvl == XP_LVL_Selection.Xp)
+                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillGenre).Xp}";
                 break;
 
             default:
-                textObject.text = "---";
-                break;
-
+                textObject.text = "<--->";
+                throw new ArgumentException("Select a showing value");
         }
     }
 }

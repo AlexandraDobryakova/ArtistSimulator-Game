@@ -7,23 +7,6 @@ public static class Player
 {
     public static class ArtSkills
     {
-        public enum Techniques
-        {
-            Brush = 0,
-            GraphicsTablet = 1,
-            SprayPaint = 2,
-            Pencil = 3
-        }
-
-        public enum Genres
-        {
-            Graffiti = 0,
-            StillLife = 1,
-            Scenery = 2,
-            Portrait = 3,
-            ModernArt = 4
-        }
-
         public class Skill <SkillType>
         {
             public Skill(int maxXp, int lvl, int xp, SkillType skillTeg)
@@ -79,7 +62,7 @@ public static class Player
 
         public static int GetMinSkillLvl()
         {
-            int res = GameConstans.Skills_start_lvl;
+            int res = GameConstants.Skills_start_lvl;
 
             foreach (var skill in _techniquesDict)
             {
@@ -100,28 +83,33 @@ public static class Player
         {
             _maxLvlSkill = MaxLvlSkill;
             
-            int techLen = Enum.GetValues(typeof(Techniques)).Length;
-            int genLen = Enum.GetValues(typeof(Genres)).Length;
+            int techLen = Enum.GetValues(typeof(GameConstants.Techniques)).Length;
+            int genLen = Enum.GetValues(typeof(GameConstants.Genres)).Length;
 
-            _techniquesDict = new Dictionary<Techniques, Skill<Techniques>>();
-            _genresDict = new Dictionary<Genres, Skill<Genres>>();
+            _techniquesDict = new Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>>();
+            _genresDict = new Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>>();
 
             for (int i = 0; i < techLen; i++)
-                _techniquesDict.Add((Techniques)i, new Skill<Techniques>(startMaxXp, startLvl, startXp, (Techniques)i));
+                _techniquesDict.Add((GameConstants.Techniques)i, 
+                    new Skill<GameConstants.Techniques>(startMaxXp, startLvl, startXp, (GameConstants.Techniques)i));
 
             for (int i = 0; i < genLen; i++)
-                _genresDict.Add((Genres)i, new Skill<Genres>(startMaxXp, startLvl, startXp, (Genres)i));
+                _genresDict.Add((GameConstants.Genres)i, 
+                    new Skill<GameConstants.Genres>(startMaxXp, startLvl, startXp, (GameConstants.Genres)i));
         }
 
-        public static Skill<Techniques> GetSkill(Techniques skillTeg) =>
+        public static Skill<GameConstants.Techniques> GetSkill(GameConstants.Techniques skillTeg) =>
             _techniquesDict[skillTeg];
-        public static Skill<Genres> GetSkill(Genres skillTeg) =>
+        public static Skill<GameConstants.Genres> GetSkill(GameConstants.Genres skillTeg) =>
             _genresDict[skillTeg];
-       
+
+        public static int GeneralLvl { get => _generalLvl; private set { } }
+
 
         private static int _maxLvlSkill, _generalLvl;
-        private static Dictionary<Techniques, Skill<Techniques>> _techniquesDict;
-        private static Dictionary<Genres, Skill<Genres>> _genresDict;
+        private static Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>> _techniquesDict;
+        private static Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>> _genresDict;
+
     }
 
     public static Indicator Money;
@@ -138,34 +126,34 @@ public static class Player
     public static void Initialize()
     {
         ArtSkills.Initialize(
-            GameConstans.Skills_start_xp, 
-            GameConstans.Skills_start_max_xp,
-            GameConstans.Skills_start_lvl, 
-            GameConstans.Skills_max_lvl_skill);
+            GameConstants.Skills_start_xp, 
+            GameConstants.Skills_start_max_xp,
+            GameConstants.Skills_start_lvl, 
+            GameConstants.Skills_max_lvl_skill);
 
         Money = new Indicator(
-            GameConstans.Money_start_value,
-            GameConstans.Money_max_value,
-            GameConstans.Money_dimension,
-            GameConstans.Money_is_vital);
+            GameConstants.Money_start_value,
+            GameConstants.Money_max_value,
+            GameConstants.Money_dimension,
+            GameConstants.Money_is_vital);
 
         Happiness = new Indicator(
-            GameConstans.Happiness_start_value,
-            GameConstans.Happiness_max_value,
-            GameConstans.Happiness_dimension,
-            GameConstans.Happiness_is_vital);
+            GameConstants.Happiness_start_value,
+            GameConstants.Happiness_max_value,
+            GameConstants.Happiness_dimension,
+            GameConstants.Happiness_is_vital);
 
         Energy = new Indicator(
-            GameConstans.Energy_start_value,
-            GameConstans.Energy_max_value,
-            GameConstans.Energy_dimension,
-            GameConstans.Energy_is_vital);
+            GameConstants.Energy_start_value,
+            GameConstants.Energy_max_value,
+            GameConstants.Energy_dimension,
+            GameConstants.Energy_is_vital);
 
         Satiety = new Indicator(
-            GameConstans.Satiety_start_value,
-            GameConstans.Satiety_max_value,
-            GameConstans.Satiety_dimension,
-            GameConstans.Satiety_is_vital);
+            GameConstants.Satiety_start_value,
+            GameConstants.Satiety_max_value,
+            GameConstants.Satiety_dimension,
+            GameConstants.Satiety_is_vital);
 
         //Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
 

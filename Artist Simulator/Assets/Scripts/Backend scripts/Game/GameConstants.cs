@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-public static class GameConstans 
+public static class GameConstants 
 {
     public const int
         // Indicators:
@@ -79,6 +79,22 @@ public static class GameConstans
             {"juniorArtist", new Job("macCashier", true, 800, 3, 15, 15, 5)}
         };
 
+    public enum Techniques
+    {
+        Brush = 0,
+        GraphicsTablet = 1,
+        SprayPaint = 2,
+        Pencil = 3
+    }
+
+    public enum Genres
+    {
+        Graffiti = 0,
+        StillLife = 1,
+        Scenery = 2,
+        Portrait = 3,
+        ModernArt = 4
+    }
 
     public static readonly string[] 
         techniquesNames =
