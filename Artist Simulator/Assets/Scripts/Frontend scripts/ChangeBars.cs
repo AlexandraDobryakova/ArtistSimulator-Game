@@ -19,7 +19,7 @@ public class ChangeBars : MonoBehaviour
     public Text PaintingText;
     public Text XpText;
 
-    public Text name;
+    public new Text name;
     /*
     float Food;
     float Health;
