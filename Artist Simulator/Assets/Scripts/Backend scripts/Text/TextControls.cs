@@ -14,10 +14,11 @@ public class TextControls : MonoBehaviour
         Happiness,
         Energy,
         Satiety,
-        Time,
+        Employment,
         General_lvl,
         Skill_Technique,
         Skill_Genre,
+        Time,
     };
     
     public enum XP_LVL_Selection
@@ -65,6 +66,11 @@ public class TextControls : MonoBehaviour
                 
             case Values.General_lvl:
                 textObject.text = $"{Player.ArtSkills.GeneralLvl}";
+                break;
+
+            case Values.Employment:
+                    textObject.text = 
+                    Player.CurrentJob != null ? $"{Player.ArtSkills.GeneralLvl}" : "Не трудоустроен";
                 break;
                      
             case Values.Skill_Technique:
