@@ -29,7 +29,7 @@ public class SrollsAndButtons : MonoBehaviour
 
 
 
-
+    /*
     public GameObject studyScroll;
     public GameObject skillsScroll;
 
@@ -50,7 +50,7 @@ public class SrollsAndButtons : MonoBehaviour
     {
         studyScroll.SetActive(false);
         skillsScroll.SetActive(true);
-    }
+    }*/
 
 
 
@@ -91,7 +91,7 @@ public class SrollsAndButtons : MonoBehaviour
     // Пятая кнопка на панели снизу
     public void ClickOnIncreasingButton()
     {
-        studyScroll.SetActive(false);
+        treatingScroll.SetActive(false);
         foodScroll.SetActive(false);
         moodScroll.SetActive(false);
         relaxScroll.SetActive(false);
