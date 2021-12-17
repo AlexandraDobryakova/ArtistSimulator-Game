@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SrollsAndButtons : MonoBehaviour
 {
+    public GameObject panelJobInformation;
+
     public GameObject contractScroll;
     public GameObject jobScroll;
 
@@ -12,21 +14,27 @@ public class SrollsAndButtons : MonoBehaviour
     {
         contractScroll.SetActive(false);
         jobScroll.SetActive(false);
+        panelJobInformation.SetActive(true);
     }
 
     public void ContractButton()
     {
         contractScroll.SetActive(true);
         jobScroll.SetActive(false);
+        panelJobInformation.SetActive(false);
     }
 
     public void JobButton()
     {
         contractScroll.SetActive(false);
         jobScroll.SetActive(true);
+        panelJobInformation.SetActive(false);
     }
 
-
+    public void ClickOnBackToWorkButton()
+    {
+        ClickOnWorkButton();
+    }
 
 
     /*
