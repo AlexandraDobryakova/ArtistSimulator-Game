@@ -16,9 +16,10 @@ public class TextControls : MonoBehaviour
         Satiety,
         Employment,
         General_lvl,
+        Time,
+        Disease,
         Skill_Technique,
         Skill_Genre,
-        Time,
     };
     
     public enum XP_LVL_Selection
@@ -70,7 +71,12 @@ public class TextControls : MonoBehaviour
 
             case Values.Employment:
                     textObject.text = 
-                    Player.CurrentJob != null ? $"{Player.ArtSkills.GeneralLvl}" : "Не трудоустроен";
+                    Player.CurrentJob != null ? $"{Player.ArtSkills.GeneralLvl}" : "не трудоустроен";
+                break;
+                     
+            case Values.Disease:
+                textObject.text = Player.Disease == null ? "нет" : Player.Disease.name;
+                    
                 break;
                      
             case Values.Skill_Technique:
@@ -79,7 +85,9 @@ public class TextControls : MonoBehaviour
                 if(SkillXpOrLvl == XP_LVL_Selection.Lvl)
                     textObject.text = $"{Player.ArtSkills.GetSkill(SkillTechnique).Lvl}";
                 if (SkillXpOrLvl == XP_LVL_Selection.Xp)
-                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillTechnique).Xp}";
+                    textObject.text = 
+                        $"{Player.ArtSkills.GetSkill(SkillTechnique).Xp} / " +
+                        $"{Player.ArtSkills.GetSkill(SkillTechnique).MaxXp}";
                 break;
 
             case Values.Skill_Genre:
@@ -88,7 +96,9 @@ public class TextControls : MonoBehaviour
                 if (SkillXpOrLvl == XP_LVL_Selection.Lvl)
                     textObject.text = $"{Player.ArtSkills.GetSkill(SkillGenre).Lvl}";
                 if (SkillXpOrLvl == XP_LVL_Selection.Xp)
-                    textObject.text = $"{Player.ArtSkills.GetSkill(SkillGenre).Xp}";
+                    textObject.text = 
+                        $"{Player.ArtSkills.GetSkill(SkillGenre).Xp} / " +
+                        $"{Player.ArtSkills.GetSkill(SkillTechnique).MaxXp}";
                 break;
 
             default:
