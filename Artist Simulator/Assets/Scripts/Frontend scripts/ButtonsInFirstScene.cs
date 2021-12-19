@@ -32,7 +32,7 @@ public class ButtonsInFirstScene : MonoBehaviour
     public void Yes_NewGame()
     {
         ChooseCharacter.gameIsStarted = false;
-        ChangeBars.fill = 1f;
+        //ChangeBars.fill = 1f;
         SceneManager.LoadScene(1);
     }
 

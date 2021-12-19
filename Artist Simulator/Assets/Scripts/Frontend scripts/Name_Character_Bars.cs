@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class ChangeBars : MonoBehaviour
 {
-    public Image FoodBar;
+    /*public Image FoodBar;
     public Image HealthBar;
     public Image MoodBar;
     public Image PaintingBar;
-    public Image XpBar;
+    public Image XpBar;*/
 
     [SerializeField] GameObject[] characters;
-
+    /*
     public Text FoodText;
     public Text HealthText;
     public Text MoodText;
     public Text PaintingText;
     public Text XpText;
-
+    */
     public new Text name;
     /*
     float Food;
@@ -27,10 +27,10 @@ public class ChangeBars : MonoBehaviour
     float Painting;
     */
     public static int saving = 0;
-
+    /*
     static public float fill = 1f;
     static float fill1;
-    
+    */
     void Start()
     {
         if (ChooseCharacter.gameIsStarted == true)
@@ -43,7 +43,7 @@ public class ChangeBars : MonoBehaviour
     
 
     void Update()
-    {
+    {/*
         if (saving == 1)
         {
             fill = fill1;
@@ -54,7 +54,7 @@ public class ChangeBars : MonoBehaviour
 
 
 
-
+        /*
         if (ChooseCharacter.gameIsStarted == true && fill >= 0 && Pause.GameIsStarted_IsStopped == false && saving == 0)
         {
             fill -= Time.deltaTime * 0.01f;
@@ -69,6 +69,6 @@ public class ChangeBars : MonoBehaviour
             PaintingText.text = Mathf.Round(PaintingBar.fillAmount * 100f).ToString() + '%';
             fill1 = fill;
         }
-
+        */
     }
 }
