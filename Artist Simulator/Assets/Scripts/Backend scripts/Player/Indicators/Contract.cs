@@ -60,13 +60,13 @@ public class Contract : Work
         }
     }
 
+    public int GetPercentExecution() => (int)(hoursWorked * 1.0 / hourWorkload * 100);
+
     //TODO
-    public override int GetXPInc(int hoursOfWork)
+    protected override int GetXPInc(int hoursOfWork)
     {
         return 2 * hoursOfWork;
     }
-
-    public int GetPercentExecution() => (hoursWorked / HourWorkload) * 100;
 
     public static Contract GetRandomContract()
     {

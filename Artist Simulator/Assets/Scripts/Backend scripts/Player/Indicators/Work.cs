@@ -21,7 +21,7 @@ public abstract class Work
     public string Name { get => name; private set => name = value; }
 
     public abstract void DoWork(int hoursOfWork);
-    public abstract int GetXPInc(int hoursOfWork);
+    protected abstract int GetXPInc(int hoursOfWork);
 
     private int happinessCoef;
     private string name;
