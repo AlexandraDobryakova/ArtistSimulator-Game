@@ -42,7 +42,7 @@ public class Job : Work
         }
     }
 
-    public override int GetXPInc(int hoursOfWork)
+    protected override int GetXPInc(int hoursOfWork)
     {
         return (int)(hoursOfWork * 1.5);
     }

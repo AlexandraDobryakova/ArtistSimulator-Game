@@ -13,16 +13,16 @@ public class Actions : MonoBehaviour
         Game.Time.Hours += sleepTime;
     }
 
-    public void Heal() 
+    public void Heal()
     {
-        if(Player.Money.Value >= GameConstants.Healing_cost)
+        if (Player.Money.Value >= GameConstants.Healing_cost)
         {
             Player.Disease = null;
             Player.Money.Value -= GameConstants.Healing_cost;
         }
     }
 
-    public void Eat(string foodName) 
+    public void Eat(string foodName)
     {
         if (!GameConstants.Food.ContainsKey(foodName))
             throw new ArgumentException($"Wrong name of food: \"{foodName}\".");
@@ -42,7 +42,7 @@ public class Actions : MonoBehaviour
 
         var args = skillName__learningVariant.Split(' ');
 
-        if(args.Length != 2)
+        if (args.Length != 2)
             throw new ArgumentException(
                 $"Wrong argument format: \"{skillName__learningVariant}\". Here can be only 2 args.");
 
@@ -74,7 +74,7 @@ public class Actions : MonoBehaviour
 
     public void TakeContract(int contractNumber)
     {
-        if(contractNumber > GameConstants.Contracts_count - 1)
+        if (contractNumber > GameConstants.Contracts_count - 1)
             throw new ArgumentException(
                 $"Wrong argument: \"{contractNumber}\"." +
                 $"ContractNumber can't be more than {GameConstants.Contracts_count - 1}");
@@ -84,9 +84,21 @@ public class Actions : MonoBehaviour
 
     public void TakeJob(string jobName)
     {
-        if(!GameConstants.Jobs.ContainsKey(jobName))
+        if (!GameConstants.Jobs.ContainsKey(jobName))
             throw new ArgumentException($"Wrong argument: \"{jobName}\". Unknown Job.");
-        if(Player.ArtSkills.GetMinSkillLvl() >= GameConstants.Jobs[jobName].MinRequiredLvlSkills)
+        if (Player.ArtSkills.GetMinSkillLvl() >= GameConstants.Jobs[jobName].MinRequiredLvlSkills)
             Player.CurrentJob = GameConstants.Jobs[jobName];
+    }
+
+    public void DoJob(int hoursOfWork)
+    {
+        if (Player.CurrentJob != null)
+            Player.CurrentJob.DoWork(hoursOfWork);
+    }
+
+    public void DoContract(int hoursOfWork)
+    {
+        if (Player.CurrentContract != null)
+            Player.CurrentContract.DoWork(hoursOfWork);
     }
 }
