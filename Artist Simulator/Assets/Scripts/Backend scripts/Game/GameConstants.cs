@@ -53,12 +53,23 @@ public static class GameConstants
         Satiety_is_vital = true
         ;
 
+    /*
+     Название, стоимость, +сытость, время, увеличение шанса болезни, +желание рисовать
+1. Лапша б/п, 25, 20, 0, *2, 0
+2. Фастфуд, 50, 40, 1час, *1.5, 0
+3. Домашняя еда, 70, 30, 2часа, *1, 0
+4. Кафе, 80, 70, 1час, *1, +15
+5. Ресторан, 90, 100, *1, +25
+    */
+
     public static readonly Dictionary<string, (int satietyRestoration, int priceOfFood)> Food =
         new Dictionary<string, (int satietyRestoration, int priceOfFood)>
         {
-            {"bread", (5, 25) },
-            {"doshirak", (15, 50) },
-            {"dumplings", (50, 200) }
+            {"Лапша", (5, 25) },
+            {"Фастфуд", (15, 50) },
+            {"Домашняя еда", (50, 200) },
+            {"Кафе", (50, 200) },
+            {"Ресторан", (50, 200) }
         };
 
 

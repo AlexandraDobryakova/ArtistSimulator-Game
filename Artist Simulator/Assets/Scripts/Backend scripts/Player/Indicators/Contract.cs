@@ -36,6 +36,9 @@ public class Contract : Work
     }
 
     //TODO: Зависимость от Difficulty
+
+    public readonly GameConstants.Techniques requiredTechnique;
+    public readonly GameConstants.Genres requiredGenre;
     public int HourWorkload { get => hourWorkload; private set => hourWorkload = value; }
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
@@ -109,7 +112,5 @@ public class Contract : Work
     private int hourWorkload, hoursWorked, contractPrice;
     private bool isDone;
     private Difficultys difficulty;
-    private GameConstants.Techniques requiredTechnique;
-
-    private GameConstants.Genres requiredGenre;
+   
 }
