@@ -15,6 +15,7 @@ public class TextControls : MonoBehaviour
         Energy,
         Satiety,
         Employment,
+        Salary,
         General_lvl,
         Time,
         Disease,
@@ -73,7 +74,13 @@ public class TextControls : MonoBehaviour
                     textObject.text = 
                     Player.CurrentJob != null ? $"{Player.CurrentJob.Name}" : "не трудоустроен";
                 break;
-                     
+
+            case Values.Salary:
+                if(Player.CurrentJob != null)
+                textObject.text = $"{Player.CurrentJob.SalaryPerHour}руб./ч";
+
+                break;
+
             case Values.Disease:
                 textObject.text = Player.Disease == null ? "нет" : Player.Disease.name;
                 break;
