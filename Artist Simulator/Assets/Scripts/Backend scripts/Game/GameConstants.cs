@@ -53,27 +53,18 @@ public static class GameConstants
         Satiety_is_vital = true
         ;
 
-    /*
-     Название, стоимость, +сытость, время, увеличение шанса болезни, +желание рисовать
-1. Лапша б/п, 25, 20, 0, *2, 0
-2. Фастфуд, 50, 40, 1час, *1.5, 0
-3. Домашняя еда, 70, 30, 2часа, *1, 0
-4. Кафе, 80, 70, 1час, *1, +15
-5. Ресторан, 90, 100, *1, +25
-    */
-
-    public static readonly Dictionary<string, (int satietyRestoration, int priceOfFood)> Food =
-        new Dictionary<string, (int satietyRestoration, int priceOfFood)>
+    public static readonly Food[] FoodVariants =
+        new Food[]
         {
-            {"Лапша", (5, 25) },
-            {"Фастфуд", (15, 50) },
-            {"Домашняя еда", (50, 200) },
-            {"Кафе", (50, 200) },
-            {"Ресторан", (50, 200) }
+            new Food("Лапша", 25, 20, 0, 0),
+            new Food("Фастфуд", 50, 40, 1, 1.5f),
+            new Food("Домашняя еда", 70, 30, 2, 1),
+            new Food("Кафе", 80, 70, 1, 1),
+            new Food("Ресторан", 90, 100, 2, 1)
         };
 
 
-    public static readonly Dictionary<string, LearningVariant> LearningVariants = 
+    public static readonly Dictionary<string, LearningVariant> LearningVariants =
         new Dictionary<string, LearningVariant>()
         {
             {"freeDrawing", new LearningVariant(1, 20, 0, 10, 10, 5) },
@@ -81,14 +72,29 @@ public static class GameConstants
             {"expressCourse", new LearningVariant(5, 200, 1000, 30, 30, 40) },
         };
 
-
-    public static readonly Dictionary<string, Job> Jobs =
-        new Dictionary<string, Job>()
+    /*
+     1. Sketch Art, Да, 60, (карандаш: 15, пейзаж: 15, люди: 15, граффити: 10), 20, 20, +10
+     */
+    public static readonly Job[] Jobs =
+        new Job[]
         {
-            {"courier", new Job("courier", false, 400, 0, 20, 15, -20)},
-            {"macCashier", new Job("macCashier", false, 500, 0, 10, 5, -30)},
-            {"juniorArtist", new Job("macCashier", true, 800, 3, 15, 15, 5)}
+            new Job("Sketch Art", true, 60, 15, 20, 20, +10),
+            new Job("Pro sketch", true, 180, 25, 40, 25, +20),
+            new Job("Art Studio", true, 150, 20, 25, 15, +15),
+            new Job("Middle School", true, 25, 25, 40, 15, -5),
+            new Job("Street graphics", true, 125, 10, 20, 20, +25),
+            new Job("Shawerma king", false, 15, 0, 10, 15, -5),
+            new Job("Roll prince", false, 20, 0, 15, 15, -10),
+            new Job("Fast courier", false, 30, 0, 25, 30, -15)
         };
+    
+    //public static readonly Dictionary<string, Job> Jobs =
+    //    new Dictionary<string, Job>()
+    //    {
+    //        {"courier", new Job("courier", false, 400, 0, 20, 15, -20)},
+    //        {"macCashier", new Job("macCashier", false, 500, 0, 10, 5, -30)},
+    //        {"juniorArtist", new Job("macCashier", true, 800, 3, 15, 15, 5)}
+    //    };
 
     public enum Techniques
     {

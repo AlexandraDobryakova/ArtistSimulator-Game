@@ -71,12 +71,11 @@ public class TextControls : MonoBehaviour
 
             case Values.Employment:
                     textObject.text = 
-                    Player.CurrentJob != null ? $"{Player.ArtSkills.GeneralLvl}" : "не трудоустроен";
+                    Player.CurrentJob != null ? $"{Player.CurrentJob.Name}" : "не трудоустроен";
                 break;
                      
             case Values.Disease:
                 textObject.text = Player.Disease == null ? "нет" : Player.Disease.name;
-                    
                 break;
                      
             case Values.Skill_Technique:

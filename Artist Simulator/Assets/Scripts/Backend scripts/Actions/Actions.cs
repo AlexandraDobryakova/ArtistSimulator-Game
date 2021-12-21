@@ -22,16 +22,16 @@ public class Actions : MonoBehaviour
         }
     }
 
-    public void Eat(string foodName)
+    public void Eat(int foodNumber)
     {
-        if (!GameConstants.Food.ContainsKey(foodName))
-            throw new ArgumentException($"Wrong name of food: \"{foodName}\".");
+        if (foodNumber < 0 || foodNumber > GameConstants.FoodVariants.Length)
+            throw new ArgumentException($"Food number can be only in range[0, {GameConstants.FoodVariants.Length}]");
 
-        if (Player.Money.Value >= GameConstants.Food[foodName].priceOfFood)
+        if (Player.Money.Value >= GameConstants.FoodVariants[foodNumber].Price)
         {
-            Player.Satiety.Value += GameConstants.Food[foodName].satietyRestoration;
-            Player.Money.Value -= GameConstants.Food[foodName].priceOfFood;
-            Game.Time.Hours += GameConstants.Eating_duration_inHours;
+            Player.Satiety.Value += GameConstants.FoodVariants[foodNumber].SatietyRestoration;
+            Player.Money.Value -= GameConstants.FoodVariants[foodNumber].Price;
+            Game.Time.Hours += GameConstants.FoodVariants[foodNumber].EatingTimeH;
         }
     }
 
@@ -45,7 +45,6 @@ public class Actions : MonoBehaviour
         if (args.Length != 2)
             throw new ArgumentException(
                 $"Wrong argument format: \"{skillName__learningVariant}\". Here can be only 2 args.");
-
 
         if (GameConstants.LearningVariants.TryGetValue(args[1], out var learningVariant))
         {
@@ -82,12 +81,12 @@ public class Actions : MonoBehaviour
             Player.CurrentContract = Game.ContractsPool[contractNumber];
     }
 
-    public void TakeJob(string jobName)
+    public void TakeJob(int jobNumber)
     {
-        if (!GameConstants.Jobs.ContainsKey(jobName))
-            throw new ArgumentException($"Wrong argument: \"{jobName}\". Unknown Job.");
-        if (Player.ArtSkills.GetMinSkillLvl() >= GameConstants.Jobs[jobName].MinRequiredLvlSkills)
-            Player.CurrentJob = GameConstants.Jobs[jobName];
+        if (jobNumber < 0 || jobNumber > GameConstants.Jobs.Length)
+            throw new ArgumentException($"Job number can be only in range[0, {GameConstants.FoodVariants.Length}]");
+        if (Player.ArtSkills.GetMinSkillLvl() >= GameConstants.Jobs[jobNumber].MinRequiredLvlSkills)
+            Player.CurrentJob = GameConstants.Jobs[jobNumber];
     }
 
     public void DoJob(int hoursOfWork)
