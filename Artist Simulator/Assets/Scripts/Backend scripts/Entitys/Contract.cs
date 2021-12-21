@@ -73,7 +73,8 @@ public class Contract : Work
 
     public static Contract GetRandomContract()
     {
-        var random = new System.Random();
+        var random = new System.Random(Guid.NewGuid().GetHashCode());
+
         var difficult = (Difficultys)random.Next(0, Enum.GetValues(typeof(Difficultys)).Length);
         var randTech = (GameConstants.Techniques)random.Next(0, Enum.GetValues(typeof(GameConstants.Techniques)).Length);
         var randGenre = (GameConstants.Genres)random.Next(0, Enum.GetValues(typeof(GameConstants.Genres)).Length);
