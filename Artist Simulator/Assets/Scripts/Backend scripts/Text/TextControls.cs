@@ -17,6 +17,7 @@ public class TextControls : MonoBehaviour
         Employment,
         Salary,
         CurContract_DaysLeft,
+        CurContract_Reward,
         CurContract_PercentExecution,
         General_lvl,
         Time,
@@ -59,6 +60,11 @@ public class TextControls : MonoBehaviour
             case Values.CurContract_DaysLeft:
                 if (Player.CurrentContract != null)
                     textObject.text = $"{Player.CurrentContract.GetDaysLeft()}";
+                break;
+
+            case Values.CurContract_Reward:
+                if (Player.CurrentContract != null)
+                    textObject.text = $"{Player.CurrentContract.ContractPrice}ð";
                 break;
 
             case Values.CurContract_PercentExecution:
