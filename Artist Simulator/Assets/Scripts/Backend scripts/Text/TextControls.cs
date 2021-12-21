@@ -36,10 +36,6 @@ public class TextControls : MonoBehaviour
     public GameConstants.Genres SkillGenre;
     public XP_LVL_Selection SkillXpOrLvl;
 
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -78,7 +74,6 @@ public class TextControls : MonoBehaviour
             case Values.Salary:
                 if(Player.CurrentJob != null)
                 textObject.text = $"{Player.CurrentJob.SalaryPerHour}руб./ч";
-
                 break;
 
             case Values.Disease:

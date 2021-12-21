@@ -20,6 +20,7 @@ public class FoodText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (number < 0 || number > GameConstants.FoodVariants.Length)
             throw new ArgumentException($"Food number can be only in range[0, {GameConstants.FoodVariants.Length}]");
 

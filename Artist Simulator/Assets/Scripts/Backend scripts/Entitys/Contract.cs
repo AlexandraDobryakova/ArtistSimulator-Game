@@ -39,6 +39,7 @@ public class Contract : Work
 
     public readonly GameConstants.Techniques requiredTechnique;
     public readonly GameConstants.Genres requiredGenre;
+    
     public int HourWorkload { get => hourWorkload; private set => hourWorkload = value; }
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
@@ -63,6 +64,7 @@ public class Contract : Work
         }
     }
 
+    public int GetDaysLeft() => Game.Time.Days - TimeOfGetting.Days;
     public int GetPercentExecution() => (int)(hoursWorked * 1.0 / hourWorkload * 100);
 
     //TODO
@@ -74,7 +76,7 @@ public class Contract : Work
     public static Contract GetRandomContract()
     {
         var random = new System.Random(Guid.NewGuid().GetHashCode());
-
+        
         var difficult = (Difficultys)random.Next(0, Enum.GetValues(typeof(Difficultys)).Length);
         var randTech = (GameConstants.Techniques)random.Next(0, Enum.GetValues(typeof(GameConstants.Techniques)).Length);
         var randGenre = (GameConstants.Genres)random.Next(0, Enum.GetValues(typeof(GameConstants.Genres)).Length);
@@ -110,6 +112,7 @@ public class Contract : Work
         return res;
     }
 
+    public GameTime TimeOfGetting;
     private int hourWorkload, hoursWorked, contractPrice;
     private bool isDone;
     private Difficultys difficulty;

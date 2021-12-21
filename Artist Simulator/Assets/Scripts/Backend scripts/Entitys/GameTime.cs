@@ -52,8 +52,8 @@ public class GameTime
     public static GameTime operator +(GameTime t1, GameTime t2) =>
         new GameTime(t1._hours + t2._hours, t1._days + t2._days);
 
-    //public static Time operator - (Time t1, Time t2) =>
-    //    new (t1._hours + t2._hours, t1._days + t2._days);
+    //public static GameTime operator -(GameTime t1, GameTime t2) =>
+    //    new(t1._hours + t2._hours, t1._days + t2._days);
     public static bool operator ==(GameTime t1, GameTime t2) =>
         t1._hours == t2._hours && t1._days == t2._days;
     public static bool operator !=(GameTime t1, GameTime t2) => !(t1 == t2);

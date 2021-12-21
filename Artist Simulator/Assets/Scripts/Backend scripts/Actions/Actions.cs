@@ -78,7 +78,10 @@ public class Actions : MonoBehaviour
                 $"Wrong argument: \"{contractNumber}\"." +
                 $"ContractNumber can't be more than {GameConstants.Contracts_count - 1}");
         if (Player.CurrentContract == null)
+        {
             Player.CurrentContract = Game.ContractsPool[contractNumber];
+            Player.CurrentContract.TimeOfGetting = Game.Time;
+        }
     }
 
     public void TakeJob(int jobNumber)

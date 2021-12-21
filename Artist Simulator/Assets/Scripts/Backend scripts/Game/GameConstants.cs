@@ -72,7 +72,6 @@ public static class GameConstants
             {"expressCourse", new LearningVariant(5, 200, 1000, 30, 30, 40) },
         };
 
-    
     public static readonly Job[] Jobs =
         new Job[]
         {

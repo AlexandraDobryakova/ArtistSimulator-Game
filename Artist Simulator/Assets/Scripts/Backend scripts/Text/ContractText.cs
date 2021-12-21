@@ -16,7 +16,9 @@ public class ContractText : MonoBehaviour
         Reward,
         Difficulty,
         Required_Technique,
-        Required_Genre
+        Required_Genre,
+        DaysLeft,
+        PercentExecution
     };
 
     // Update is called once per frame
@@ -33,6 +35,16 @@ public class ContractText : MonoBehaviour
 
             case Values.Difficulty:
                 textObject.text = $"{Game.ContractsPool[contractNumber].Difficulty}";
+                break;
+
+            case Values.DaysLeft:
+                if(Player.CurrentContract != null)
+                    textObject.text = $"{Player.CurrentContract.GetDaysLeft()}";
+                break;
+
+            case Values.PercentExecution:
+                if (Player.CurrentContract != null)
+                    textObject.text = $"{Player.CurrentContract.GetPercentExecution()}%";
                 break;
 
             case Values.Required_Technique:
