@@ -72,9 +72,7 @@ public static class GameConstants
             {"expressCourse", new LearningVariant(5, 200, 1000, 30, 30, 40) },
         };
 
-    /*
-     1. Sketch Art, Да, 60, (карандаш: 15, пейзаж: 15, люди: 15, граффити: 10), 20, 20, +10
-     */
+    
     public static readonly Job[] Jobs =
         new Job[]
         {
