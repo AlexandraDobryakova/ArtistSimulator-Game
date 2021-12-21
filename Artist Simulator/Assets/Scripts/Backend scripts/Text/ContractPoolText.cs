@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class ContractText : MonoBehaviour
+public class ContractPoolText : MonoBehaviour
 {
     public int contractNumber;
     public Text textObject;

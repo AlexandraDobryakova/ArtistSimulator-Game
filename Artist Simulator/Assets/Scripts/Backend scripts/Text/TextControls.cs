@@ -16,6 +16,8 @@ public class TextControls : MonoBehaviour
         Satiety,
         Employment,
         Salary,
+        CurContract_DaysLeft,
+        CurContract_PercentExecution,
         General_lvl,
         Time,
         Disease,
@@ -52,6 +54,16 @@ public class TextControls : MonoBehaviour
 
             case Values.Happiness:
                 textObject.text = $"{Player.Happiness.Value}{Player.Happiness.Dimension}";
+                break;
+
+            case Values.CurContract_DaysLeft:
+                if (Player.CurrentContract != null)
+                    textObject.text = $"{Player.CurrentContract.GetDaysLeft()}";
+                break;
+
+            case Values.CurContract_PercentExecution:
+                if (Player.CurrentContract != null)
+                    textObject.text = $"{Player.CurrentContract.GetPercentExecution()}%";
                 break;
 
             case Values.Satiety:
