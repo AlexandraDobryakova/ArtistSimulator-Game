@@ -14,6 +14,12 @@ public class YouDied : MonoBehaviour
     public void GoToMenu()
     {
         SceneManager.LoadScene(0);
+        currentPanel.SetActive(false);
+        DiePanel.SetActive(false);
+        panel_MakeCharacter.SetActive(true);
+        Player.Satiety.Value = 100;
+        Player.Happiness.Value = 100;
+        Player.Energy.Value = 100;
     }
 
     public void StartAgain()
@@ -21,6 +27,9 @@ public class YouDied : MonoBehaviour
         currentPanel.SetActive(false);
         DiePanel.SetActive(false);
         panel_MakeCharacter.SetActive(true);
-        Player.Money.Value = 1000; 
+        Player.Money.Value = 1000;
+        Player.Satiety.Value = 100;
+        Player.Happiness.Value = 100;
+        Player.Energy.Value = 100;
     }
 }

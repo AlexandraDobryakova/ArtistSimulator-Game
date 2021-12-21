@@ -26,6 +26,13 @@ public class ChooseCharacter : MonoBehaviour
             canvasChooseCharacter.gameObject.SetActive(false);
         }
         nameOf.text = "";
+
+        if (Pause.GameIsStarted_IsStopped == false)
+        {
+            Player.Satiety.Value = Pause.Satiety_Save;
+            Player.Happiness.Value = Pause.Happiness_Save;
+            Player.Energy.Value = Pause.Energy_Save;
+        }
     }
 
     private void Update()

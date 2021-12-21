@@ -9,11 +9,16 @@ public class Bars : MonoBehaviour
     public Image FoodBar;
     public Image MoodBar;
     public Image EnergyBar;
-
+    [SerializeField] GameObject[] characters;
+    public new Text name;
     public GameObject panel_YouDied;
     void Start()
     {
-        
+        if (ChooseCharacter.gameIsStarted == true)
+        {
+            characters[ChooseCharacter.current_char].SetActive(true);
+            name.text = ChooseCharacter.characterName;
+        }
     }
     
     void Update()
