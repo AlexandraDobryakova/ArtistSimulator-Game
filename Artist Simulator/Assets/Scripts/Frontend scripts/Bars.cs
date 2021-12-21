@@ -9,9 +9,15 @@ public class Bars : MonoBehaviour
     public Image FoodBar;
     public Image MoodBar;
     public Image EnergyBar;
+    public Image ContractBar;
+
     [SerializeField] GameObject[] characters;
+
     public new Text name;
+
+
     public GameObject panel_YouDied;
+
     void Start()
     {
         if (ChooseCharacter.gameIsStarted == true)
@@ -26,6 +32,16 @@ public class Bars : MonoBehaviour
         FoodBar.fillAmount = Player.Satiety.Value * 0.01f;
         MoodBar.fillAmount = Player.Happiness.Value * 0.01f;
         EnergyBar.fillAmount = Player.Energy.Value * 0.01f;
+
+        if (Player.CurrentContract != null)
+        {
+            ContractBar.fillAmount = Player.CurrentContract.GetPercentExecution() * 0.01f;
+        }
+        else
+        {
+            ContractBar.fillAmount = 0;
+        }
+        
 
 
         if ((FoodBar.fillAmount*100) == 0 || (MoodBar.fillAmount * 100) == 0 || (EnergyBar.fillAmount * 100) == 0)
