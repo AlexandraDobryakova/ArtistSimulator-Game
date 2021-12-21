@@ -20,6 +20,8 @@ public class Job : Work
 
     public int MinRequiredLvlSkills => minRequiredLvlSkills;
 
+    public bool IsAvailable() => Player.ArtSkills.GetMinSkillLvl() >= minRequiredLvlSkills;
+
     public override void DoWork(int hoursOfWork)
     {
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
