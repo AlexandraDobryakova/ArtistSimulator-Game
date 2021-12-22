@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ChooseCharacter : MonoBehaviour
 {
     static public int current_char;
+    static bool clicked_button = false;
     static public string characterName;
     static public int currentCharacter;
     [SerializeField] GameObject[] characters;
@@ -32,6 +33,7 @@ public class ChooseCharacter : MonoBehaviour
             Player.Satiety.Value = Pause.Satiety_Save;
             Player.Happiness.Value = Pause.Happiness_Save;
             Player.Energy.Value = Pause.Energy_Save;
+            Player.Money.Value = Pause.Money_Save;
         }
     }
 
@@ -49,7 +51,7 @@ public class ChooseCharacter : MonoBehaviour
 
     public void ClickOnLeftButton()
     {
-        if (current_char == 0)
+        if (current_char == 0 /*&& clicked_button == false*/)
         {
             characters[current_char].SetActive(false);
 
@@ -99,6 +101,7 @@ public class ChooseCharacter : MonoBehaviour
         gameIsStarted = true;
         Pause.GameIsStarted_IsStopped = false;
         ChooseCharacter.gameIsStarted = true;
+        //characters[ChooseCharacter.current_char].SetActive(true);
     }
 
     public void GetName()

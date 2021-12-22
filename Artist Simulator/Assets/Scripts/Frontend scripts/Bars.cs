@@ -18,6 +18,11 @@ public class Bars : MonoBehaviour
 
     public GameObject panel_YouDied;
 
+    public Text contractName;
+    public Text contractSalary;
+    public Text contractPercent;
+
+
     void Start()
     {
         if (ChooseCharacter.gameIsStarted == true)
@@ -40,6 +45,11 @@ public class Bars : MonoBehaviour
         else
         {
             ContractBar.fillAmount = 0;
+            contractName.text = "---";
+            contractSalary.text = "---";
+            contractPercent.text = "---";
+            //ContractBar.fillAmount = 0;
+            Player.CurrentContract = null;
         }
         
 
@@ -48,5 +58,14 @@ public class Bars : MonoBehaviour
         {
             panel_YouDied.SetActive(true);
         }
+
+        /*if (Player.CurrentContract.GetPercentExecution() >= 100)
+        {
+            contractName.text = "---";
+            contractSalary.text = "---";
+            contractPercent.text = "---";
+            ContractBar.fillAmount = 0;
+            Player.CurrentContract = null;
+        }*/
     }
 }
