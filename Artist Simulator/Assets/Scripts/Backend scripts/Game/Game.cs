@@ -9,6 +9,7 @@ public static class Game
     public static GameTime Time;
 
     public static void GameOver() { }
+    public static int LastChangeContractPoolHours { get => _lastChangeContractPoolHours; private set { } }
     public static bool IsCorrect(int value)
     {
         if (value < 0)
@@ -32,6 +33,15 @@ public static class Game
     private static void Initialize()
     {
         Time = new GameTime();
-        ContractsPool = Contract.GetRandomContractsPool();
+        SetNewContractsPool();
     }
+
+    public static void SetNewContractsPool() 
+    { 
+        ContractsPool = Contract.GetRandomContractsPool();
+        _lastChangeContractPoolHours = Time.TotalHours;
+    }
+
+    private static int _lastChangeContractPoolHours;
+
 }

@@ -21,7 +21,8 @@ public class TextControls : MonoBehaviour
         CurContract_PercentExecution,
         General_lvl,
         Time,
-        Disease,
+        Disease_status,
+        Cost_Of_Healing,
         Skill_Technique,
         Skill_Genre,
     };
@@ -64,7 +65,7 @@ public class TextControls : MonoBehaviour
 
             case Values.CurContract_Reward:
                 if (Player.CurrentContract != null)
-                    textObject.text = $"{Player.CurrentContract.ContractPrice}р";
+                    textObject.text = $"{Player.CurrentContract.ContractPrice}{GameConstants.Money_dimension}";
                 break;
 
             case Values.CurContract_PercentExecution:
@@ -89,12 +90,16 @@ public class TextControls : MonoBehaviour
                     Player.CurrentJob != null ? $"{Player.CurrentJob.Name}" : "не трудоустроен";
                 break;
 
-            case Values.Salary:
-                if(Player.CurrentJob != null)
-                textObject.text = $"{Player.CurrentJob.SalaryPerHour}руб./ч";
+            case Values.Cost_Of_Healing:
+                textObject.text = $"{GameConstants.Healing_cost}{GameConstants.Money_dimension}";
                 break;
 
-            case Values.Disease:
+            case Values.Salary:
+                if(Player.CurrentJob != null)
+                textObject.text = $"{Player.CurrentJob.SalaryPerHour}{GameConstants.Money_dimension}/ч";
+                break;
+
+            case Values.Disease_status:
                 textObject.text = Player.Disease == null ? "нет" : Player.Disease.name;
                 break;
                      

@@ -29,6 +29,8 @@ public class GameTime
             {
                 if (value >= _hours)
                 {
+                    //Debug.Log(Game.Time.TotalHours);
+
                     _totalHours += value - _hours;
                     _hours = value >= 24 ? value % 24 : value;
 
@@ -48,6 +50,8 @@ public class GameTime
     }
 
     public int Days { get => _days; private set { } }
+
+    public int TotalHours { get => _totalHours; private set { } }
 
     public static GameTime operator +(GameTime t1, GameTime t2) =>
         new GameTime(t1._hours + t2._hours, t1._days + t2._days);

@@ -121,7 +121,7 @@ public static class Player
     public static Contract CurrentContract;
     public static Job CurrentJob;
 
-    public static bool HasAnEmployment, IsIll, IsWorkingOnContracrt;
+    //public static bool HasAnEmployment, IsIll, IsWorkingOnContracrt;
 
     public static void Initialize()
     {
@@ -157,8 +157,8 @@ public static class Player
 
         //Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
 
-        IsIll = false;
-        HasAnEmployment = false;
-        IsWorkingOnContracrt = false;
+        //IsIll = false;
+        //HasAnEmployment = false;
+        //IsWorkingOnContracrt = false;
     }
 }

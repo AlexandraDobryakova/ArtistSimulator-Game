@@ -5,7 +5,7 @@ public static class GameConstants
 {
     public const int
         // Indicators:
-        Money_start_value = 1000,
+        Money_start_value = 20,
         Money_max_value = 99999,
 
         Happiness_start_value = 100,
@@ -25,7 +25,7 @@ public static class GameConstants
         // Actions:
         Sleep_energy_restore_perHour = 40,
         Sleep_satiety_decreasement = 20,
-        Healing_cost = 1000,
+        Healing_cost = 50,
         Eating_duration_inHours = 2,
         //Learn_xp_increasement_perHour = 
 
@@ -34,13 +34,14 @@ public static class GameConstants
         Contracts_energyCostPerHour = 10,
         Contracts_satietyCostPerHour = 5,
         Contracts_happinessCoef = 5,
+        Contracts_pool_changing_each_days = 10,
 
         // Disease
         DaysUntillGettingIll = 5
         ;
 
     public const string
-        Money_dimension = "ð",
+        Money_dimension = "$",
         Happiness_dimension = "%",
         Energy_dimension = "%",
         Satiety_dimension = "%"
@@ -69,7 +70,7 @@ public static class GameConstants
         {
             {"freeDrawing", new LearningVariant(1, 20, 0, 10, 10, 5) },
             {"watchingYoutube", new LearningVariant(2, 50, 0, 25, 25, 10) },
-            {"expressCourse", new LearningVariant(5, 200, 1000, 30, 30, 40) },
+            {"expressCourse", new LearningVariant(5, 70, 1000, 30, 30, 40) },
         };
 
     public static readonly Job[] Jobs =

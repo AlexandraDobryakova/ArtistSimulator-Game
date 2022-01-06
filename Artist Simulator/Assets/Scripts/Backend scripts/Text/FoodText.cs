@@ -31,7 +31,7 @@ public class FoodText : MonoBehaviour
                 break;
 
             case Values.Price:
-                textObject.text = $"{GameConstants.FoodVariants[number].Price}";
+                textObject.text = $"{GameConstants.FoodVariants[number].Price}{GameConstants.Money_dimension}";
                 break;
 
             default:
