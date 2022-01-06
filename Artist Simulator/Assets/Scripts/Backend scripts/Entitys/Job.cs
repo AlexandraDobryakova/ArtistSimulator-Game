@@ -26,9 +26,9 @@ public class Job : Work
     {
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
         Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
-        Player.Happiness.Value += isByProfession ? HappinessCoef * hoursOfWork : - HappinessCoef * hoursOfWork;
+        Player.Happiness.Value += HappinessCoef * hoursOfWork;
         Player.Money.Value += salaryPerHour * hoursOfWork;
-        //GameTime.Hours += hoursOfWork;
+        Game.Time.Hours += hoursOfWork;
 
         if (isByProfession)
         {

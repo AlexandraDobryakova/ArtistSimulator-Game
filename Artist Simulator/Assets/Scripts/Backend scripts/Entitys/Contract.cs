@@ -54,6 +54,7 @@ public class Contract : Work
         Game.Time.Hours += hoursOfWork;
 
         hoursWorked += hoursOfWork;
+
         if (hoursWorked >= HourWorkload)
         {
             IsDone = true;
@@ -64,7 +65,7 @@ public class Contract : Work
         }
     }
 
-    public int GetDaysLeft() => Game.Time.Days - TimeOfGetting.Days;
+    public int GetDaysLeft() => 10 - (Game.Time.Days - TimeOfGetting.Days);
     public int GetPercentExecution() => (int)(hoursWorked * 1.0 / hourWorkload * 100);
 
     //TODO

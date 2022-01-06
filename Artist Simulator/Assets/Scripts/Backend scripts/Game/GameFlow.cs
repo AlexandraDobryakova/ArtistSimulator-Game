@@ -24,7 +24,10 @@ public class GameFlow : MonoBehaviour
         //}
 
 
-        if (Game.Time.TotalHours - Game.LastChangeContractPoolHours >= 10)
+        if (Game.Time.Days - Game.LastChangeContractPoolDay >= 10)
             Game.SetNewContractsPool();
+
+        if (Player.CurrentContract != null && Player.CurrentContract.GetDaysLeft() <= 0)
+            Player.CurrentContract = null;
     }  
 }

@@ -129,5 +129,5 @@ public static class GameConstants
         "Современное искусство"
     };
 
-    public static readonly Disease DiseaseCold = new Disease("cold", 1000, new GameTime(0, 3), 0.5f);
+    public static readonly Disease DiseaseCold = new Disease("cold", 100, new GameTime(0, 3), 0.5f);
 }

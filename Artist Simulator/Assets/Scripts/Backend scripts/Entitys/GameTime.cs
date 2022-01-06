@@ -29,7 +29,7 @@ public class GameTime
             {
                 if (value >= _hours)
                 {
-                    //Debug.Log(Game.Time.TotalHours);
+                    
 
                     _totalHours += value - _hours;
                     _hours = value >= 24 ? value % 24 : value;
@@ -41,6 +41,8 @@ public class GameTime
                     }
                     else
                         _hours= value;
+
+                    //Debug.Log(Game.Time.TotalHours);
                 }
                 else
                     throw new ArgumentOutOfRangeException(

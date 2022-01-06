@@ -22,9 +22,9 @@ public class TextControls : MonoBehaviour
         General_lvl,
         Time,
         Disease_status,
-        Cost_Of_Healing,
         Skill_Technique,
         Skill_Genre,
+        Cost_Of_Healing
     };
     
     public enum XP_LVL_Selection
@@ -78,7 +78,7 @@ public class TextControls : MonoBehaviour
                 break;
 
             case Values.Time:
-                textObject.text = $"days: {Game.Time.Days} time: {Game.Time.Hours}";
+                textObject.text = $"{Game.Time.Days} ä. {Game.Time.Hours} ÷.";
                 break;
                 
             case Values.General_lvl:

@@ -95,18 +95,12 @@ public class Actions : MonoBehaviour
     public void DoJob(int hoursOfWork)
     {
         if (Player.CurrentJob != null)
-        {
             Player.CurrentJob.DoWork(hoursOfWork);
-            Game.Time.Hours += hoursOfWork;
-        }
     }
 
     public void DoContract(int hoursOfWork)
     {
         if (Player.CurrentContract != null)
-        {
             Player.CurrentContract.DoWork(hoursOfWork);
-            Game.Time.Hours += hoursOfWork;  
-        }
     }
 }
