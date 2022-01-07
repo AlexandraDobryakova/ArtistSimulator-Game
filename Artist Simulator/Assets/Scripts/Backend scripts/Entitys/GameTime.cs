@@ -25,12 +25,10 @@ public class GameTime
         get => _hours;
         set
         {
-            if (Game.IsCorrect(value))
+            if (value >= 0)
             {
                 if (value >= _hours)
                 {
-                    
-
                     _totalHours += value - _hours;
                     _hours = value >= 24 ? value % 24 : value;
 

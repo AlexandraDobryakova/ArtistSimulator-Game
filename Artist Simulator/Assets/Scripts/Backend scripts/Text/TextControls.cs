@@ -100,7 +100,7 @@ public class TextControls : MonoBehaviour
                 break;
 
             case Values.Disease_status:
-                textObject.text = Player.Disease == null ? "нет" : Player.Disease.name;
+                textObject.text = Player.CurrentDisease == null ? "нет" : Player.CurrentDisease.name;
                 break;
                      
             case Values.Skill_Technique:

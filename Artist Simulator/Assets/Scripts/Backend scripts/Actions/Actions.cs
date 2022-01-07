@@ -17,7 +17,7 @@ public class Actions : MonoBehaviour
     {
         if (Player.Money.Value >= GameConstants.Healing_cost)
         {
-            Player.Disease = null;
+            Player.CurrentDisease = null;
             Player.Money.Value -= GameConstants.Healing_cost;
         }
     }

@@ -23,7 +23,7 @@ public static class Player
                 get => _lvl;
                 set 
                 {
-                    _lvl = value >= _maxLvlSkill ? _maxLvlSkill : value;
+                    _lvl = value >= GameConstants.Skills_Max_lvl ? GameConstants.Skills_Max_lvl : value;
                 } 
             }
             public int Xp 
@@ -49,7 +49,7 @@ public static class Player
             //TODO: проверить рекурсию
             private void LvlUp(int gettingXp)
             {
-                if(Lvl <= _maxLvlSkill)
+                if(Lvl <= GameConstants.Skills_Max_lvl)
                 {
                     int oldMaxXp = MaxXp;
                     MaxXp = (int)(MaxXp * UpMaxXpCoeff);
@@ -64,13 +64,13 @@ public static class Player
         {
             int res = GameConstants.Skills_start_lvl;
 
-            foreach (var skill in _techniquesDict)
+            foreach (var skill in TechniquesDict)
             {
                 if (skill.Value.Lvl <= res)
                     res = skill.Value.Lvl;
             }
 
-            foreach (var skill in _genresDict)
+            foreach (var skill in GenresDict)
             {
                 if (skill.Value.Lvl <= res)
                     res = skill.Value.Lvl;
@@ -79,36 +79,35 @@ public static class Player
             return res;
         }
 
-        public static void Initialize(int startXp, int startMaxXp, int startLvl, int MaxLvlSkill)
+        public static void Initialize(int startXp, int startMaxXp, int startLvl)
         {
-            _maxLvlSkill = MaxLvlSkill;
             
             int techLen = Enum.GetValues(typeof(GameConstants.Techniques)).Length;
             int genLen = Enum.GetValues(typeof(GameConstants.Genres)).Length;
 
-            _techniquesDict = new Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>>();
-            _genresDict = new Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>>();
+            TechniquesDict = new Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>>();
+            GenresDict = new Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>>();
 
             for (int i = 0; i < techLen; i++)
-                _techniquesDict.Add((GameConstants.Techniques)i, 
+                TechniquesDict.Add((GameConstants.Techniques)i, 
                     new Skill<GameConstants.Techniques>(startMaxXp, startLvl, startXp, (GameConstants.Techniques)i));
 
             for (int i = 0; i < genLen; i++)
-                _genresDict.Add((GameConstants.Genres)i, 
+                GenresDict.Add((GameConstants.Genres)i, 
                     new Skill<GameConstants.Genres>(startMaxXp, startLvl, startXp, (GameConstants.Genres)i));
         }
 
         public static Skill<GameConstants.Techniques> GetSkill(GameConstants.Techniques skillTeg) =>
-            _techniquesDict[skillTeg];
+            TechniquesDict[skillTeg];
         public static Skill<GameConstants.Genres> GetSkill(GameConstants.Genres skillTeg) =>
-            _genresDict[skillTeg];
+            GenresDict[skillTeg];
 
         public static int GeneralLvl { get => _generalLvl; private set { } }
 
 
-        private static int _maxLvlSkill, _generalLvl;
-        private static Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>> _techniquesDict;
-        private static Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>> _genresDict;
+        private static int _generalLvl;
+        public static Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>> TechniquesDict;
+        public static Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>> GenresDict;
 
     }
 
@@ -117,7 +116,7 @@ public static class Player
     public static Indicator Energy;
     public static Indicator Satiety;
 
-    public static Disease Disease;
+    public static Disease CurrentDisease;
     public static Contract CurrentContract;
     public static Job CurrentJob;
 
@@ -128,8 +127,7 @@ public static class Player
         ArtSkills.Initialize(
             GameConstants.Skills_start_xp, 
             GameConstants.Skills_start_max_xp,
-            GameConstants.Skills_start_lvl, 
-            GameConstants.Skills_max_lvl_skill);
+            GameConstants.Skills_start_lvl);
 
         Money = new Indicator(
             GameConstants.Money_start_value,

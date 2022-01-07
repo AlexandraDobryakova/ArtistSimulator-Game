@@ -17,11 +17,6 @@ public static class GameConstants
         Satiety_start_value = 100,
         Satiety_max_value = 100,
 
-        Skills_start_xp = 0,
-        Skills_start_max_xp = 100,
-        Skills_start_lvl = 1,
-        Skills_max_lvl_skill = 30,
-
         // Actions:
         Sleep_energy_restore_perHour = 40,
         Sleep_satiety_decreasement = 20,
@@ -37,7 +32,13 @@ public static class GameConstants
         Contracts_pool_changing_each_days = 10,
 
         // Disease
-        DaysUntillGettingIll = 5
+        DaysUntillGettingIll = 5,
+
+        //Skills
+        Skills_Max_lvl = 30,
+        Skills_start_xp = 0,
+        Skills_start_max_xp = 100,
+        Skills_start_lvl = 1
         ;
 
     public const string
