@@ -8,8 +8,31 @@ public class FiveButtons : MonoBehaviour
     public GameObject[] panels;
     public GameObject[] buttons;
     private int current_char = 0;
+    //public GameObject workButton;
+    //public static Vector3 wb;
+
+
+    private void Start()
+    {
+        //wb = new Vector3(buttons[1].transform.position.x, buttons[1].transform.position.y, buttons[1].transform.position.z);
+    }
+
+    private void Update()
+    {
+        /*if (YouDied.IsDied == true)
+        {
+            buttons[1].SetActive(true);
+            YouDied.IsDied = false;
+            CloseThePanel();
+            
+        }*/
+        
+    }
+
     public void Click1Button()
     {
+        //public static double x = workButton.transform.position.x; 
+        
         if (buttonIsClicked == false)
         {
             
@@ -30,6 +53,7 @@ public class FiveButtons : MonoBehaviour
 
     public void Click2Button()
     {
+        
         if (buttonIsClicked == false)
         {
             
@@ -110,9 +134,24 @@ public class FiveButtons : MonoBehaviour
 
     public void CloseThePanel()
     {
-        buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y - 0.1f, 0);
-        panels[current_char].SetActive(false);
-        current_char = 0;
-        buttonIsClicked = false;
+            buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y - 0.1f, 0);
+            panels[current_char].SetActive(false);
+            current_char = 0;
+            buttonIsClicked = false;
+       
+    }
+
+    public void CloseTheBUTTON()
+    {
+
+        if (YouDied.IsDied == true && buttonIsClicked == true)
+        {
+            current_char = 1;
+            buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y - 0.1f, 0);
+            panels[current_char].SetActive(false);
+            current_char = 0;
+            buttonIsClicked = false;
+            YouDied.IsDied = false;
+        }
     }
 }

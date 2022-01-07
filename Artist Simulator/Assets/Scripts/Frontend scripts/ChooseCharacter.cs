@@ -5,22 +5,29 @@ using UnityEngine.UI;
 
 public class ChooseCharacter : MonoBehaviour
 {
-    static public int current_char;
+    static public int current_char = 0;
     static bool clicked_button = false;
     static public string characterName;
-    static public int currentCharacter;
+    static public int currentCharacter = 0;
     [SerializeField] GameObject[] characters;
     [SerializeField] GameObject[] charactersGame;
     public InputField nameOf;
     public Canvas canvasChooseCharacter;
     public Canvas canvasGame;
     public GameObject Button_StartGame;
+    public static bool youInChoosing = false;
 
     public static bool gameIsStarted;
 
     public Text nameOfPlayer;
     void Start()
     {
+        characters[0].SetActive(true);
+        characters[1].SetActive(false);
+        characters[2].SetActive(false);
+        characters[3].SetActive(false);
+        current_char = 0;
+        youInChoosing = true;
         if (gameIsStarted)
         {
             canvasGame.gameObject.SetActive(true);
@@ -101,7 +108,13 @@ public class ChooseCharacter : MonoBehaviour
         gameIsStarted = true;
         Pause.GameIsStarted_IsStopped = false;
         ChooseCharacter.gameIsStarted = true;
+        youInChoosing = false;
         //characters[ChooseCharacter.current_char].SetActive(true);
+        /*Bars.characters[0].SetActive(false);
+        Bars.characters[1].SetActive(false);
+        Bars.characters[2].SetActive(false);
+        Bars.characters[3].SetActive(false);
+        Bars.characters[currentCharacter].SetActive(true);*/
     }
 
     public void GetName()

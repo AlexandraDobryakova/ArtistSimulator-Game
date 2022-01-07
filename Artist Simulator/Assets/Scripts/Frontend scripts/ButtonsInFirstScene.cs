@@ -34,6 +34,9 @@ public class ButtonsInFirstScene : MonoBehaviour
         ChooseCharacter.gameIsStarted = false;
         //ChangeBars.fill = 1f;
         SceneManager.LoadScene(1);
+        Game.StartNewGame(); // 06 jan
+        ChooseCharacter.current_char = 0;
+        ChooseCharacter.currentCharacter = 0;
     }
 
     public void No_NewGame()

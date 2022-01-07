@@ -11,7 +11,7 @@ public class Bars : MonoBehaviour
     public Image EnergyBar;
     public Image ContractBar;
 
-    [SerializeField] GameObject[] characters;
+    public GameObject[] characters;
 
     public new Text name;
 
@@ -27,6 +27,10 @@ public class Bars : MonoBehaviour
     {
         if (ChooseCharacter.gameIsStarted == true)
         {
+            characters[1].SetActive(false);
+            characters[2].SetActive(false);
+            characters[3].SetActive(false);
+            characters[0].SetActive(false);
             characters[ChooseCharacter.current_char].SetActive(true);
             name.text = ChooseCharacter.characterName;
         }
@@ -34,6 +38,12 @@ public class Bars : MonoBehaviour
     
     void Update()
     {
+        characters[1].SetActive(false);
+        characters[2].SetActive(false);
+        characters[3].SetActive(false);
+        characters[0].SetActive(false);
+        characters[ChooseCharacter.current_char].SetActive(true);
+        name.text = ChooseCharacter.characterName;
         FoodBar.fillAmount = Player.Satiety.Value * 0.01f;
         MoodBar.fillAmount = Player.Happiness.Value * 0.01f;
         EnergyBar.fillAmount = Player.Energy.Value * 0.01f;

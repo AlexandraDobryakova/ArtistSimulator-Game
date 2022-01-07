@@ -28979,6 +28979,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 860103562}
+        m_TargetAssemblyTypeName: FiveButtons, Assembly-CSharp
+        m_MethodName: CloseTheBUTTON
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1546923498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37155,6 +37167,8 @@ MonoBehaviour:
   panel_MakeCharacter: {fileID: 1971902903}
   currentPanel: {fileID: 1647683192}
   DiePanel: {fileID: 1451761223}
+  panel_Job: {fileID: 932279681}
+  button_Work: {fileID: 296678733}
 --- !u!1 &1944075441
 GameObject:
   m_ObjectHideFlags: 0

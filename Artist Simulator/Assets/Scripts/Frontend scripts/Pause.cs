@@ -12,7 +12,8 @@ public class Pause : MonoBehaviour
     public static int Satiety_Save = 100;
     public static int Happiness_Save = 100;
     public static int Energy_Save = 100;
-    public static int Money_Save = 1000;
+    public static int Money_Save = 20;
+    
     public void ClickOnPauseButton()
     {
         panel.SetActive(true);

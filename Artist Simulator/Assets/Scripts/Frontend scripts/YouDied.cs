@@ -9,27 +9,39 @@ public class YouDied : MonoBehaviour
     public GameObject panel_MakeCharacter;
     public GameObject currentPanel;
     public GameObject DiePanel;
-
+    public GameObject panel_Job;
+    public GameObject button_Work;
+    public static bool IsDied = false;
 
     public void GoToMenu()
     {
+        IsDied = true;
         SceneManager.LoadScene(0);
         currentPanel.SetActive(false);
         DiePanel.SetActive(false);
         panel_MakeCharacter.SetActive(true);
-        Player.Satiety.Value = 100;
-        Player.Happiness.Value = 100;
-        Player.Energy.Value = 100;
+        Game.StartNewGame();
+        //IsDied = false;
+        ChooseCharacter.gameIsStarted = false;
     }
 
     public void StartAgain()
     {
+        IsDied = true;
+        ChooseCharacter.gameIsStarted = false;
         currentPanel.SetActive(false);
         DiePanel.SetActive(false);
+        //panel_Job.SetActive(false);
+        //button_Work.transform.position = new Vector3(button_Work.transform.position.x, button_Work.transform.position.y - 0.1f, 0);
         panel_MakeCharacter.SetActive(true);
-        Player.Money.Value = 1000;
-        Player.Satiety.Value = 100;
-        Player.Happiness.Value = 100;
-        Player.Energy.Value = 100;
+        Game.StartNewGame();
+        ChooseCharacter.gameIsStarted = false;
+        
+        //FiveButtons.wor
+        /*SceneManager.LoadScene(0);
+        panel_MakeCharacter.SetActive(true);
+        currentPanel.SetActive(false);
+        SceneManager.LoadScene(1);*/
+        //IsDied = false;
     }
 }
