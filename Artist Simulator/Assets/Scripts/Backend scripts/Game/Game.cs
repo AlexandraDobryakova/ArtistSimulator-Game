@@ -31,7 +31,7 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
-        Debug.Log(JsonUtility.ToJson(_save));
+        //Debug.Log(JsonUtility.ToJson(_save));
     }
 
     public static void Load()

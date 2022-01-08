@@ -8,7 +8,6 @@ public class GameFlow : MonoBehaviour
     void Start()
     {
         Game.StartNewGame();
-        Game.Save();
     }
 
     void Update()
