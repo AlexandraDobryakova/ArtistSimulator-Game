@@ -102,7 +102,7 @@ public static class Player
         public static Skill<GameConstants.Genres> GetSkill(GameConstants.Genres skillTeg) =>
             GenresDict[skillTeg];
 
-        public static int GeneralLvl { get => _generalLvl; private set { } }
+        public static int GeneralLvl { get => _generalLvl; set => _generalLvl = value; }
 
 
         private static int _generalLvl;
