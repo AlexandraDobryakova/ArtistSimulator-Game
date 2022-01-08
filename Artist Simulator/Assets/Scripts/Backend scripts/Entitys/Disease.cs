@@ -2,60 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Disease
 {
     public Disease(string name, int costOfHealing, GameTime timeToHeal, float decreaseEnergyCoeff)
     {
-        this.name = name;
-        this.costOfHealing = costOfHealing;
-        this.timeToHeal = timeToHeal;
-        this.decreaseEnergyCoeff = decreaseEnergyCoeff;
-        timeOfGettingIll = Game.Time;
-    }
-
-    public float decreaseEnergyCoeff;
-    public readonly GameTime timeOfGettingIll, timeToHeal;
-    public readonly string name;
-    public readonly int costOfHealing;
-
-
-    /*
-    public Disease(string name, int costOfHealing, int daysToHeal, float decreaseEnergyCoeff)
-    {
-        Name = name;
-        CostOfHealing = costOfHealing;
-        DaysToHeal = daysToHeal;
         DecreaseEnergyCoeff = decreaseEnergyCoeff;
-        timeOfGettingIll = Game.Time;
+        _name = name;
+        _costOfHealing = costOfHealing;
+        _timeToHeal = timeToHeal;
+        _timeOfGettingIll = Game.Time;
     }
 
-    //TODO Владиация
-    public string Name 
-    { 
-        get => _name; 
-        private set => _name = value; 
-    }
-
-    public int CostOfHealing 
-    { 
-        get => _costOfHealing; 
-        private set => _costOfHealing = value;
-    }
-    public int DaysToHeal { get => _daysToHeal; private set => _daysToHeal = value; }
-    public float DecreaseEnergyCoeff 
-    { 
-        get => _currentDecreaseEnergyCoeff;
-
-        private set 
-        {
-            _currentDecreaseEnergyCoeff = value;
-        }  
-    }
-   
+    [SerializeField]
+    public float DecreaseEnergyCoeff;
+    [SerializeField]
+    private GameTime _timeToHeal, _timeOfGettingIll;
+    [SerializeField]
     private string _name;
-    private float _currentDecreaseEnergyCoeff;
-    private int _costOfHealing, _daysToHeal;
-    private GameTime timeOfGettingIll;
-    */
+    [SerializeField]
+    private int _costOfHealing;
+
+    public GameTime TimeOfGettingIll { get => _timeOfGettingIll; }
+    public GameTime TimeToHeal { get => _timeToHeal; }
+    public string Name { get => _name; }
+    public int CostOfHealing { get => _costOfHealing; }
 }
 

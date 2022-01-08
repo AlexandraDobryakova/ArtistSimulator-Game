@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public class Job : Work
 {
     public Job(string name, bool isByProfession, int salaryPerHour, int minRequiredLvlSkills,
@@ -49,6 +50,8 @@ public class Job : Work
         return (int)(hoursOfWork * 1.5);
     }
 
-    private readonly int salaryPerHour, minRequiredLvlSkills;
-    private readonly bool isByProfession;
+    [SerializeField]
+    private int salaryPerHour, minRequiredLvlSkills;
+    [SerializeField]
+    private bool isByProfession;
 }

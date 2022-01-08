@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class Work 
 {
     protected Work(string name, int energyCostPerHour, int satietyCostPerHour, int happinessCoef)
@@ -23,8 +24,8 @@ public abstract class Work
     public abstract void DoWork(int hoursOfWork);
     protected abstract int GetXPInc(int hoursOfWork);
 
-    private int happinessCoef;
+    [SerializeField]
+    private int happinessCoef, energyCostPerHour, satietyCostPerHour;
+    [SerializeField]
     private string name;
-    private int energyCostPerHour;
-    private int satietyCostPerHour;
 }

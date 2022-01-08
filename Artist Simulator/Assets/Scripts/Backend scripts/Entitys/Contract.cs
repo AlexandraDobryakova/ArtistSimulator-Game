@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public class Contract : Work
 {
+    [SerializeField]
     public enum Difficultys
     {
         Easy,
@@ -36,10 +38,11 @@ public class Contract : Work
     }
 
     //TODO: Зависимость от Difficulty
+    [SerializeField]
+    public GameConstants.Techniques requiredTechnique;
+    [SerializeField]
+    public GameConstants.Genres requiredGenre;
 
-    public readonly GameConstants.Techniques requiredTechnique;
-    public readonly GameConstants.Genres requiredGenre;
-    
     public int HourWorkload { get => hourWorkload; private set => hourWorkload = value; }
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
@@ -113,9 +116,13 @@ public class Contract : Work
         return res;
     }
 
+    [SerializeField]
     public GameTime TimeOfGetting;
+    [SerializeField]
     private int hourWorkload, hoursWorked, contractPrice;
+    [SerializeField]
     private bool isDone;
+    [SerializeField]
     private Difficultys difficulty;
    
 }

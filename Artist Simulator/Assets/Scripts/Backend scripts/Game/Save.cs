@@ -22,38 +22,54 @@ public class Save
         if (Player.CurrentJob != null)
             CurrentJob = Player.CurrentJob;
 
-        if (Player.ArtSkills.TechniquesDict != null)
-            TechniquesDict = Player.ArtSkills.TechniquesDict;
-        if (Player.ArtSkills.GenresDict != null)
-            GenresDict = Player.ArtSkills.GenresDict;
+        if (Player.ArtSkills.TechniquesList != null)
+            TechniquesList = Player.ArtSkills.TechniquesList;
+        if (Player.ArtSkills.GenresList != null)
+            GenresList = Player.ArtSkills.GenresList;
+
         GeneralLvl = Player.ArtSkills.GeneralLvl;
 
         if (Game.ContractsPool != null)
             ContractsPool = Game.ContractsPool;
-        if (Game.Time != null)
+        if (!Game.Time.Equals(null))
             Time = Game.Time;
         LastChangeContractPoolDay = Game.LastChangeContractPoolDay;
+
     }
 
     #region Player
+    [SerializeField]
     public Indicator Money;
+    [SerializeField]
     public Indicator Happiness;
+    [SerializeField]
     public Indicator Energy;
+    [SerializeField]
     public Indicator Satiety;
+    [SerializeField]
     public Disease CurrentDisease;
+    [SerializeField]
     public Contract CurrentContract;
+    [SerializeField]
     public Job CurrentJob;
     #endregion Player
 
     #region Skills
-    public Dictionary<GameConstants.Techniques, Player.ArtSkills.Skill<GameConstants.Techniques>> TechniquesDict;
-    public Dictionary<GameConstants.Genres, Player.ArtSkills.Skill<GameConstants.Genres>> GenresDict;
+    [SerializeField]
+    public List<Player.ArtSkills.Skill<GameConstants.Techniques>> TechniquesList;
+    [SerializeField]
+    public List<Player.ArtSkills.Skill<GameConstants.Genres>> GenresList;
+
+    [SerializeField]
     public int GeneralLvl;
     #endregion Skills
 
     #region Game
+    [SerializeField]
     public Contract[] ContractsPool;
+    [SerializeField]
     public GameTime Time;
+    [SerializeField]
     public int LastChangeContractPoolDay;
     #endregion Game
 

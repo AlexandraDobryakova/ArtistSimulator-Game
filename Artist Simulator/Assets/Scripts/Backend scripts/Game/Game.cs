@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public static class Game
 {
     public static Contract[] ContractsPool;
@@ -30,6 +31,7 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
+        Debug.Log(JsonUtility.ToJson(_save));
     }
 
     public static void Load()
@@ -52,16 +54,16 @@ public static class Game
         if (_save.CurrentJob != null)
             Player.CurrentJob = _save.CurrentJob;
 
-        if (_save.TechniquesDict != null)
-            Player.ArtSkills.TechniquesDict = _save.TechniquesDict;
-        if (_save.GenresDict != null)
-            Player.ArtSkills.GenresDict = _save.GenresDict;
+        if (_save.TechniquesList != null)
+            Player.ArtSkills.TechniquesList = _save.TechniquesList;
+        if (_save.GenresList != null)
+            Player.ArtSkills.GenresList = _save.GenresList;
 
         Player.ArtSkills.GeneralLvl = _save.GeneralLvl;
 
         if (ContractsPool != null)
             ContractsPool = _save.ContractsPool;
-        if (Time != null)
+        if (!Time.Equals(null))
             Time = _save.Time;
 
         _lastChangeContractPoolDay = _save.LastChangeContractPoolDay;
@@ -69,17 +71,4 @@ public static class Game
 
     private static int _lastChangeContractPoolDay;
     private static Save _save;
-    //public static bool IsCorrect(string value)
-    //{
-    //    if (value == null || value == "")
-    //        throw new ArgumentException("can't be empty or null");
-    //    return true;
-    //}
-
-    //public static bool IsCorrect(int value)
-    //{
-    //    if (value < 0)
-    //        throw new ArgumentException("can't be less than 0");
-    //    return true;
-    //}
 }

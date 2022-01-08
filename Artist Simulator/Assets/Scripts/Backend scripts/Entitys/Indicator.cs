@@ -1,10 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
 
+[System.Serializable]
 public class Indicator
 {
     private static int minValue = 0;
+    [SerializeField]
     private bool isVital;
+    [SerializeField]
     private float _valueCoeff;
+    [SerializeField]
     private int _value, _startValue, _maxValue;
+    [SerializeField]
     private string _dimension;
     public Indicator(int startValue, int maxValue, string dimension, bool isVital)
     {

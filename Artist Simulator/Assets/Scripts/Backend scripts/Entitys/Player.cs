@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public static class Player
 {
+    [System.Serializable]
     public static class ArtSkills
     {
+        [System.Serializable]
         public class Skill <SkillType>
         {
             public Skill(int maxXp, int lvl, int xp, SkillType skillTeg)
@@ -40,10 +43,11 @@ public static class Player
            
             public SkillType SkillTeg { get => _skillTeg; set => _skillTeg = value; }
 
+            [SerializeField]
             private static readonly float UpMaxXpCoeff = 1.5f;
-            private int _maxXp;
-            private int _lvl;
-            private int _xp;
+            [SerializeField]
+            private int _maxXp, _lvl, _xp;
+            [SerializeField]
             private SkillType _skillTeg;
 
             //TODO: проверить рекурсию
@@ -64,16 +68,16 @@ public static class Player
         {
             int res = GameConstants.Skills_start_lvl;
 
-            foreach (var skill in TechniquesDict)
+            foreach (var skill in TechniquesList)
             {
-                if (skill.Value.Lvl <= res)
-                    res = skill.Value.Lvl;
+                if (skill.Lvl <= res)
+                    res = skill.Lvl;
             }
 
-            foreach (var skill in GenresDict)
+            foreach (var skill in GenresList)
             {
-                if (skill.Value.Lvl <= res)
-                    res = skill.Value.Lvl;
+                if (skill.Lvl <= res)
+                    res = skill.Lvl;
             }
 
             return res;
@@ -85,39 +89,38 @@ public static class Player
             int techLen = Enum.GetValues(typeof(GameConstants.Techniques)).Length;
             int genLen = Enum.GetValues(typeof(GameConstants.Genres)).Length;
 
-            TechniquesDict = new Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>>();
-            GenresDict = new Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>>();
+            TechniquesList = new List<Skill<GameConstants.Techniques>>();
+            GenresList = new List<Skill<GameConstants.Genres>>();
 
             for (int i = 0; i < techLen; i++)
-                TechniquesDict.Add((GameConstants.Techniques)i, 
-                    new Skill<GameConstants.Techniques>(startMaxXp, startLvl, startXp, (GameConstants.Techniques)i));
+                TechniquesList.Add(new Skill<GameConstants.Techniques>(startMaxXp, startLvl, startXp, (GameConstants.Techniques)i));
 
             for (int i = 0; i < genLen; i++)
-                GenresDict.Add((GameConstants.Genres)i, 
-                    new Skill<GameConstants.Genres>(startMaxXp, startLvl, startXp, (GameConstants.Genres)i));
+                GenresList.Add(new Skill<GameConstants.Genres>(startMaxXp, startLvl, startXp, (GameConstants.Genres)i));
         }
 
         public static Skill<GameConstants.Techniques> GetSkill(GameConstants.Techniques skillTeg) =>
-            TechniquesDict[skillTeg];
+            TechniquesList.Find(x => x.SkillTeg == skillTeg);
         public static Skill<GameConstants.Genres> GetSkill(GameConstants.Genres skillTeg) =>
-            GenresDict[skillTeg];
+            GenresList.Find(x => x.SkillTeg == skillTeg);
 
         public static int GeneralLvl { get => _generalLvl; set => _generalLvl = value; }
 
 
         private static int _generalLvl;
-        public static Dictionary<GameConstants.Techniques, Skill<GameConstants.Techniques>> TechniquesDict;
-        public static Dictionary<GameConstants.Genres, Skill<GameConstants.Genres>> GenresDict;
+
+        public static List<Skill<GameConstants.Techniques>> TechniquesList;
+        public static List<Skill<GameConstants.Genres>> GenresList;
 
     }
 
-    public static Indicator Money;
-    public static Indicator Happiness;
-    public static Indicator Energy;
-    public static Indicator Satiety;
+
+    public static Indicator Money, Happiness, Energy, Satiety;
 
     public static Disease CurrentDisease;
+
     public static Contract CurrentContract;
+
     public static Job CurrentJob;
 
     //public static bool HasAnEmployment, IsIll, IsWorkingOnContracrt;
