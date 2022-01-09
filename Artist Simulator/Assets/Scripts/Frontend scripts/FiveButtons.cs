@@ -146,7 +146,7 @@ public class FiveButtons : MonoBehaviour
 
         if (YouDied.IsDied == true && buttonIsClicked == true)
         {
-            current_char = 1;
+            //current_char = 1;
             buttons[current_char].transform.position = new Vector3(buttons[current_char].transform.position.x, buttons[current_char].transform.position.y - 0.1f, 0);
             panels[current_char].SetActive(false);
             current_char = 0;
