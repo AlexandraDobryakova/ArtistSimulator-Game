@@ -11,74 +11,80 @@ public class ButtonsInFirstScene : MonoBehaviour
     public GameObject panelStartGame;
     public GameObject panelContinueGame;
 
-    public void ExitGame()
+    public void ExitGame() // Выйти из игры 
     {
+        Game.Save();
         Application.Quit();
     }
 
-    public void StartNewGame()
+    public void StartNewGame() // Кнопка - начать новую игру
     {
-        if (ChooseCharacter.gameIsStarted == false)
+        if (ChooseCharacter.gameIsStarted == false) // если это первый запуск, то просто запускается первая сцена 
         {
+            Game.StartNewGame();
             SceneManager.LoadScene(1);
         }
             
-        else
+        else // если игра  была запущена ранее - открывается панель с вопросом - начать новую игру?
         {
             panelStartGame.SetActive(true);
         }
     }
 
-    public void Yes_NewGame()
+    public void Yes_NewGame() // да, я хочу начать новую игру (стереть старую)
     {
+        Game.StartNewGame();
         ChooseCharacter.gameIsStarted = false;
         //ChangeBars.fill = 1f;
         SceneManager.LoadScene(1);
-        Game.StartNewGame(); // 06 jan
+        //Game.StartNewGame(); // 06 jan
         ChooseCharacter.current_char = 0;
         ChooseCharacter.currentCharacter = 0;
     }
 
-    public void No_NewGame()
+    public void No_NewGame() // нет, отмена - закрытие панели с вопросом - начать новую игру?
     {
         panelStartGame.SetActive(false);
     }
 
-    public void ContinueGame()
+    public void ContinueGame() // кнопка - продолжить игру
     {
-        if (ChooseCharacter.gameIsStarted == false)
+        if (ChooseCharacter.gameIsStarted == false) // если игра не была ранее запушена, котрывается панель с текстом - у вас нет сохраненной игры, хотите начать новую?
         {
             panelContinueGame.SetActive(true);
         }
 
-        else
+        else // если игра была ранее запущена, то просто откывается сцена 1 и загружаются данные 
         {
+            Game.Load();
             ChooseCharacter.gameIsStarted = true;
             Pause.GameIsStarted_IsStopped = false;
             ChangeBars.saving = 1;
             SceneManager.LoadScene(1);
+
             
 
         }
     }
 
-    public void Yes_ContinueGame()
+    public void Yes_ContinueGame() // да, я хочу начать новую игру
     {
         SceneManager.LoadScene(1);
+        //Game.Load();
     }
 
-    public void No_ContinueGame()
+    public void No_ContinueGame() // нет, отмена - закрытие панели 
     {
         panelContinueGame.SetActive(false);
     }
 
-    public void GoToSettings()
+    public void GoToSettings() // переход на панель с настройками 
     {
         canvasMenu.gameObject.SetActive(false);
         canvasSettings.gameObject.SetActive(true);
     }
 
-    public void ReturnToMenu()
+    public void ReturnToMenu() // вернуться в меню из настроек 
     {
         canvasMenu.gameObject.SetActive(true);
         canvasSettings.gameObject.SetActive(false);

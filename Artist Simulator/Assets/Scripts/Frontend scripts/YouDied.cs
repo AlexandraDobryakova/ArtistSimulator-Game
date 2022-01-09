@@ -27,6 +27,7 @@ public class YouDied : MonoBehaviour
 
     public void StartAgain()
     {
+        Game.StartNewGame();
         IsDied = true;
         ChooseCharacter.gameIsStarted = false;
         currentPanel.SetActive(false);
@@ -34,7 +35,7 @@ public class YouDied : MonoBehaviour
         //panel_Job.SetActive(false);
         //button_Work.transform.position = new Vector3(button_Work.transform.position.x, button_Work.transform.position.y - 0.1f, 0);
         panel_MakeCharacter.SetActive(true);
-        Game.StartNewGame();
+        //Game.StartNewGame();
         ChooseCharacter.gameIsStarted = false;
         
         //FiveButtons.wor
