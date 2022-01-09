@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FiveButtons : MonoBehaviour
 {
-    private bool buttonIsClicked = false;
+    public static bool buttonIsClicked = false;
     public GameObject[] panels;
     public GameObject[] buttons;
     private int current_char = 0;
@@ -26,7 +26,7 @@ public class FiveButtons : MonoBehaviour
             CloseThePanel();
             
         }*/
-        
+       
     }
 
     public void Click1Button()

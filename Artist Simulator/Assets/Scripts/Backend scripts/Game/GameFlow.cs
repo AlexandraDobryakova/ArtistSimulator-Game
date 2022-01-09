@@ -29,5 +29,11 @@ public class GameFlow : MonoBehaviour
 
         if (Player.CurrentContract != null && Player.CurrentContract.GetDaysLeft() <= 0)
             Player.CurrentContract = null;
-    }  
+    }
+
+    /*public void OnApplicationQuit()
+    {
+        Debug.Log("Application ending after " + Time.time + " seconds");
+        Game.Save();
+    }*/
 }
