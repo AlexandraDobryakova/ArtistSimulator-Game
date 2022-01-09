@@ -31,9 +31,9 @@ public class GameFlow : MonoBehaviour
             Player.CurrentContract = null;
     }
 
-    /*public void OnApplicationQuit()
+    public void OnApplicationQuit()
     {
         Debug.Log("Application ending after " + Time.time + " seconds");
         Game.Save();
-    }*/
+    }
 }

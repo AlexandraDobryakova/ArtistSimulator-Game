@@ -26,7 +26,7 @@ public class ChooseCharacter : MonoBehaviour
         characters[1].SetActive(false);
         characters[2].SetActive(false);
         characters[3].SetActive(false);
-        current_char = 0;
+        //current_char = 0;
         youInChoosing = true;
         if (gameIsStarted)
         {
