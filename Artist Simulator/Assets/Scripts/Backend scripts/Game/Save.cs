@@ -15,12 +15,23 @@ public class Save
             Energy = Player.Energy;
         if (Player.Satiety != null)
             Satiety = Player.Satiety;
+
+
         if (Player.CurrentDisease != null)
             CurrentDisease = Player.CurrentDisease;
+        else
+            CurrentDiseaseIsNull = true;
+
         if (Player.CurrentContract != null)
             CurrentContract = Player.CurrentContract;
+        else
+            CurrentContractIsNull = true;
+
         if (Player.CurrentJob != null)
             CurrentJob = Player.CurrentJob;
+        else
+            CurrentJobIsNull = true;
+
 
         if (Player.ArtSkills.TechniquesList != null)
             TechniquesList = Player.ArtSkills.TechniquesList;
@@ -31,34 +42,34 @@ public class Save
 
         if (Game.ContractsPool != null)
             ContractsPool = Game.ContractsPool;
-        if (!Game.Time.Equals(null))
+
+        if (!ReferenceEquals(Game.Time, null))
             Time = Game.Time;
         LastChangeContractPoolDay = Game.LastChangeContractPoolDay;
-
     }
 
     #region Player
     [SerializeField]
-    public Indicator Money;
+    public Indicator Money = null;
     [SerializeField]
-    public Indicator Happiness;
+    public Indicator Happiness = null;
     [SerializeField]
-    public Indicator Energy;
+    public Indicator Energy = null;
     [SerializeField]
-    public Indicator Satiety;
+    public Indicator Satiety = null;
     [SerializeField]
-    public Disease CurrentDisease;
+    public Disease CurrentDisease = null;
     [SerializeField]
-    public Contract CurrentContract;
+    public Contract CurrentContract = null;
     [SerializeField]
-    public Job CurrentJob;
+    public Job CurrentJob = null;
     #endregion Player
 
     #region Skills
     [SerializeField]
-    public List<Player.ArtSkills.Skill<GameConstants.Techniques>> TechniquesList;
+    public List<Player.ArtSkills.Skill<GameConstants.Techniques>> TechniquesList = null;
     [SerializeField]
-    public List<Player.ArtSkills.Skill<GameConstants.Genres>> GenresList;
+    public List<Player.ArtSkills.Skill<GameConstants.Genres>> GenresList = null;
 
     [SerializeField]
     public int GeneralLvl;
@@ -66,11 +77,14 @@ public class Save
 
     #region Game
     [SerializeField]
-    public Contract[] ContractsPool;
+    public Contract[] ContractsPool = null;
     [SerializeField]
-    public GameTime Time;
+    public GameTime Time = null;
     [SerializeField]
     public int LastChangeContractPoolDay;
     #endregion Game
+
+    [SerializeField]
+    public bool CurrentDiseaseIsNull, CurrentContractIsNull, CurrentJobIsNull;
 
 }

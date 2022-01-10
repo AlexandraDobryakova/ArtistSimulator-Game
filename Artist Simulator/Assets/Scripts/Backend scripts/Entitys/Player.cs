@@ -156,6 +156,10 @@ public static class Player
             GameConstants.Satiety_dimension,
             GameConstants.Satiety_is_vital);
 
+        CurrentContract = null;
+        CurrentDisease = null;
+        CurrentJob = null;
+
         //Disease = new Disease("cold", 1000, 24 * 2, 0.5f);
 
         //IsIll = false;

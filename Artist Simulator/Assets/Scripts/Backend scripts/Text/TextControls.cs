@@ -59,18 +59,17 @@ public class TextControls : MonoBehaviour
                 break;
 
             case Values.CurContract_DaysLeft:
-                if (Player.CurrentContract != null)
-                    textObject.text = $"{Player.CurrentContract.GetDaysLeft()}";
+                    textObject.text = Player.CurrentContract != null ? $"{Player.CurrentContract.GetDaysLeft()}" : "";
                 break;
 
             case Values.CurContract_Reward:
-                if (Player.CurrentContract != null)
-                    textObject.text = $"{Player.CurrentContract.ContractPrice}{GameConstants.Money_dimension}";
+                    textObject.text = Player.CurrentContract != null ? 
+                    $"{Player.CurrentContract.ContractPrice}{GameConstants.Money_dimension}" : "";
                 break;
 
             case Values.CurContract_PercentExecution:
-                if (Player.CurrentContract != null)
-                    textObject.text = $"{Player.CurrentContract.GetPercentExecution()}%";
+                    textObject.text = 
+                    Player.CurrentContract != null ? $"{Player.CurrentContract.GetPercentExecution()}%" : "";
                 break;
 
             case Values.Satiety:
@@ -95,8 +94,8 @@ public class TextControls : MonoBehaviour
                 break;
 
             case Values.Salary:
-                if(Player.CurrentJob != null)
-                textObject.text = $"{Player.CurrentJob.SalaryPerHour}{GameConstants.Money_dimension}/÷";
+                textObject.text = Player.CurrentJob != null ? 
+                    $"{Player.CurrentJob.SalaryPerHour}{GameConstants.Money_dimension}/÷" : "";
                 break;
 
             case Values.Disease_status:

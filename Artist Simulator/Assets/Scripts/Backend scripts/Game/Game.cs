@@ -15,6 +15,9 @@ public static class Game
     {
         Game.Initialize();
         Player.Initialize();
+        PlayerPrefs.DeleteAll();
+
+        Debug.Log(nameof(StartNewGame));
     }
     private static void Initialize()
     {
@@ -31,43 +34,52 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
-        //Debug.Log(JsonUtility.ToJson(_save));
+        Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
     }
 
     public static void Load()
     {
-        if (PlayerPrefs.HasKey(nameof(_save)))
+        if (HasSave())
+        {
             _save = JsonUtility.FromJson<Save>(PlayerPrefs.GetString(nameof(_save)));
+            Debug.Log($"LOAD");
 
-        if (_save.Money != null)
-            Player.Money = _save.Money;
-        if (_save.Happiness != null)
-            Player.Happiness = _save.Happiness;
-        if (_save.Energy != null)
-            Player.Energy = _save.Energy;
-        if (_save.Satiety != null)
-            Player.Satiety = _save.Satiety;
-        if (_save.CurrentDisease != null)
-            Player.CurrentDisease = _save.CurrentDisease;
-        if (_save.CurrentContract != null)
-            Player.CurrentContract = _save.CurrentContract;
-        if (_save.CurrentJob != null)
-            Player.CurrentJob = _save.CurrentJob;
+            Player.Initialize();
+            Game.Initialize();
+            if (_save.Money != null)
+                Player.Money = _save.Money;
+            if (_save.Happiness != null)
+                Player.Happiness = _save.Happiness;
+            if (_save.Energy != null)
+                Player.Energy = _save.Energy;
+            if (_save.Satiety != null)
+                Player.Satiety = _save.Satiety;
 
-        if (_save.TechniquesList != null)
-            Player.ArtSkills.TechniquesList = _save.TechniquesList;
-        if (_save.GenresList != null)
-            Player.ArtSkills.GenresList = _save.GenresList;
+            Player.CurrentDisease = _save.CurrentDiseaseIsNull ? null : _save.CurrentDisease;
+            Player.CurrentContract = _save.CurrentContractIsNull ? null : _save.CurrentContract;
+            Player.CurrentJob = _save.CurrentJobIsNull ? null : _save.CurrentJob;
 
-        Player.ArtSkills.GeneralLvl = _save.GeneralLvl;
+            if (_save.TechniquesList != null)
+                Player.ArtSkills.TechniquesList = _save.TechniquesList;
+            if (_save.GenresList != null)
+                Player.ArtSkills.GenresList = _save.GenresList;
 
-        if (ContractsPool != null)
-            ContractsPool = _save.ContractsPool;
-        if (!Time.Equals(null))
-            Time = _save.Time;
+            Player.ArtSkills.GeneralLvl = _save.GeneralLvl;
 
-        _lastChangeContractPoolDay = _save.LastChangeContractPoolDay;
+            if (_save.ContractsPool != null)
+                Game.ContractsPool = _save.ContractsPool;
+
+            if (!ReferenceEquals(_save.Time, null))
+                Game.Time = _save.Time;
+
+            _lastChangeContractPoolDay = _save.LastChangeContractPoolDay;
+
+
+        }
+
     }
+
+    public static bool HasSave() => PlayerPrefs.HasKey(nameof(_save));
 
     private static int _lastChangeContractPoolDay;
     private static Save _save;

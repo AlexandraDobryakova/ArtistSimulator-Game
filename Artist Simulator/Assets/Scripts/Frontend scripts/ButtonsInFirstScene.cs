@@ -19,7 +19,7 @@ public class ButtonsInFirstScene : MonoBehaviour
 
     public void StartNewGame() // Кнопка - начать новую игру
     {
-        if (ChooseCharacter.gameIsStarted == false) // если это первый запуск, то просто запускается первая сцена 
+        if (/*ChooseCharacter.gameIsStarted == false || */!Game.HasSave()) // если это первый запуск, то просто запускается первая сцена 
         {
             Game.StartNewGame();
             SceneManager.LoadScene(1);
@@ -49,7 +49,7 @@ public class ButtonsInFirstScene : MonoBehaviour
 
     public void ContinueGame() // кнопка - продолжить игру
     {
-        if (ChooseCharacter.gameIsStarted == false) // если игра не была ранее запушена, котрывается панель с текстом - у вас нет сохраненной игры, хотите начать новую?
+        if (/*ChooseCharacter.gameIsStarted == false || */!Game.HasSave()) // если игра не была ранее запушена, котрывается панель с текстом - у вас нет сохраненной игры, хотите начать новую?
         {
             panelContinueGame.SetActive(true);
         }
@@ -61,16 +61,13 @@ public class ButtonsInFirstScene : MonoBehaviour
             Pause.GameIsStarted_IsStopped = false;
             ChangeBars.saving = 1;
             SceneManager.LoadScene(1);
-
-            
-
         }
     }
 
     public void Yes_ContinueGame() // да, я хочу начать новую игру
     {
+        Game.StartNewGame();
         SceneManager.LoadScene(1);
-        //Game.Load();
     }
 
     public void No_ContinueGame() // нет, отмена - закрытие панели 

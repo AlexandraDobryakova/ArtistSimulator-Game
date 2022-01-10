@@ -35,13 +35,13 @@ public class ChooseCharacter : MonoBehaviour
         }
         nameOf.text = "";
 
-        if (Pause.GameIsStarted_IsStopped == false)
-        {
-            Player.Satiety.Value = Pause.Satiety_Save;
-            Player.Happiness.Value = Pause.Happiness_Save;
-            Player.Energy.Value = Pause.Energy_Save;
-            Player.Money.Value = Pause.Money_Save;
-        }
+        //if (Pause.GameIsStarted_IsStopped == false)
+        //{
+        //    Player.Satiety.Value = Pause.Satiety_Save;
+        //    Player.Happiness.Value = Pause.Happiness_Save;
+        //    Player.Energy.Value = Pause.Energy_Save;
+        //    Player.Money.Value = Pause.Money_Save;
+        //}
     }
 
     private void Update()

@@ -61,7 +61,12 @@ public class GameTime
     //public static GameTime operator -(GameTime t1, GameTime t2) =>
     //    new(t1._hours + t2._hours, t1._days + t2._days);
 
-    public override bool Equals(object obj) => obj is GameTime && ((GameTime)obj) == this;
+    public override bool Equals(object obj) 
+    {
+        if (obj is null && this is null)
+            return true;
+        return obj is GameTime && ((GameTime)obj) == this;
+    } 
 
     public static bool operator ==(GameTime t1, GameTime t2) =>
         t1._hours == t2._hours && t1._days == t2._days;
