@@ -34,7 +34,7 @@ public class Contract : Work, ICloneable
         this.requiredTechnique = requiredTechnique;
         this.requiredGenre = requiredGenre;
         hoursWorked = 0;
-        IsDone = false;
+        IsTaken = false;
     }
 
     //TODO: Зависимость от Difficulty
@@ -47,7 +47,7 @@ public class Contract : Work, ICloneable
 
     public Difficultys Difficulty { get => difficulty; private set => difficulty = value; }
     public int ContractPrice { get => contractPrice; private set => contractPrice = value; }
-    public bool IsDone { get => isDone; private set => isDone = value; }
+    public bool IsTaken { get => _isTaken; set => _isTaken = value; }
 
     public override void DoWork(int hoursOfWork)
     {
@@ -60,7 +60,6 @@ public class Contract : Work, ICloneable
 
         if (hoursWorked >= HourWorkload)
         {
-            IsDone = true;
             Player.ArtSkills.GetSkill(requiredGenre).Xp += GetXPInc(hourWorkload);
             Player.ArtSkills.GetSkill(requiredTechnique).Xp += GetXPInc(hourWorkload);
             Player.Money.Value += ContractPrice;
@@ -123,7 +122,7 @@ public class Contract : Work, ICloneable
     [SerializeField]
     private int hourWorkload, hoursWorked, contractPrice;
     [SerializeField]
-    private bool isDone;
+    private bool _isTaken;
     [SerializeField]
     private Difficultys difficulty;
    

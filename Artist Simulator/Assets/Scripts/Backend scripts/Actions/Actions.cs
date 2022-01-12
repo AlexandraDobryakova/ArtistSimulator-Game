@@ -79,6 +79,7 @@ public class Actions : MonoBehaviour
                 $"ContractNumber can't be more than {GameConstants.Contracts_count - 1}");
         if (Player.CurrentContract == null)
         {
+            Game.ContractsPool[contractNumber].IsTaken = true;
             Player.CurrentContract = (Contract)Game.ContractsPool[contractNumber].Clone();
             Player.CurrentContract.TimeOfGetting = (GameTime)Game.Time.Clone();
             //Debug.Log($"TimeOfGetting: {Player.CurrentContract.TimeOfGetting.Days}, {Player.CurrentContract.TimeOfGetting.Hours}");
