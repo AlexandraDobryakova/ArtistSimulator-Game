@@ -24,7 +24,7 @@ public class ColorOfButtons : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (Game.ContractsPool[0].IsTaken == true)
+            if (Game.ContractsPool[i].IsTaken == true)
             {
                 contract[i].gameObject.GetComponent<Image>().color = Color.grey;
                 contract[i].GetComponent<Button>().interactable = false;
