@@ -5289,7 +5289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "25$/\u0447"
+  m_Text: "25$/\u0447\n25 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &229920449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10052,7 +10052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "180$/\u0447"
+  m_Text: "180$/\u0447\n25 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &414571268
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11421,7 +11421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "150$/\u0447"
+  m_Text: "150$/\u0447\n20 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &441447343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11750,7 +11750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "20$/\u0447"
+  m_Text: "20$/\u0447\n0 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &457225640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16021,7 +16021,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "30$/\u0447"
+  m_Text: "30$/\u0447\n0 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &642946646
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23978,7 +23978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985107938}
   m_Layer: 5
-  m_Name: "\u043F\u043E\u0442\u0441\u043E\u044F\u043D\u043D\u043A\u0430"
+  m_Name: "\u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u0430\u044F \u0440\u0430\u0431\u043E\u0442\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32262,7 +32262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "15$/\u0447"
+  m_Text: "15$/\u0447\n0 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &1313063932
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42220,7 +42220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "125$/\u0447"
+  m_Text: "125$/\u0447\n10 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &1737239474
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42496,7 +42496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "60$/\u0447"
+  m_Text: "60$/\u0447\n15 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!222 &1741899902
 CanvasRenderer:
   m_ObjectHideFlags: 0
