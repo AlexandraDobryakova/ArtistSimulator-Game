@@ -26,6 +26,11 @@ public class ColorOfButtons : MonoBehaviour
             button.GetComponent<Button>().interactable = false;
             Debug.Log("works");
         }
+        else
+        {
+            button.gameObject.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Button>().interactable = true;
+        }
     }
     public void buttonsInWork1(Button button)
     {
@@ -34,6 +39,11 @@ public class ColorOfButtons : MonoBehaviour
             button.gameObject.GetComponent<Image>().color = Color.grey;
             button.GetComponent<Button>().interactable = false;
             Debug.Log("works");
+        }
+        else
+        {
+            button.gameObject.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Button>().interactable = true;
         }
     }
     public void buttonsInWork2(Button button)
@@ -44,6 +54,11 @@ public class ColorOfButtons : MonoBehaviour
             button.GetComponent<Button>().interactable = false;
             Debug.Log("works");
         }
+        else
+        {
+            button.gameObject.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Button>().interactable = true;
+        }
     }
     public void buttonsInWork3(Button button)
     {
@@ -52,6 +67,11 @@ public class ColorOfButtons : MonoBehaviour
             button.gameObject.GetComponent<Image>().color = Color.grey;
             button.GetComponent<Button>().interactable = false;
             Debug.Log("works");
+        }
+        else
+        {
+            button.gameObject.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Button>().interactable = true;
         }
     }
 
