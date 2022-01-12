@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    
+
     void Start()
     {
-        
     }
 
     void Update()

@@ -21,7 +21,7 @@ public class ContractPoolText : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         if (contractNumber < 0 || contractNumber > 5)
             throw new ArgumentException($"contractNumber can be only in range[0, {Game.ContractsPool.Length}]");
 

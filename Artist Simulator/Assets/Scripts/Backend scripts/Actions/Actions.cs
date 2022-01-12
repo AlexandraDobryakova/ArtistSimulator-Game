@@ -35,7 +35,7 @@ public class Actions : MonoBehaviour
         }
     }
 
-    public void LearnTechnique(string skillName__learningVariant)
+    public static void LearnTechnique(string skillName__learningVariant)
     {
         if (!skillName__learningVariant.Contains(' '))
             throw new ArgumentException($"Wrong argument format: \"{skillName__learningVariant}\". Here must be a ' '.");
