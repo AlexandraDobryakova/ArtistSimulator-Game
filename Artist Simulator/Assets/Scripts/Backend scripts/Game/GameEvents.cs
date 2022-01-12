@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFlow : MonoBehaviour
+public class GameEvents : MonoBehaviour
 {
     
     void Start()
     {
-        Game.StartNewGame();
+        
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class GameFlow : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        Debug.Log("Application ending after " + Time.time + " seconds");
-        Game.Save();
+        //Game.Save();
+        //Debug.Log("SAVED BY GAME_EVENTS");
     }
 }

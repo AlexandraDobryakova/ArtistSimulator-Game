@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class GameTime
+public class GameTime : ICloneable
 {
     [SerializeField]
     private int _hours, _totalHours, _days;
@@ -66,7 +66,10 @@ public class GameTime
         if (obj is null && this is null)
             return true;
         return obj is GameTime && ((GameTime)obj) == this;
-    } 
+    }
+
+    public object Clone() => MemberwiseClone();
+
 
     public static bool operator ==(GameTime t1, GameTime t2) =>
         t1._hours == t2._hours && t1._days == t2._days;

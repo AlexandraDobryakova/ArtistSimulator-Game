@@ -79,8 +79,9 @@ public class Actions : MonoBehaviour
                 $"ContractNumber can't be more than {GameConstants.Contracts_count - 1}");
         if (Player.CurrentContract == null)
         {
-            Player.CurrentContract = Game.ContractsPool[contractNumber];
-            Player.CurrentContract.TimeOfGetting = Game.Time;
+            Player.CurrentContract = (Contract)Game.ContractsPool[contractNumber].Clone();
+            Player.CurrentContract.TimeOfGetting = (GameTime)Game.Time.Clone();
+            //Debug.Log($"TimeOfGetting: {Player.CurrentContract.TimeOfGetting.Days}, {Player.CurrentContract.TimeOfGetting.Hours}");
         }
     }
 
@@ -101,6 +102,12 @@ public class Actions : MonoBehaviour
     public void DoContract(int hoursOfWork)
     {
         if (Player.CurrentContract != null)
+        {
+
             Player.CurrentContract.DoWork(hoursOfWork);
+            //Debug.Log($"DaysLeft = 10 - (Game.Time.Days - TimeOfGetting.Days) = \n" +
+            //    $" 10 - ({Game.Time.Days} - {Player.CurrentContract.TimeOfGetting.Days}) = {Player.CurrentContract.GetDaysLeft()}");
+        }
+
     }
 }

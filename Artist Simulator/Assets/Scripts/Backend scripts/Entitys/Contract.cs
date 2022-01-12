@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class Contract : Work
+public class Contract : Work, ICloneable
 {
     [SerializeField]
     public enum Difficultys
@@ -115,6 +115,8 @@ public class Contract : Work
             res[i] = GetRandomContract();
         return res;
     }
+
+    public object Clone() => MemberwiseClone();
 
     [SerializeField]
     public GameTime TimeOfGetting;
