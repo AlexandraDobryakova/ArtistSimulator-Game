@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ColorOfButtons : MonoBehaviour
 {
+    public Button[] permJob;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +15,9 @@ public class ColorOfButtons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkLevel();
     }
+
     public void buttonsInWork0(Button button)
     {
         if (Game.ContractsPool[0].IsTaken == true)
@@ -52,4 +54,45 @@ public class ColorOfButtons : MonoBehaviour
             Debug.Log("works");
         }
     }
+
+    public void checkLevel()
+    {
+        int num = 0; ;
+        for (int i = 0; i < 5; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    num = 15;
+                    break;
+                case 1:
+                    num = 25;
+                    break;
+                case 2:
+                    num = 20;
+                    break;
+                case 3:
+                    num = 25;
+                    break;
+                case 4:
+                   
+                    num = 10;
+                    break;
+            }
+
+            if (Player.ArtSkills.GetMinSkillLvl() >= num)
+            {
+                permJob[i].GetComponent<Button>().interactable = true;
+                permJob[i].gameObject.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                permJob[i].GetComponent<Button>().interactable = false;
+                permJob[i].gameObject.GetComponent<Image>().color = Color.grey;
+            }
+        }
+            
+
+    }
+
 }
