@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ColorOfButtons : MonoBehaviour
 {
     public Button[] permJob;
+    public Button[] contract; 
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,27 @@ public class ColorOfButtons : MonoBehaviour
     void Update()
     {
         checkLevel();
+        buttons_contracts();
     }
 
-    public void buttonsInWork0(Button button)
+    public void buttons_contracts()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (Game.ContractsPool[0].IsTaken == true)
+            {
+                contract[i].gameObject.GetComponent<Image>().color = Color.grey;
+                contract[i].GetComponent<Button>().interactable = false;
+                //Debug.Log("works");
+            }
+            else
+            {
+                contract[i].gameObject.GetComponent<Image>().color = Color.white;
+                contract[i].GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+    /*public void buttonsInWork0(Button button)
     {
         if (Game.ContractsPool[0].IsTaken == true)
         {
@@ -73,7 +92,7 @@ public class ColorOfButtons : MonoBehaviour
             button.gameObject.GetComponent<Image>().color = Color.white;
             button.GetComponent<Button>().interactable = true;
         }
-    }
+    }*/
 
     public void checkLevel()
     {

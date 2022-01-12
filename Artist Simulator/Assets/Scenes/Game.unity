@@ -29808,6 +29808,11 @@ MonoBehaviour:
   - {fileID: 666261345}
   - {fileID: 872808406}
   - {fileID: 1885866342}
+  contract:
+  - {fileID: 537997656}
+  - {fileID: 1522573194}
+  - {fileID: 198680863}
+  - {fileID: 2124014969}
 --- !u!4 &1197635801
 Transform:
   m_ObjectHideFlags: 0
