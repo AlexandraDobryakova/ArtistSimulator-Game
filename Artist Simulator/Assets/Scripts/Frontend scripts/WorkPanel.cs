@@ -15,7 +15,9 @@ public class WorkPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player.CurrentContract != null)
+        if (Player.CurrentContract != null)
             nameOfContract.text = "Контракт: " + Player.CurrentContract.requiredGenre + ", " + Player.CurrentContract.requiredTechnique;
+        else
+            nameOfContract.text = "Контракт: ---";
     }
 }
