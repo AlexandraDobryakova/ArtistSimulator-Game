@@ -11,7 +11,6 @@ public class Disease
         _name = name;
         _costOfHealing = costOfHealing;
         _timeToHeal = timeToHeal;
-        _timeOfGettingIll = (GameTime)Game.Time.Clone();
     }
 
     [SerializeField]
@@ -23,7 +22,7 @@ public class Disease
     [SerializeField]
     private int _costOfHealing;
 
-    public GameTime TimeOfGettingIll { get => _timeOfGettingIll; }
+    public GameTime TimeOfGettingIll { get => _timeOfGettingIll; set => _timeOfGettingIll = value; }
     public GameTime TimeToHeal { get => _timeToHeal; }
     public string Name { get => _name; }
     public int CostOfHealing { get => _costOfHealing; }

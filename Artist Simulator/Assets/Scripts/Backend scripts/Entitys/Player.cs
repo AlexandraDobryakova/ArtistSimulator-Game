@@ -167,6 +167,7 @@ public static class Player
     public static void SetIll(Disease disease)
     {
         CurrentDisease = disease;
+        CurrentDisease.TimeOfGettingIll = (GameTime)Game.Time.Clone();
         Energy.ValueCoeff = disease.DecreaseEnergyCoeff;
     }
 

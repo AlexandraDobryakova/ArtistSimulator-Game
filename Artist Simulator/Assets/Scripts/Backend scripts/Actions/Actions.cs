@@ -14,6 +14,12 @@ public class Actions : MonoBehaviour
         var random = new System.Random(Guid.NewGuid().GetHashCode());
         if (random.Next(0, 101) <= GameConstants.Illness_Chance_percent && Player.CurrentDisease == null)
             Player.SetIll(GameConstants.DiseaseCold);
+
+        //if (Player.CurrentDisease != null)
+        //{
+        //    Debug.Log($"Time.Days: {Game.Time.Days}, TimeOfGettingIll.Days: {Player.CurrentDisease.TimeOfGettingIll.Days}, " +
+        //    $"TimeToHeal.Days: {Player.CurrentDisease.TimeToHeal.Days}\n");
+        //}
     }
 
     public void Heal()
@@ -52,6 +58,9 @@ public class Actions : MonoBehaviour
 
         if (GameConstants.LearningVariants.TryGetValue(args[1], out var learningVariant))
         {
+            Debug.Log($"Brush: {Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).MaxXp}, " +
+                $"Graffiti: {Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).MaxXp}");
+            
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
                 Player.Energy.Value -= learningVariant.energyDecreasment;

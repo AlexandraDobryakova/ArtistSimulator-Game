@@ -17,7 +17,7 @@ public static class Game
         Player.Initialize();
         PlayerPrefs.DeleteAll();
 
-        Debug.Log(nameof(StartNewGame));
+        //Debug.Log(nameof(StartNewGame));
     }
     private static void Initialize()
     {
