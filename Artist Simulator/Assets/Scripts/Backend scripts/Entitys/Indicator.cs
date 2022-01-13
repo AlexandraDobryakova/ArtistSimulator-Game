@@ -32,7 +32,7 @@ public class Indicator
         get => _value;
         set
         {
-            int valueWithCoeff = (int)(value * ValueCoeff);
+            int valueWithCoeff = value >= _value ? _value + (int)((value - _value) * ValueCoeff) : value;
 
             if (valueWithCoeff >= MaxValue)
                 _value = MaxValue;

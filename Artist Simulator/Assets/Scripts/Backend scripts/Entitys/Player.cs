@@ -114,7 +114,6 @@ public static class Player
 
     }
 
-
     public static Indicator Money, Happiness, Energy, Satiety;
 
     public static Disease CurrentDisease;
@@ -122,8 +121,6 @@ public static class Player
     public static Contract CurrentContract;
 
     public static Job CurrentJob;
-
-    //public static bool HasAnEmployment, IsIll, IsWorkingOnContracrt;
 
     public static void Initialize()
     {
@@ -165,5 +162,17 @@ public static class Player
         //IsIll = false;
         //HasAnEmployment = false;
         //IsWorkingOnContracrt = false;
+    }
+
+    public static void SetIll(Disease disease)
+    {
+        CurrentDisease = disease;
+        Energy.ValueCoeff = disease.DecreaseEnergyCoeff;
+    }
+
+    public static void GetWell()
+    {
+        CurrentDisease = null;
+        Energy.ValueCoeff = 1.0f;
     }
 }

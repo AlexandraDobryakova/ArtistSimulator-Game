@@ -20,7 +20,7 @@ public static class GameConstants
         Satiety_max_value = 100,
 
         // Actions:
-        Sleep_energy_restore_perHour = 40,
+        Sleep_energy_restore_perHour = 10,
         Sleep_satiety_decreasement = 20,
         Healing_cost = 50,
         Eating_duration_inHours = 2,
@@ -34,7 +34,8 @@ public static class GameConstants
         Contracts_pool_changing_each_days = 10,
 
         // Disease
-        DaysUntillGettingIll = 5,
+        Days_untill_tetting_Ill = 5,
+        Illness_Chance_percent = 5,
 
         //Skills
         Skills_Max_lvl = 30,

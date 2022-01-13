@@ -11,7 +11,7 @@ public class Disease
         _name = name;
         _costOfHealing = costOfHealing;
         _timeToHeal = timeToHeal;
-        _timeOfGettingIll = Game.Time;
+        _timeOfGettingIll = (GameTime)Game.Time.Clone();
     }
 
     [SerializeField]

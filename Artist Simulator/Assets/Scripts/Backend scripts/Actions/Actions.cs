@@ -8,22 +8,26 @@ public class Actions : MonoBehaviour
 {
     public void Sleep(int sleepTime)
     {
-        Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
-        Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement;
+        //Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
+        //Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement * sleepTime;
         Game.Time.Hours += sleepTime;
+        var random = new System.Random(Guid.NewGuid().GetHashCode());
+        if (random.Next(0, 101) <= GameConstants.Illness_Chance_percent && Player.CurrentDisease == null)
+            Player.SetIll(GameConstants.DiseaseCold);
     }
 
     public void Heal()
     {
         if (Player.Money.Value >= GameConstants.Healing_cost)
         {
-            Player.CurrentDisease = null;
+            Player.GetWell();
             Player.Money.Value -= GameConstants.Healing_cost;
         }
     }
 
     public void Eat(int foodNumber)
     {
+        
         if (foodNumber < 0 || foodNumber > GameConstants.FoodVariants.Length)
             throw new ArgumentException($"Food number can be only in range[0, {GameConstants.FoodVariants.Length}]");
 
@@ -50,8 +54,8 @@ public class Actions : MonoBehaviour
         {
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
-                Player.Energy.Value -= learningVariant.energyDecreasment;
-                Player.Satiety.Value -= learningVariant.satietyDecreasment;
+                //Player.Energy.Value -= learningVariant.energyDecreasment;
+                //Player.Satiety.Value -= learningVariant.satietyDecreasment;
                 Player.Happiness.Value += learningVariant.happinessCoeff;
                 Player.Money.Value -= learningVariant.leraningPrice;
                 Game.Time.Hours += learningVariant.durationInHours;
@@ -104,11 +108,9 @@ public class Actions : MonoBehaviour
     {
         if (Player.CurrentContract != null)
         {
-
             Player.CurrentContract.DoWork(hoursOfWork);
             //Debug.Log($"DaysLeft = 10 - (Game.Time.Days - TimeOfGetting.Days) = \n" +
             //    $" 10 - ({Game.Time.Days} - {Player.CurrentContract.TimeOfGetting.Days}) = {Player.CurrentContract.GetDaysLeft()}");
         }
-
     }
 }
