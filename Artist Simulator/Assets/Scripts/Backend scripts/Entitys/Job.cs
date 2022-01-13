@@ -26,7 +26,7 @@ public class Job : Work
     public override void DoWork(int hoursOfWork)
     {
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
-        Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
+        Player.Satiety.Value -= SatietyCostPerHour * (hoursOfWork / 2);
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
         Player.Money.Value += salaryPerHour * hoursOfWork;
         Game.Time.Hours += hoursOfWork;
