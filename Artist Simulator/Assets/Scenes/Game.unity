@@ -2180,6 +2180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textHealth: {fileID: 37686012}
   panelHealth: {fileID: 934659960}
+  costOfTreatment: {fileID: 400634577}
 --- !u!4 &88044241
 Transform:
   m_ObjectHideFlags: 0
@@ -13698,9 +13699,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 923824047}
-        m_TargetAssemblyTypeName: Actions, Assembly-CSharp
-        m_MethodName: Heal
+      - m_Target: {fileID: 88044240}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: button_Treatment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

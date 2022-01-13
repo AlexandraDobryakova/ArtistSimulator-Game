@@ -7,7 +7,12 @@ public class Health : MonoBehaviour
 {
     public Text textHealth;
     private bool wasShowed = false;
-    public GameObject panelHealth; 
+    public GameObject panelHealth;
+
+
+    // в панели с лечением 
+    public Text costOfTreatment;
+    public 
     void Start()
     {
         
@@ -31,11 +36,16 @@ public class Health : MonoBehaviour
             wasShowed = true;
         }
 
-        
+        costOfTreatment.text = GameConstants.Healing_cost.ToString() + "$";
     }
 
     public void button_ClosePanelHealth()
     {
         panelHealth.SetActive(false);
+    }
+
+    public void button_Treatment()
+    {
+        Actions.Heal();
     }
 }
