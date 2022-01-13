@@ -4,24 +4,12 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-
     void Start()
     {
     }
 
     void Update()
     {
-
-        //if(Player.Disease != null)
-        //{
-        //    if (Game.Time.Days >= GameConstans.DaysUntillGettingIll)
-        //    {
-        //        Player.Disease = GameConstans.DiseaseCold;
-        //        Player.Energy.ValueCoeff = GameConstans.DiseaseCold.decreaseEnergyCoeff;
-        //    }
-
-        //}
-
 
         if (Game.Time.Days - Game.LastChangeContractPoolDay >= 10)
             Game.SetNewContractsPool();
@@ -39,11 +27,5 @@ public class GameEvents : MonoBehaviour
         {
             Player.SetIll(GameConstants.DiseaseCold);
         }
-    }
-
-    public void OnApplicationQuit()
-    {
-        //Game.Save();
-        //Debug.Log("SAVED BY GAME_EVENTS");
     }
 }
