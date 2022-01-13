@@ -8,8 +8,8 @@ public class Actions : MonoBehaviour
 {
     public void Sleep(int sleepTime)
     {
-        //Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
-        //Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement * sleepTime;
+        Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
+        Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement * sleepTime;
         Game.Time.Hours += sleepTime;
         var random = new System.Random(Guid.NewGuid().GetHashCode());
         if (random.Next(0, 101) <= GameConstants.Illness_Chance_percent && Player.CurrentDisease == null)
@@ -54,8 +54,8 @@ public class Actions : MonoBehaviour
         {
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
-                //Player.Energy.Value -= learningVariant.energyDecreasment;
-                //Player.Satiety.Value -= learningVariant.satietyDecreasment;
+                Player.Energy.Value -= learningVariant.energyDecreasment;
+                Player.Satiety.Value -= learningVariant.satietyDecreasment;
                 Player.Happiness.Value += learningVariant.happinessCoeff;
                 Player.Money.Value -= learningVariant.leraningPrice;
                 Game.Time.Hours += learningVariant.durationInHours;
