@@ -121,7 +121,7 @@ public class TextControls : MonoBehaviour
                 if (SkillXpOrLvl == XP_LVL_Selection.Xp)
                     textObject.text = 
                         $"{Player.ArtSkills.GetSkill(SkillGenre).Xp} / " +
-                        $"{Player.ArtSkills.GetSkill(SkillTechnique).MaxXp}";
+                        $"{Player.ArtSkills.GetSkill(SkillGenre).MaxXp}";
                 break;
 
             default:

@@ -58,9 +58,9 @@ public class Actions : MonoBehaviour
 
         if (GameConstants.LearningVariants.TryGetValue(args[1], out var learningVariant))
         {
-            Debug.Log($"Brush: {Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).MaxXp}, " +
-                $"Graffiti: {Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).MaxXp}");
-            
+            //Debug.Log($"Brush: {Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).MaxXp}, " +
+            //    $"Graffiti: {Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).MaxXp}");
+
             if (Player.Money.Value >= learningVariant.leraningPrice)
             {
                 Player.Energy.Value -= learningVariant.energyDecreasment;
