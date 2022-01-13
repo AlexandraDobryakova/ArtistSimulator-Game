@@ -80,14 +80,14 @@ public static class GameConstants
     public static readonly Job[] Jobs =
         new Job[]
         {
-            new Job("Sketch Art", true, 60 * 2, 15, 20, 20, +10),
-            new Job("Pro sketch", true, 180 * 2, 25, 40, 25, +20),
-            new Job("Art Studio", true, 150 * 2, 20, 25, 15, +15),
-            new Job("Middle School", true, 25 * 2, 25, 40, 15, -5),
-            new Job("Street graphics", true, 125 * 2, 10, 20, 20, +25),
-            new Job("Shawerma king", false, 15 * 2, 0, 10, 15, -5),
-            new Job("Roll prince", false, 20 * 2, 0, 15, 15, -10),
-            new Job("Fast courier", false, 30 * 2, 0, 25, 30, -15)
+            new Job("Sketch Art", true, 60 * 2, 15, 20, 20, +10), //3
+            new Job("Pro sketch", true, 180 * 2, 25, 40, 25, +20), //4
+            new Job("Art Studio", true, 150 * 2, 20, 25, 15, +15), //5
+            new Job("Middle School", true, 25 * 2, 25, 40, 15, -5), //6
+            new Job("Street graphics", true, 125 * 2, 10, 20, 20, +25), //7
+            new Job("Shawerma king", false, 15 * 2, 0, 10, 15, -5), //0
+            new Job("Roll prince", false, 20 * 2, 0, 15, 15, -10), //1
+            new Job("Fast courier", false, 30 * 2, 0, 25, 30, -15) //2
         };
     
     //public static readonly Dictionary<string, Job> Jobs =

@@ -25,16 +25,16 @@ public class Info_Tech_Genre : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        brush.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).Xp * 0.01f;
-        tablet.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.GraphicsTablet).Xp * 0.01f;
-        spray.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.SprayPaint).Xp * 0.01f;
-        pencil.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.Pencil).Xp * 0.01f;
+        brush.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Techniques.Brush).MaxXp * 100;
+        tablet.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.GraphicsTablet).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Techniques.GraphicsTablet).MaxXp * 100;
+        spray.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.SprayPaint).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Techniques.SprayPaint).MaxXp * 100;
+        pencil.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Techniques.Pencil).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Techniques.Pencil).MaxXp * 100;
 
-        graffiti.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).Xp * 0.01f;
-        stillLife.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.StillLife).Xp * 0.01f;
-        scenery.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Scenery).Xp * 0.01f;
-        portrait.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Portrait).Xp * 0.01f;
-        modernArt.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.ModernArt).Xp * 0.01f;
+        graffiti.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Genres.Graffiti).MaxXp * 100;
+        stillLife.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.StillLife).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Genres.StillLife).MaxXp * 100;
+        scenery.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Scenery).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Genres.Scenery).MaxXp * 100;
+        portrait.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.Portrait).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Genres.Portrait).MaxXp * 100;
+        modernArt.fillAmount = Player.ArtSkills.GetSkill(GameConstants.Genres.ModernArt).Xp * 0.01f / Player.ArtSkills.GetSkill(GameConstants.Genres.ModernArt).MaxXp * 100;
 
 
     }
