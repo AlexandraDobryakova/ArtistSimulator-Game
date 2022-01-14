@@ -37,7 +37,7 @@ public class ChangeBars : MonoBehaviour
 
     void Start()
     {
-        if (ChooseCharacter.gameIsStarted == true)
+        if (Game.GameIsStarted == true)
         {
             characters[1].SetActive(false);
             characters[2].SetActive(false);

@@ -120,6 +120,7 @@ public class ChooseCharacter : MonoBehaviour
 
 
         gameIsStarted = true;
+        Game.GameIsStarted = gameIsStarted;
 
         
 

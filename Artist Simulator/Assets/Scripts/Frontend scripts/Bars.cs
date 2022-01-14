@@ -25,7 +25,7 @@ public class Bars : MonoBehaviour
 
     void Start()
     {
-        if (ChooseCharacter.gameIsStarted == true)
+        /*if (ChooseCharacter.gameIsStarted == true)
         {
             characters[1].SetActive(false);
             characters[2].SetActive(false);
@@ -33,6 +33,27 @@ public class Bars : MonoBehaviour
             characters[0].SetActive(false);
             characters[ChooseCharacter.current_char].SetActive(true);
             name.text = ChooseCharacter.characterName;
+        }*/
+
+        characters[1].SetActive(false);
+        characters[2].SetActive(false);
+        characters[3].SetActive(false);
+        characters[0].SetActive(false);
+        //characters[Player.CharacterNum].SetActive(true); // here
+        //name.text = Player.Name; // here 
+
+        if (Player.Name != null)
+        {
+            name.text = Player.Name;
+            characters[Player.CharacterNum].SetActive(true); // here
+        }
+        else
+        {
+            Player.Name = ChooseCharacter.characterName;
+            Player.CharacterNum = ChooseCharacter.currentCharacter;
+
+            name.text = Player.Name;
+            characters[Player.CharacterNum].SetActive(true); // here
         }
     }
     
@@ -42,8 +63,14 @@ public class Bars : MonoBehaviour
         characters[2].SetActive(false);
         characters[3].SetActive(false);
         characters[0].SetActive(false);
-        characters[ChooseCharacter.current_char].SetActive(true);
-        name.text = ChooseCharacter.characterName;
+
+        /*characters[ChooseCharacter.current_char].SetActive(true);
+        name.text = ChooseCharacter.characterName;*/
+
+        name.text = Player.Name;
+        characters[Player.CharacterNum].SetActive(true); // here
+
+
         FoodBar.fillAmount = Player.Satiety.Value * 0.01f;
         MoodBar.fillAmount = Player.Happiness.Value * 0.01f;
         EnergyBar.fillAmount = Player.Energy.Value * 0.01f;
