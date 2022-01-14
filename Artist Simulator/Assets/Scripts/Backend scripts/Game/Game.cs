@@ -34,7 +34,7 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
-        Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
+        //Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
     }
 
     public static void Load()
@@ -81,7 +81,7 @@ public static class Game
             if (!string.IsNullOrEmpty(_save.Name))
                 Player.Name = _save.Name;
 
-            Debug.Log($"Name: {Player.Name} ChId: {Player.CharacterNum}");
+            //Debug.Log($"Name: {Player.Name} ChId: {Player.CharacterNum}");
         }
 
     }
