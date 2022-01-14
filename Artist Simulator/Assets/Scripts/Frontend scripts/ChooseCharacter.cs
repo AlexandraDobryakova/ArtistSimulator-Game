@@ -105,7 +105,7 @@ public class ChooseCharacter : MonoBehaviour
         canvasChooseCharacter.gameObject.SetActive(false);
         canvasGame.gameObject.SetActive(true);
 
-        if (Player.Name != null && gameIsStarted == false)
+        /*if (Player.Name != null && Game.GameIsStarted == false)
         {
             nameOfPlayer.text = Player.Name;
             charactersGame[Player.CharacterNum].SetActive(true); // here
@@ -117,8 +117,13 @@ public class ChooseCharacter : MonoBehaviour
 
             nameOfPlayer.text = Player.Name;
             charactersGame[Player.CharacterNum].SetActive(true); // here
-        }
+        }*/
 
+        Player.Name = characterName;
+        Player.CharacterNum = currentCharacter;
+
+        nameOfPlayer.text = Player.Name;
+        charactersGame[Player.CharacterNum].SetActive(true); // here
 
         gameIsStarted = true;
 

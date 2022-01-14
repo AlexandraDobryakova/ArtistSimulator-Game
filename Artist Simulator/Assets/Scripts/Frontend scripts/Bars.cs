@@ -42,7 +42,7 @@ public class Bars : MonoBehaviour
         //characters[Player.CharacterNum].SetActive(true); // here
         //name.text = Player.Name; // here 
 
-        if (Player.Name != null)
+        if (Player.Name != null )
         {
             name.text = Player.Name;
             characters[Player.CharacterNum].SetActive(true); // here
@@ -67,8 +67,12 @@ public class Bars : MonoBehaviour
         /*characters[ChooseCharacter.current_char].SetActive(true);
         name.text = ChooseCharacter.characterName;*/
 
-        name.text = Player.Name;
-        characters[Player.CharacterNum].SetActive(true); // here
+        if (Player.Name != null)
+        {
+            name.text = Player.Name;
+            characters[Player.CharacterNum].SetActive(true); // here
+        }
+            
 
 
         FoodBar.fillAmount = Player.Satiety.Value * 0.01f;
