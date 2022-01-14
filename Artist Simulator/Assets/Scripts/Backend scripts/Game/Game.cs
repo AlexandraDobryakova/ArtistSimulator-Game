@@ -74,7 +74,10 @@ public static class Game
 
             _lastChangeContractPoolDay = _save.LastChangeContractPoolDay;
 
+            Player.CharacterNum = _save.CharacterNum;
 
+            if (!string.IsNullOrEmpty(_save.Name))
+                Player.Name = _save.Name;
         }
 
     }

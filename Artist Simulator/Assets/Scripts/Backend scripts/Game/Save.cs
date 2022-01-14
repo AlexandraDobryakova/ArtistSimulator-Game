@@ -16,6 +16,10 @@ public class Save
         if (Player.Satiety != null)
             Satiety = Player.Satiety;
 
+        CharacterNum = Player.CharacterNum;
+
+        if (!string.IsNullOrEmpty(Player.Name))
+            Name = Player.Name;
 
         if (Player.CurrentDisease != null)
             CurrentDisease = Player.CurrentDisease;
@@ -63,6 +67,8 @@ public class Save
     public Contract CurrentContract = null;
     [SerializeField]
     public Job CurrentJob = null;
+    public int CharacterNum;
+    public string Name;
     #endregion Player
 
     #region Skills

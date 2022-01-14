@@ -115,12 +115,11 @@ public static class Player
     }
 
     public static Indicator Money, Happiness, Energy, Satiety;
-
     public static Disease CurrentDisease;
-
     public static Contract CurrentContract;
-
     public static Job CurrentJob;
+    public static int CharacterNum;
+    public static string Name;
 
     public static void Initialize()
     {
