@@ -43,8 +43,15 @@ public class ChangeBars : MonoBehaviour
             characters[2].SetActive(false);
             characters[3].SetActive(false);
             characters[0].SetActive(false);
-            characters[ChooseCharacter.current_char].SetActive(true);
-            name.text = ChooseCharacter.characterName;
+            characters[Player.CharacterNum].SetActive(true); // here
+            name.text = Player.Name; // here 
+
+
+            /*characters[ChooseCharacter.current_char].SetActive(true); // here
+            name.text = ChooseCharacter.characterName; // here */
+
+            //Player.Name = name.text;
+            //Player.CharacterNum = ChooseCharacter.currentCharacter; 
         }
 
         
