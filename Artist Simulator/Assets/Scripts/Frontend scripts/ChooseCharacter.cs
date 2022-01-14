@@ -100,11 +100,12 @@ public class ChooseCharacter : MonoBehaviour
 
     public void StartGame()
     {
-        gameIsStarted = true;
+        
+
         canvasChooseCharacter.gameObject.SetActive(false);
         canvasGame.gameObject.SetActive(true);
 
-        if (Player.Name != null)
+        if (Player.Name != null && gameIsStarted == false)
         {
             nameOfPlayer.text = Player.Name;
             charactersGame[Player.CharacterNum].SetActive(true); // here
@@ -120,9 +121,10 @@ public class ChooseCharacter : MonoBehaviour
 
 
         gameIsStarted = true;
+
         Game.GameIsStarted = gameIsStarted;
 
-        
+
 
         Pause.GameIsStarted_IsStopped = false;
         ChooseCharacter.gameIsStarted = true;

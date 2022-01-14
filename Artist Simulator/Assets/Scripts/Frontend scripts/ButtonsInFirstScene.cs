@@ -35,6 +35,7 @@ public class ButtonsInFirstScene : MonoBehaviour
     {
         Game.StartNewGame();
         ChooseCharacter.gameIsStarted = false;
+        Game.GameIsStarted = false;
         //ChangeBars.fill = 1f;
         SceneManager.LoadScene(1);
         //Game.StartNewGame(); // 06 jan
@@ -68,6 +69,7 @@ public class ButtonsInFirstScene : MonoBehaviour
     {
         Game.StartNewGame();
         SceneManager.LoadScene(1);
+        
     }
 
     public void No_ContinueGame() // нет, отмена - закрытие панели 
