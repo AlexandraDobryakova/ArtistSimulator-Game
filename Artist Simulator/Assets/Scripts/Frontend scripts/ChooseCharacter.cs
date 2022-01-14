@@ -103,12 +103,25 @@ public class ChooseCharacter : MonoBehaviour
         gameIsStarted = true;
         canvasChooseCharacter.gameObject.SetActive(false);
         canvasGame.gameObject.SetActive(true);
-        nameOfPlayer.text = characterName;
-        charactersGame[currentCharacter].SetActive(true); // here
+
+        if (Player.Name != null)
+        {
+            nameOfPlayer.text = Player.Name;
+            charactersGame[Player.CharacterNum].SetActive(true); // here
+        }
+        else
+        {
+            Player.Name = nameOfPlayer.text;
+            Player.CharacterNum = ChooseCharacter.currentCharacter;
+
+            nameOfPlayer.text = Player.Name;
+            charactersGame[Player.CharacterNum].SetActive(true); // here
+        }
+
+
         gameIsStarted = true;
 
-        Player.Name = nameOfPlayer.text;
-        Player.CharacterNum = ChooseCharacter.currentCharacter;
+        
 
         Pause.GameIsStarted_IsStopped = false;
         ChooseCharacter.gameIsStarted = true;
