@@ -111,8 +111,8 @@ public class ChooseCharacter : MonoBehaviour
         }
         else
         {
-            Player.Name = nameOfPlayer.text;
-            Player.CharacterNum = ChooseCharacter.currentCharacter;
+            Player.Name = characterName;
+            Player.CharacterNum = currentCharacter;
 
             nameOfPlayer.text = Player.Name;
             charactersGame[Player.CharacterNum].SetActive(true); // here
