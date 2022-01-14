@@ -34,7 +34,7 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
-        Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
+        //Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
     }
 
     public static void Load()
@@ -42,7 +42,7 @@ public static class Game
         if (HasSave())
         {
             _save = JsonUtility.FromJson<Save>(PlayerPrefs.GetString(nameof(_save)));
-            Debug.Log($"LOAD");
+            //Debug.Log($"LOAD");
 
             Player.Initialize();
             Game.Initialize();

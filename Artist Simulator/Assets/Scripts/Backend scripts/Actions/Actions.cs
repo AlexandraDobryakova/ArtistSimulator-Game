@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
 public class Actions : MonoBehaviour
 {
     public void Sleep(int sleepTime)
     {
-        Player.Energy.Value += GameConstants.Sleep_energy_restore_perHour * sleepTime;
-        Player.Satiety.Value -= GameConstants.Sleep_satiety_decreasement * (sleepTime / 2);
+        Player.Energy.Value += (int)(Player.Energy.Value * 0.2 * sleepTime);
+        Player.Satiety.Value -= (int)(Player.Satiety.Value * 0.05 * sleepTime);
         Game.Time.Hours += sleepTime;
         var random = new System.Random(Guid.NewGuid().GetHashCode());
         if (random.Next(0, 101) <= GameConstants.Illness_Chance_percent && Player.CurrentDisease == null)

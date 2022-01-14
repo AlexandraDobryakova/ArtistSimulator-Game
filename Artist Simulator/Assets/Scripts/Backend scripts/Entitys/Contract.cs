@@ -52,7 +52,7 @@ public class Contract : Work, ICloneable
     public override void DoWork(int hoursOfWork)
     {
         Player.Energy.Value -= EnergyCostPerHour * hoursOfWork;
-        Player.Satiety.Value -= SatietyCostPerHour * hoursOfWork;
+        Player.Satiety.Value -= (int)(SatietyCostPerHour /** 0.6*/ * hoursOfWork);
         Player.Happiness.Value += HappinessCoef * hoursOfWork;
         Game.Time.Hours += hoursOfWork;
 
@@ -88,19 +88,19 @@ public class Contract : Work, ICloneable
         {
             case Difficultys.Easy:
                 return new Contract("1", random.Next(1, 6),
-                    (int)Math.Round(random.Next(100, 600) / 10.0) * 10 / 5, difficult, randTech, randGenre);
+                    (int)Math.Round(random.Next(100, 600) / 10.0) * 10 / 10, difficult, randTech, randGenre);
 
            case Difficultys.Normal:
                return new Contract("2", random.Next(12, 12 * 2 + 1), 
-                   (int)Math.Round(random.Next(800, 1500) / 100.0) * 100 / 5, difficult, randTech, randGenre);  
+                   (int)Math.Round(random.Next(800, 1500) / 100.0) * 100 / 10, difficult, randTech, randGenre);  
 
            case Difficultys.Hard:
                return new Contract("3", random.Next(12 * 3, 12 * 4 + 1),
-                   (int)Math.Round(random.Next(2500, 5000) / 100.0) * 100 / 5, difficult, randTech, randGenre);
+                   (int)Math.Round(random.Next(2500, 5000) / 100.0) * 100 / 13, difficult, randTech, randGenre);
 
            case Difficultys.Crazy:
                return new Contract("4", random.Next(12 * 5, 12 * 6 + 1),
-                   (int)Math.Round(random.Next(15000, 20000) / 1000.0) * 1000 / 5, difficult, randTech, randGenre);
+                   (int)Math.Round(random.Next(15000, 20000) / 1000.0) * 1000 / 15, difficult, randTech, randGenre);
 
            default:
                return new Contract("0", 0, 0, difficult, randTech, randGenre);
