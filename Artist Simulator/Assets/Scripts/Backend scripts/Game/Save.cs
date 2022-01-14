@@ -50,6 +50,8 @@ public class Save
         if (!ReferenceEquals(Game.Time, null))
             Time = Game.Time;
         LastChangeContractPoolDay = Game.LastChangeContractPoolDay;
+
+        GameIsStarted = Game.GameIsStarted;
     }
 
     #region Player
@@ -91,6 +93,6 @@ public class Save
     #endregion Game
 
     [SerializeField]
-    public bool CurrentDiseaseIsNull, CurrentContractIsNull, CurrentJobIsNull;
+    public bool CurrentDiseaseIsNull, CurrentContractIsNull, CurrentJobIsNull, GameIsStarted;
 
 }

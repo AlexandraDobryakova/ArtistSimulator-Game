@@ -8,7 +8,7 @@ public static class Game
 {
     public static Contract[] ContractsPool;
     public static GameTime Time;
-    
+    public static bool GameIsStarted;
     public static void GameOver() { }
     public static int LastChangeContractPoolDay { get => _lastChangeContractPoolDay; private set { } }
     public static void StartNewGame()
@@ -34,7 +34,7 @@ public static class Game
     {
         _save = new Save();
         PlayerPrefs.SetString(nameof(_save), JsonUtility.ToJson(_save));
-        //Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
+        Debug.Log($"SAVE\n{JsonUtility.ToJson(_save)}");
     }
 
     public static void Load()
@@ -76,8 +76,12 @@ public static class Game
 
             Player.CharacterNum = _save.CharacterNum;
 
+            Game.GameIsStarted = _save.GameIsStarted;
+
             if (!string.IsNullOrEmpty(_save.Name))
                 Player.Name = _save.Name;
+
+            Debug.Log($"Name: {Player.Name} ChId: {Player.CharacterNum}");
         }
 
     }
