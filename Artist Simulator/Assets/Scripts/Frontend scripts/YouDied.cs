@@ -23,6 +23,8 @@ public class YouDied : MonoBehaviour
         Game.StartNewGame();
         //IsDied = false;
         ChooseCharacter.gameIsStarted = false;
+        Game.GameIsStarted = false;
+        Player.Name = null;
     }
 
     public void StartAgain()
@@ -37,7 +39,8 @@ public class YouDied : MonoBehaviour
         panel_MakeCharacter.SetActive(true);
         //Game.StartNewGame();
         ChooseCharacter.gameIsStarted = false;
-        
+        Game.GameIsStarted = false;
+        Player.Name = null;
         //FiveButtons.wor
         /*SceneManager.LoadScene(0);
         panel_MakeCharacter.SetActive(true);

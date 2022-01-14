@@ -23,6 +23,8 @@ public class ButtonsInFirstScene : MonoBehaviour
         {
             Game.StartNewGame();
             SceneManager.LoadScene(1);
+            ChooseCharacter.current_char = 0;
+            ChooseCharacter.currentCharacter = 0;
         }
             
         else // если игра  была запущена ранее - открывается панель с вопросом - начать новую игру?
